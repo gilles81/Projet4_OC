@@ -20,7 +20,7 @@ class View {
         $template = $this-> template;
         ob_start(VIEW.$template. '.php');
         $content = ob_get_clean();
-        include(VIEW.'_gabarit.php');
+        include(VIEW.'_layout.php');
 
     }
 
