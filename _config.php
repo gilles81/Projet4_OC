@@ -24,8 +24,8 @@ class MyAutoload
          */
         define('CONTROLLER', ROOT .'controller/');
         define('VIEW',ROOT . 'view/');
-        define('MODEL','http'ROOT . 'model/');
-        define('LIB', ROOT .'lib/')
+        define('MODEL','http',ROOT . 'model/');
+        define('LIB', ROOT .'lib/');
 
         define('ASSETS','http' . $host . 'assets/');
 
