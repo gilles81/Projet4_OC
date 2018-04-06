@@ -7,7 +7,7 @@
  * - find controller for a client request
  */
 include_once('_config.php');
-//Autoload::start();
+MyAutoload::start();
 
 $request = $_GET['r'];
 
