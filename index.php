@@ -13,7 +13,7 @@ $request = $_GET['r'];
 
 if ($request == "home")
 {
-    include_once(CONTROLLER .'FrontEndHome.php');
+    include_once(CONTROLLER .'FrontOfficeHome.php');
 }else{
     echo 'Erreur 404';
 }
