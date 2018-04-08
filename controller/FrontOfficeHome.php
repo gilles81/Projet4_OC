@@ -8,22 +8,21 @@ class FrontOfficeHome
 {
     public function showPosts()
     {
-/*
- * Todo
- * recuperation de données via un manager
- *
- */
+     /*get all posts in database*/
+    $manager = new PostManager();
+    $Posts = $manager->findAll();
 
     $myView = new View('home.php');
     $myView->build();
-
     }
 
     public function showPost()
     {
 /*
  * Todo
+ *  get one post and goto to view
  */
+
     }
 
 }
