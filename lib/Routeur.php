@@ -5,7 +5,7 @@
  *Create route et find controller
  */
 
-class Router
+class Routeur
 {
     private $request;
     private $routes = ['home.html'=> ['controller' , 'FrontOfficeHome' , 'method' => 'showPost']];
