@@ -4,7 +4,7 @@
  *
  * used to show the Post.php on home page
  */
-class FrontOfficeHome
+class PostController
 {
     public function showPosts()
     {
@@ -18,7 +18,7 @@ class FrontOfficeHome
 
     public function showPost()
     {
-/*
+/**
  * Todo
  *  get one post and goto to view
  */
