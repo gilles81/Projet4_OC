@@ -6,6 +6,7 @@
  * -Class autoload
  * - find controller for a client request
  */
+
 include_once('_config.php');
 MyAutoload::start();
 
@@ -13,7 +14,7 @@ $request = $_GET['r'];
 
 if ($request == "home")
 {
-    include_once(CONTROLLER .'FrontOfficeHome.php');
+    include_once(CONTROLLER.'PostController.php');
 }else{
     echo 'Erreur 404';
 }
