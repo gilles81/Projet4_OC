@@ -17,14 +17,14 @@ class MyAutoload
         /*
          *
          */
-        define('HOST','http//' . $host . '/P4_Test/');
-        define('ROOT',$root . 'P4_Test/');
+        define('HOST','http//' . $host . '/Projet4/');
+        define('ROOT',$root . 'Projet4/');
         /*
          * Constant for absolute link
          */
         define('CONTROLLER', ROOT .'controller/');
         define('VIEW',ROOT . 'view/');
-        define('MODEL','http',ROOT . 'model/');
+        define('MODEL',ROOT . 'model/');
         define('LIB', ROOT .'lib/');
 
         define('ASSETS','http' . $host . 'assets/');
