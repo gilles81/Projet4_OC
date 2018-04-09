@@ -1,25 +1,14 @@
 
 
-<?php
-while ($data = $posts->fetch())
-{
-    ?>
+<?php foreach($posts as $post):?>
     <div class="post">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
-        </h3>
-
-        <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
-            <br />
-            <em><a href="post.php?id=<?= $data['id'] ?>">Commentaires</a></em>
-        </p>
+        <h2><?php echo $post->getTitle();?></h2>
+        <div class="postContent" ><?php echo $post->getComment();?></div>
+        <button>
+            <a class ="commentLink" href="">Commentaire</a>
+        </button>
     </div>
-    <?php
-}
-
-?>
+<?php endforeach;?>
 
 
 
