@@ -1,8 +1,8 @@
 <?php
 /**
- * Class Post
+ * Class FrontOfficeHome
  *
- * used to show the Post on home page
+ * used to show the Post.php on home page
  */
 class FrontOfficeHome
 {
