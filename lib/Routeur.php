@@ -8,7 +8,9 @@
 class Routeur
 {
     private $request;
-    private $routes = ['home.html'=> ['controller' , 'FrontOfficeHome' , 'method' => 'showPost']];
+    private $routes = [
+        'home.html'=> ['controller' => 'PostController' , 'method' => 'showPost']
+    ];
   /**To do
   * create other road..
   */
@@ -16,9 +18,20 @@ class Routeur
     {
         $this -> request =$request;
     }
+
+    /**
+     *
+     *
+     * TO DO ...........
+     *
+     */
+
+
     public function findController()
     {
         $request = $this->request;
+        echo $request . " ----  "  ;
+
 
         if (key_exists($request , $this->routes))
         {
