@@ -9,7 +9,7 @@ class Router
 {
     private $request;
     private $routes = ['home.html'=> ['controller' , 'FrontOfficeHome' , 'method' => 'showPost']];
-  /*To do
+  /**To do
   * create other road..
   */
     public function __construct($request)
@@ -26,7 +26,7 @@ class Router
             $method = $this->routes[$request]['method'];
 
             $currentController = new $controller();
-            $currentController ->method();
+            $currentController ->$method();
         }else{
             echo 'Error 404' ;
              }
