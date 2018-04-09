@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * configuration
  */
 ini_set('display_errors', 'on');
@@ -27,6 +27,7 @@ class MyAutoload
         define('VIEW',ROOT . 'view/');
         define('MODEL',ROOT . 'model/');
         define('LIB', ROOT .'lib/');
+        define('ENTITIES', ROOT .'model/entities');
 
         define('ASSETS','http' . $host . 'assets/');
 
@@ -37,13 +38,14 @@ class MyAutoload
     Public static function autoload($class)
     {
 
-        echo LIB.$class.'.php';
-
         if (file_exists(MODEL.$class.'.php'))
-        {  echo '1';
+        {
             include_once(MODEL.$class.'.php');
+        } elseif (file_exists (ENTITIES.$class.'.php'))
+        {
+            include_once(ENTITIES.$class.'.php');
         } elseif (file_exists (CONTROLLER.$class.'.php'))
-        {  echo '2';
+        {
             include_once(CONTROLLER.$class.'.php');
         } elseif (file_exists(LIB.$class.'.php'))
         {
