@@ -3,28 +3,28 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title> <?= $title ?> </title>
+        <title> Billet simple pour l'Alaska </title>
 
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
         <!-- Feuille de style-->
-        <link rel="stylesheet" href="Style.css" />
+        <link rel="stylesheet" href="./assets/Style.css" >
 
     </head>
 
 <body>
         <!-- Header -->
         <header>
-            <div class = "logo" > P4 </div>
-			<div class = "titre" > Billet simple pour l'Alaska test 1 </div>
+            <div class = "logo"> Projet 4 </div>
+			<h1 > Billet simple pour l'Alaska </h1>
         </header>
         <!-- page-->
 
-		 <?= $content ?>
+		 <?=$content?>
 
 
         <!-- footer -->
         <footer>
-			<p> ceci est un test </p>
+			<p> --------- ceci est le footer du layout --------- </p>
         </footer>
    </body>
 </html>
