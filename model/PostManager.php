@@ -8,7 +8,8 @@
 
 class PostManager
 {
-    private $bdd;
+    private  $bdd;
+
     public function __construct()
     {
         $this->bdd = new PDO("mysql:host=localhost;dbname=blogEcrivain;charset=utf8","root","");
@@ -16,22 +17,27 @@ class PostManager
 
     public function findAll()
     {
+        $bdd = $this->bdd;
+        /**
+         * model access
+         * */
         $query = "SELECT * FROM Posts";
-        $bdd = new PDO();
+
         $req = $bdd->prepare($query);
         $req->execute();
+
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
 
-            $post = new Post;
-            $post->setPostId($row['postId']);
-            $post->setPostId($row['Author']);
-            $post->setPostId($row['CreationDate']);
-            $post->setPostId($row['ModificationDate']);
-            $post->setPostId($row['Title']);
-            $post->setPostId($row['PostContent']);
+            $post = new Post();
+            $post->setPostId($row['PostId']);
+            $post->setAuthor($row['Author']);
+            $post->setCreationDate($row['CreationDate']);
+            $post->setModificationDate($row['ModificationDate']);
+            $post->setTitle($row['Title']);
+            $post->setContent($row['PostContent']);
 
-            $posts[] = $post;
+            $Posts[] = $post;
         };
-    return $posts;
+        return $Posts;
     }
 }
