@@ -27,12 +27,9 @@ class MyAutoload
         define('VIEW',ROOT . 'view/');
         define('MODEL',ROOT . 'model/');
         define('LIB', ROOT .'lib/');
-        define('ENTITIES', ROOT .'model/entities');
+        define('ENTITIES', ROOT .'model/entities/');
 
-        define('ASSETS','http' . $host . 'assets/');
-
-
-
+        define('ASSETS', HOST . 'assets/');
 
     }
     Public static function autoload($class)
@@ -50,7 +47,6 @@ class MyAutoload
         } elseif (file_exists(LIB.$class.'.php'))
         {
             include_once(LIB.$class.'.php');
-
         };
 
     }
