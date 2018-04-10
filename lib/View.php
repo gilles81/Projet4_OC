@@ -3,7 +3,7 @@
  *
  * Class View
  *
- *
+ * define a View class
  */
 
 class View {
@@ -15,14 +15,12 @@ class View {
         $this -> template =$template;
     }
 
-    public function build()
+    public function build($chapters)
     {
         $template = $this-> template;
-        ob_start(VIEW.$template. '.php');
+        ob_start();
+        include( VIEW.$template.'.php');
         $content = ob_get_clean();
         include(VIEW.'_layout.php');
-
     }
-
-
 }
