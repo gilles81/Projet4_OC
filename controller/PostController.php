@@ -7,13 +7,13 @@
 class PostController
 {
     public function showPosts()
-    {
-     /*get all posts in database*/
-    $manager = new PostManager();
-    $Posts = $manager->findAll();
+        {
+            /*get all posts in database*/
+            $manager = new PostManager();
+            $chapters= $manager->findAll();
 
-    $myView = new View('home.php');
-    $myView->build();
+            $myView = new View('home');
+            $myView->build($chapters);
     }
 
     public function showPost()
