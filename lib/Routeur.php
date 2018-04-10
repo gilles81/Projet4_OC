@@ -9,7 +9,12 @@ class Routeur
 {
     private $request;
     private $routes = [
-        'home.html'=> ['controller' => 'PostController' , 'method' => 'showPost']
+        'home.html'=> ['controller' => 'PostController' , 'method' => 'showPosts'],
+        'home2.html'=> ['controller' => 'PostController' , 'method' => 'showPosts2'],
+        'home3.html'=> ['controller' => 'PostController' , 'method' => 'showPosts3'],
+        'home4.html'=> ['controller' => 'PostController' , 'method' => 'showPosts4'],
+        'home5.html'=> ['controller' => 'PostController' , 'method' => 'showPosts5']
+
     ];
   /**To do
   * create other road..
@@ -30,8 +35,6 @@ class Routeur
     public function findController()
     {
         $request = $this->request;
-        echo $request . " ----  "  ;
-
 
         if (key_exists($request , $this->routes))
         {
@@ -40,8 +43,10 @@ class Routeur
 
             $currentController = new $controller();
             $currentController ->$method();
+
+
         }else{
-            echo 'Error 404' ;
+            echo 'Error 404 - Pas de routes' ;
              }
     }
 
