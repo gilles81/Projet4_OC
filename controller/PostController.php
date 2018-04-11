@@ -14,6 +14,8 @@ class PostController
 
             $myView = new View('home');
             $myView->build($chapters);
+
+
     }
 
     public function showPost()
@@ -22,6 +24,38 @@ class PostController
  * Todo
  *  get one post and goto to view
  */
+/**
+        $manager = new PostManager();
+        $chapters= $manager->findOne();*/
+        $chapters=null;
+        $myView = new View('post');
+        $myView->build($chapters);
+
+    }
+
+    public function showAbout()
+    {
+        /**
+         * Todo
+         *
+         */
+
+        $chapters = null;
+        $myView = new View('about');
+        $myView->build($chapters);
+
+    }
+
+    public function showContact()
+    {
+        /**
+         * Todo
+         *
+         */
+
+        $chapters = null;
+        $myView = new View('contact');
+        $myView->build($chapters);
 
     }
 
