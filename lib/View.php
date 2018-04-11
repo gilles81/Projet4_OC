@@ -15,12 +15,17 @@ class View {
         $this -> template =$template;
     }
 
-    public function build($chapters)
+    public function build($params = array())
     {
-        $template = $this-> template;
+        foreach ($params as $name => $value) {
+            ${$name} = $value;
+        }
+
+        $template = $this->template;
+
         ob_start();
-        include( VIEW.$template.'.php');
+        include(VIEW . $template . '.php');
         $content = ob_get_clean();
-        include(VIEW.'_layout.php');
+        include(VIEW . '_layout.php');
     }
 }
