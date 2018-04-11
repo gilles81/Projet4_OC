@@ -18,7 +18,7 @@ class MyAutoload
         /**
          *
          */
-        define('HOST','http//' . $host . '/Projet4/');
+        define('HOST','http://' . $host . '/Projet4/');
         define('ROOT',$root .'/Projet4/');
         /**
          * Constant for absolute link
