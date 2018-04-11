@@ -9,10 +9,10 @@ class Routeur
 {
     private $request;
     private $routes = [
-        'home.html'=> ['controller' => 'PostController' , 'method' => 'showPosts'],
-        'about.html'=> ['controller' => 'PostController' , 'method' => 'ShowAbout'],
-        'contact.html'=> ['controller' => 'PostController' , 'method' => 'ShowContact'],
-
+        'home.html'     => ['controller' => 'PostController' , 'method' => 'showPosts'],
+        'about.html'    => ['controller' => 'PostController' , 'method' => 'ShowAbout'],
+        'contact.html'  => ['controller' => 'PostController' , 'method' => 'ShowContact'],
+        'post.html'     => ['controller' => 'PostController' , 'method' => 'showPost']
     ];
   /**To do
   * create other road..
@@ -44,8 +44,8 @@ class Routeur
 
 
         }else{
-            echo 'Error 404 - Pas de routes' ;
-             }
+            echo 'Error 404 - Pas de routes pour la requette : ' . $request ;
+        }
     }
 
 }
