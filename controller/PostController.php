@@ -13,7 +13,7 @@ class PostController
             $chapters= $manager->findAll();
 
             $myView = new View('home');
-            $myView->build($chapters);
+            $myView->build(array( 'chapters'=> $chapters));
 
 
     }
@@ -24,12 +24,21 @@ class PostController
  * Todo
  *  get one post and goto to view
  */
-/**
-        $manager = new PostManager();
-        $chapters= $manager->findOne();*/
-        $chapters=null;
-        $myView = new View('post');
-        $myView->build($chapters);
+
+
+
+        if(isset($_GET['idPost'])) {
+            $idPost = $_GET['idPost'];
+            $manager = new PostManager();
+            $chapter= $manager->findOne($idPost);
+
+            $myView = new View('post');
+            $myView->build( array('chapter'=> $chapter));
+           
+        }else{
+            echo 'Cet Article m\'existe pas encore';
+
+        }
 
     }
 
@@ -40,9 +49,9 @@ class PostController
          *
          */
 
-        $chapters = null;
+
         $myView = new View('about');
-        $myView->build($chapters);
+        $myView->build(array ());
 
     }
 
@@ -53,9 +62,8 @@ class PostController
          *
          */
 
-        $chapters = null;
         $myView = new View('contact');
-        $myView->build($chapters);
+        $myView->build(array ());
 
     }
 
