@@ -10,10 +10,8 @@ class Routeur
     private $request;
     private $routes = [
         'home.html'=> ['controller' => 'PostController' , 'method' => 'showPosts'],
-        'home2.html'=> ['controller' => 'PostController' , 'method' => 'showPosts2'],
-        'home3.html'=> ['controller' => 'PostController' , 'method' => 'showPosts3'],
-        'home4.html'=> ['controller' => 'PostController' , 'method' => 'showPosts4'],
-        'home5.html'=> ['controller' => 'PostController' , 'method' => 'showPosts5']
+        'about.html'=> ['controller' => 'PostController' , 'method' => 'ShowAbout'],
+        'contact.html'=> ['controller' => 'PostController' , 'method' => 'ShowContact'],
 
     ];
   /**To do
