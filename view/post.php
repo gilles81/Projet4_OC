@@ -18,10 +18,17 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <h3>Commentaires</h3>
-          <div class="comment">
-              <?php echo 'To do';?>
-          </div>
 
+
+                <?php foreach ($comments as $comment => $value):?>
+
+                    <h6>  <?php echo 'Auteur : <span>'.$value->getAuthor() .'</span>';?></h6>
+                    <div class="comment">
+
+                        <?php echo $value->getCommentContent();?>
+
+                </div>
+                <?php endforeach ;?>
 
         </div>
       </div>
