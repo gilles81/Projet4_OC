@@ -1,7 +1,7 @@
 <?php
 /**
  *
- *Class CommentManager
+ *Class PostCommentManager
  *
  *
  */
@@ -51,6 +51,7 @@ class PostManager
         $bdd = $this->bdd;
 
         $query = "SELECT * FROM Posts WHERE PostId =:id";
+
 
         $req = $bdd->prepare($query);
         $req->bindValue(':id', $id , PDO::PARAM_INT);
