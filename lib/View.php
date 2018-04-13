@@ -28,4 +28,11 @@ class View {
         $content = ob_get_clean();
         include(VIEW . '_layout.php');
     }
+
+    public function redirect($route)
+    {
+
+      header("location: ".HOST.$route );
+        exit;
+    }
 }
