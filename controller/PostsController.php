@@ -7,15 +7,22 @@
 class PostsController
 {
     public function showPosts()
-        {
+    {
             /*get all posts in database*/
             $manager = new PostManager();
             $chapters= $manager->findAll();
 
             $myView = new View('home');
             $myView->build(array( 'chapters'=> $chapters));
-    }
 
+
+
+
+            /**
+            $myView = new View('home');
+            $myView->build(array( 'chapters'=> $chapters));
+             * */
+    }
 
 
 
