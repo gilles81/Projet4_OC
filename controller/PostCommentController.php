@@ -40,11 +40,7 @@ class PostCommentController
             $manager->addComment($values);
 
             $myView= new View();
-           $myView->redirect('home.html');
-
-
-
-
+           $myView->redirect('post.html?idPost='.$_GET['postId']);
 
         }else{
 
