@@ -1,25 +1,6 @@
-body {
-    margin-left : 10px;
-    margin-right : 10px;
-    background-color: whitesmoke;
-    color : black;
-}
-
-header {
-    background-color: azure;
-    border: 2px solid black ;
-    display :flex;
-    flex-direction: row;
-
+#mainNav {
+ position: -ms-device-fixed;
+ position: fixed;
 
 }
-header .logo
- {
-     width : 40%;
-     font-size: 2em;
-     color : Blue;
-     margin-top : 20px;
-
- }
-
 
