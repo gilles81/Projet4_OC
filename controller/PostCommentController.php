@@ -28,4 +28,32 @@ class PostCommentController
         }
 
     }
+
+    public function createComment()
+    {
+        if (isset($_GET['postId'])){
+            $Author = $_POST['author'];
+            $Comment = $_POST['comment'];
+            $values= array( 'Author'=> $Author, 'Comment'=> $Comment , 'PostId' => $_GET['postId'] );
+
+            $manager = new PostCommentManager();
+            $manager->addComment($values);
+
+            $myView= new View();
+           $myView->redirect('home.html');
+
+
+
+
+
+        }else{
+
+            echo 'Probleme avec l\'id du post';
+        }
+
+
+
+
+
+    }
 }
