@@ -28,7 +28,7 @@ class PostCommentManager
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
             $com = new Comment();
             $com->setCommentId($row['CommentId']);
-
+            $com->setPostId($row['PostId']);
             $com->setAuthor($row['Author']);
             $com->setCreationDate($row['CreationDate']);
             $com->setModerationDate($row['ModificationDate']);
@@ -65,6 +65,20 @@ class PostCommentManager
 
         return $post;
 
+    }
+
+
+    public function addComment($values)
+    {
+        $bdd = $this->bdd;
+        $query = "INSERT INTO comments (CommentId , Postid , Author,CreationDate,ModificationDate,CommentContent) VALUES (NULL , :Postid ,:Author, NOW(), NOW(),:CommentContent);";
+        $req = $bdd->prepare($query);
+
+        $req->bindValue(':Postid',$values['PostId'],PDO::PARAM_INT);
+        $req->bindValue(':Author',$values['Author'],PDO::PARAM_STR);
+        $req->bindValue(':CommentContent',$values['Comment'],PDO::PARAM_STR);
+
+        $req -> execute();
     }
 
 }
