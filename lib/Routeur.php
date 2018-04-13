@@ -9,11 +9,12 @@ class Routeur
 {
     private $request;
     private $routes = [
-        'home.html'          => ['controller' => 'PostsController', 'method' => 'showPosts'],
+        'home.html'          => ['controller' => 'PostsController', 'method' => 'showPosts']
+        /**
         'about.html'         => ['controller' => 'MiscController', 'method' => 'ShowAbout'],
         'contact.html'       => ['controller' => 'MiscController', 'method' => 'ShowContact'],
         'post.html'          => ['controller' => 'PostCommentController', 'method' => 'showPost'],
-        'addComment.html'    => ['controller' => 'PostCommentController', 'method' => 'createComment']
+        'addComment.html'    => ['controller' => 'PostCommentController', 'method' => 'createComment']*/
     ];
   /**To do
   * create other road..
