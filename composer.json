@@ -1,0 +1,12 @@
+{
+    "name": "projet4/twig",
+    "authors": [
+        {
+            "name": "Gilles Sabathe",
+            "email": "gilles.sabathe@free.fr"
+        }
+    ],
+    "require": {
+        "twig/twig": "~1.0"
+    }
+}
