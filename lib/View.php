@@ -17,16 +17,25 @@ class View {
 
     public function build($params = array())
     {
+        $template = $this->template;
+        $loader = new Twig_Loader_Filesystem(ROOT. '/view');
+        $twig = new Twig_Environment($loader , [
+            'cache' => false //__DIR__ .'/tmp'
+        ]);
+
         foreach ($params as $name => $value) {
             ${$name} = $value;
         }
 
-        $template = $this->template;
+        echo '---'.$name;
 
+        echo $twig->render( 'home.twig',$name);
+        /**
         ob_start();
         include(VIEW . $template . '.php');
         $content = ob_get_clean();
-        include(VIEW . '_layout.php');
+        include(VIEW . '_layout.twig');
+         */
     }
 
     public function redirect($route)
