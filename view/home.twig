@@ -1,15 +1,19 @@
+{% extends '_layout.twig' %}
+
+{% block content %}
 
 <div class="container">
-    <?php foreach ($chapters as $chapter):?>
+   {% for chapter in chapters %}
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
             <div class="post-preview">
                 <a href="<?php echo HOST;?>post.html?idPost=<?php echo $chapter->getPostId();?>"
 
                     <h2 class="post-title">
-                        <?php echo $chapter->getTitle() ;?>
+                        {{ chapter.getTitle }}
                     </h2>
                     <h3 class="post-subtitle">
+                        {{ chapter.chapters }}
                         <?php echo substr( $chapter->getContent(),0,120) ;?>
                         <span>  ...</span>
                     </h3>
@@ -23,7 +27,7 @@
 
         </div>
     </div>
-    <?php endforeach ;?>
+    {% endfor %}
     <!-- Pager -->
     <div class="clearfix">
         <a class="btn btn-primary float-right" href="#">Ancien Post &rarr;</a>
@@ -31,6 +35,7 @@
 
 </div>
 <hr>
+{% endblock %}
 
 
 
