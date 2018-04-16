@@ -16,7 +16,7 @@ class MiscController
 
 
         $myView = new View('about');
-        $myView->build(array ());
+        $myView->build(null);
 
     }
 

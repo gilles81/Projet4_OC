@@ -18,10 +18,8 @@ class PostCommentController
             $chapter= $manager->findPost($idPost);
             $comments = $manager->findComs($idPost);
 
-                      /**
             $myView = new View('post');
-            $myView->build( array('chapter'=> $chapter, 'comments'=> $comments ));
-            **/
+            $myView->build( array('chapters'=> $chapter ,'comments'=>$comments,'HOST'=>HOST));
 
         }else{
             echo 'Cet Article m\'existe pas encore';

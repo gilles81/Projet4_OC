@@ -7,7 +7,6 @@
  */
 
 class View {
-
     private $template;
 
     public function __construct($template)
@@ -15,30 +14,33 @@ class View {
         $this -> template =$template;
     }
 
-    public function build($params = array())
+    public function build($datas)
     {
         $template = $this->template;
-        $loader = new Twig_Loader_Filesystem(ROOT. '/view');
-        $twig = new Twig_Environment($loader , [
+        $loader = new Twig_Loader_Filesystem(ROOT . 'view/');
+
+        $twig = new Twig_Environment($loader, [
             'cache' => false //__DIR__ .'/tmp'
         ]);
+        $twig->addExtension(new Twig_Extensions_Extension_Text());
 
-        foreach ($params as $name => $value) {
-            ${$name} = $value;
+        if ($datas){
+            foreach ($datas as $name => $value) {
+                $a = $name;
+                $$a = $value;
+            }
+
+            echo $twig->render($template . '.twig', ['chapters' => $chapters,'comments' => $comments]);
+        }else {
+
+            echo $twig->render($template . '.twig' );
         }
 
-        echo '---'.$name;
 
-        echo $twig->render( 'home.twig',$name);
-        /**
-        ob_start();
-        include(VIEW . $template . '.php');
-        $content = ob_get_clean();
-        include(VIEW . '_layout.twig');
-         */
-    }
+}
 
-    public function redirect($route)
+
+public function redirect($route)
     {
 
       header("location: ".HOST.$route );

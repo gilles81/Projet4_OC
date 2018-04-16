@@ -7,7 +7,6 @@
 
 class PostCommentManager
 {
-
     private  $bdd;
 
     public function __construct()
