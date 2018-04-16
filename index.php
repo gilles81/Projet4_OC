@@ -16,14 +16,5 @@ MyAutoload::start();
 
 $request = $_GET['r'];
 
-
-//$loader = new Twig_Loader_Filesystem(__DIR__ . '/view');
-//$twig = new Twig_Environment($loader , [
- //   'cache' => false //__DIR__ .'/tmp'
-//]);
-//echo $twig->render('test.twig');
-
-
-
 $routeur = new Routeur($request);
 $routeur ->findController();
