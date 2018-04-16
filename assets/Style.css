@@ -1,6 +1,5 @@
-#mainNav {
- position: -ms-device-fixed;
- position: fixed;
+#mainNav{
 
+    position: -ms-device-fixed;
+    position :fixed;
 }
-

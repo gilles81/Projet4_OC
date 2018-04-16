@@ -24,6 +24,7 @@
 
     <!-- Custom styles for this template -->
     <link href="./assets/css/clean-blog.min.css" rel="stylesheet">
+    <link href="./assets/Style.css" rel="stylesheet">
 
     <link href="assets/Style.css" rel="stylesheet">
 
@@ -58,7 +59,7 @@
 
 <!-- Page Header -->
 
-<header class="masthead" style="background-image: url( <?php echo ASSETS ?>/img/home-bg.jpg)">
+<header class="masthead" style="background-image: url('./assets/img/home-bg.jpg')" >
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -69,13 +70,16 @@
                 </div>
             </div>
         </div>
+    </div>
 </header>
 
 <!-- Content -->
+{% block content %}
 
-<?=$content?>
+{% endblock %}
 
-</body>
+
+
 <!-- Footer -->
 <footer>
     <div class="container">
