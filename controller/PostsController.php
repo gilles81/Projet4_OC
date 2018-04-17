@@ -16,4 +16,26 @@ class PostsController
             $myView->build( array('chapters'=> $chapters ,'comments'=>null,'HOST'=>HOST));
     }
 
+    public function updatePost()
+    {
+        // TODO
+
+
+    }
+
+    public function delettePost()
+    {
+        // TODO
+
+
+    }
+
+    public function AddPost()
+    {
+        // TODO
+
+
+    }
+
+
 }
