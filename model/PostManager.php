@@ -6,14 +6,16 @@
  *
  */
 
-class PostManager
+class PostManager extends BackManager
 {
+
     private  $bdd;
 
     public function __construct()
     {
-        $this->bdd = new PDO("mysql:host=localhost;dbname=blogEcrivain;charset=utf8","root","");
+        $this->bdd = parent ::bddAssign();
     }
+
 
     public function findAll()
     {
@@ -46,8 +48,6 @@ class PostManager
         /**
          * model access
          * */
-
-
         $bdd = $this->bdd;
 
         $query = "SELECT * FROM Posts WHERE PostId =:id";
@@ -66,8 +66,18 @@ class PostManager
         $post->setTitle($row['Title']);
         $post->setContent($row['PostContent']);
 
-
         return $post;
+    }
+
+    public function AddPost($post)
+    {
+
 
     }
+
+
+
+
+
+
 }
