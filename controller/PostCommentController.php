@@ -35,7 +35,7 @@ class PostCommentController
             $Comment = $_POST['comment'];
             $values= array( 'Author'=> $Author, 'Comment'=> $Comment , 'PostId' => $_GET['postId'] );
 
-            $manager = new PostCommentManager();
+            $manager = new PostCommentManager('blogecrivain' , 'root' ,'');
             $manager->addComment($values);
 
             $myView= new View();
@@ -45,10 +45,49 @@ class PostCommentController
 
             echo 'Probleme avec l\'id du post';
         }
+    }
+
+
+    public function removeComment()
+    {
+
+        if (isset($_GET['comId']) AND isset($_GET['postId']) ){
+
+            $manager = new PostCommentManager();
+            $manager->remove($_GET['comId']);
+
+            $myView= new View('post');
+            $myView->redirect('post.html?idPost='.$_GET['postId']);
+
+        }else{
+
+            echo 'Erreur  de suppression : Ce commentaire est introuvable ';
+        }
+    }
 
 
 
 
+protected function updateComment($id)
+{
+    if(isset($_GET['idPost'])) {
+
+        $requete = $this->dao->prepare('UPDATE news SET auteur = :auteur, titre = :titre, contenu = :contenu, dateModif = NOW() WHERE id = :id');
+
+        $requete->bindValue(':auteur', $news->auteur());
+        $requete->bindValue(':contenu', $news->contenu());
+        $requete->bindValue(':id', $news->id(), \PDO::PARAM_INT);
+    }else{
+        echo 'Cet Article m\'existe pas encore';
 
     }
+    /*
+
+
+
+
+    $requete->execute();
+    */
+}
+
 }
