@@ -5,13 +5,13 @@
  *  Get comment
  */
 
-class PostCommentManager
+class PostCommentManager extends BackManager
 {
-    private  $bdd;
+   private  $bdd;
 
     public function __construct()
     {
-        $this->bdd = new PDO("mysql:host=localhost;dbname=blogEcrivain;charset=utf8","root","");
+        $this->bdd = parent ::bddAssign();
     }
 
     public function findComs($id)
@@ -45,8 +45,8 @@ class PostCommentManager
          * */
 
 
+        //$bdd = $this->bdd;
         $bdd = $this->bdd;
-
         $query = "SELECT * FROM Posts WHERE PostId =:id";
 
         $req = $bdd->prepare($query);
@@ -79,5 +79,18 @@ class PostCommentManager
 
         $req -> execute();
     }
+
+
+    public function remove($ComId)
+    {
+        $bdd = $this->bdd;
+        $req = $bdd->exec("DELETE FROM `comments` WHERE `CommentId` = $ComId");
+
+        if (!$req) {
+            echo 'Erreur a la suppression du commentaire';
+        }
+    }
+
+
 
 }
