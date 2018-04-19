@@ -5,7 +5,7 @@
  *  Get comment
  */
 
-class BackManager
+class BackManager extends lib
 {
     private  $bdd;
 
