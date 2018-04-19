@@ -13,11 +13,8 @@ class MiscController
          * Todo
          *
          */
-
-
         $myView = new View('about');
-        $myView->build(array());
-
+        $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'users'=>true));
     }
 
     public function showContact()
@@ -26,10 +23,8 @@ class MiscController
          * Todo
          *
          */
-
         $myView = new View('contact');
-        $myView->build(array ());
-
+        $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'users'=>true));
     }
 
 }
