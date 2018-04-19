@@ -1,8 +1,11 @@
 <?php
+/*session start*/
+
+
 /**
  * Front controller
  *
- * -Application initialisation
+ * -Application.php initialisation
  * -Class autoload
  * - find controller for a client request
  */
@@ -16,5 +19,8 @@ MyAutoload::start();
 
 $request = $_GET['r'];
 
+
+
+// Routeur
 $routeur = new Routeur($request);
 $routeur ->findController();

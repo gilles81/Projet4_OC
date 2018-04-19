@@ -14,7 +14,7 @@ class MiscController
          *
          */
         $myView = new View('about');
-        $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'users'=>true));
+        $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>0));
     }
 
     public function showContact()
@@ -24,7 +24,7 @@ class MiscController
          *
          */
         $myView = new View('contact');
-        $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'users'=>true));
+        $myView->build(array('chapters' => null, 'comments' => null, 'HOST' => HOST, 'adminLevel' => 0));
     }
 
 }

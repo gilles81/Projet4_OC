@@ -9,13 +9,33 @@ class Routeur
 {
     private $request;
     private $routes = [
-        'home.html'          => ['controller' => 'PostsController', 'method' => 'showPosts'],
-        'post.html'          => ['controller' => 'PostCommentController', 'method' => 'showPost'],
-        'addComment.html'    => ['controller' => 'PostCommentController', 'method' => 'createComment'],
-        'about.html'         => ['controller' => 'MiscController', 'method' => 'ShowAbout'],
-        'contact.html'       => ['controller' => 'MiscController', 'method' => 'ShowContact']
+        'contact.html'                  => ['controller' => 'MiscController', 'method' => 'ShowContact'],
+        'about.html'                    => ['controller' => 'MiscController', 'method' => 'ShowAbout'],
+        'home.html'                     => ['controller' => 'PostsController', 'method' => 'showPosts'],
+        'post.html'                     => ['controller' => 'PostsController', 'method' => 'showPost'],
+        'addComment.html'               => ['controller' => 'PostsController', 'method' => 'createComment'],
 
+        'adminverif.html'               => ['controller' => 'PostsController', 'method' => 'identification'],
+        'createPost.html'                  => ['controller' => 'PostsController', 'method' => 'createPost'],
+        'addPost.html'                   => ['controller' => 'PostsController', 'method' => 'addPost'],
+        'removePost.html'                   => ['controller' => 'PostsController', 'method' => 'removePost'],
 
+        'delete.html'                   => ['controller' => 'PostsController', 'method' => 'removeComment'],
+
+        'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],
+        'deconnexion.html'              => ['controller' => 'MemberController', 'method' => 'deconnexion']
+
+        /**
+        'home.html'                     => ['controller' => 'PostsController', 'method' => 'showPosts'],
+        'post.html'                     => ['controller' => 'PostsController', 'method' => 'showPost'],
+        'addComment.html'               => ['controller' => 'PostsController', 'method' => 'createComment'],
+        'about.html'                    => ['controller' => 'MiscController', 'method' => 'ShowAbout'],
+        'contact.html'                  => ['controller' => 'MiscController', 'method' => 'ShowContact'],
+        'delete.html'                   => ['controller' => 'PostsController', 'method' => 'removeComment'],
+        'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],
+        'adminverif.html'               => ['controller' => 'PostsController', 'method' => 'identification'],
+        'deconnexion.html'              => ['controller' => 'MemberController', 'method' => 'deconnexion']
+        */
     ];
   /**To do
   * create other road..

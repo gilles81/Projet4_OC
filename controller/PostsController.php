@@ -4,9 +4,12 @@
  *
  * used to show the Post.php on home page
  */
-class PostsController
+class PostsController extends lib
 {
     private $userLevel;
+    private $Admin;
+
+
 
     public function showPost()
     {
@@ -16,19 +19,35 @@ class PostsController
          */
 
         if(isset($_GET['idPost'])) {
+
+
             $idPost = $_GET['idPost'];
-            $manager = new PostCommentManager();
+
+            $manager = new PostManager();
             $chapter= $manager->findPost($idPost);
             $comments = $manager->findComs($idPost);
 
             $myView = new View('post');
-            $myView->build( array('chapters'=> $chapter ,'comments'=>$comments,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminlevel']));
+            $myView->build( array('chapters'=> $chapter ,'comments'=>$comments,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
 
         }else{
             echo 'Cet Article m\'existe pas encore';
 
         }
 
+    }
+
+    public function showPosts()
+    {
+        $this->sessionStatus();//determine status admin or not
+        echo $_SESSION['adminLevel'];
+
+        //$admin = 1; // TO DO a supp c pour le debug
+        $manager = new PostManager();
+        $chapters= $manager->findAll();
+
+        $myView = new View('home');
+        $myView->build( array('chapters'=> $chapters ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
     }
 
     public function createComment()
@@ -38,7 +57,7 @@ class PostsController
             $Comment = $_POST['comment'];
             $values= array( 'Author'=> $Author, 'Comment'=> $Comment , 'PostId' => $_GET['postId'] );
 
-            $manager = new PostCommentManager('blogecrivain' , 'root' ,'');
+            $manager = new PostManager('blogecrivain' , 'root' ,'');
             $manager->addComment($values);
 
             $myView= new View();
@@ -56,7 +75,7 @@ class PostsController
 
         if (isset($_GET['comId']) AND isset($_GET['postId']) ){
 
-            $manager = new PostCommentManager();
+            $manager = new PostManager();
             $manager->remove($_GET['comId']);
 
             $myView= new View('post');
@@ -67,24 +86,6 @@ class PostsController
             echo 'Erreur  de suppression : Ce commentaire est introuvable ';
         }
     }
-
-    public function showPosts()
-    {
-            if (isset($_SESSION['adminLevel)'])) {
-
-                $admin = $_SESSION['adminLevel)'];
-                echo $_SESSION['adminLevel)'];
-            }else {$admin = 0;}
-
-            $admin = 1; // TO DO a supp c pour le debug
-            $manager = new PostManager();
-            $chapters= $manager->findAll();
-
-            $myView = new View('home');
-            $myView->build( array('chapters'=> $chapters ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>$admin));
-    }
-
-
 
     public function identification()
     {
@@ -106,26 +107,22 @@ class PostsController
 
                         $_SESSION['id'] = $member->getId();
                         $_SESSION['pseudo'] = $member->getPseudo();
-                        $_SESSION['adminL'] = 1;
-
-                        // $manager = new PostManager();
-                        //$chapters= $manager->findAll();
-
-                        // $myView = new View('home');
-                        //$myView->build( array('chapters'=> $chapters ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>0));
-                        $url= HOST . "home.html";
-
-
-                        die('<meta http-equiv="refresh" content="0;URL='. $url .'">');
+                        $_SESSION['adminLevel'] = 1;
+                        /** Redirection to home Page with all Posts**/
+                        $myView = new View('home');
+                        $myView->redirect('home.html');
 
 
                     } else {
+
                         echo 'Mauvais identifiant ou mot de passe !';
+                        /** Redirection to home Page with all Posts**/
                         $myView = new View('home');
                         $myView->redirect('home.html');
                     }
                 } else {
                     echo ' Ce membre existe dans la Base de donnée mais n a pas de droit admin  !';
+                    /** Redirection to PWD Page **/
                     $myView = new View('UserCnx');
                     $myView->redirect('admin.html');
                 }
@@ -152,7 +149,11 @@ class PostsController
         // TODO
 
             $myView = new View('addpost');
-            $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>true));
+            $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>$_SESSION['adminLevel']));
+
+
+
+
 
     }
         public function addPost()
@@ -181,10 +182,10 @@ class PostsController
 
             $manager = new PostManager();
             $manager->removePost($_GET['idPost']);
-/**
+
             $myView= new View('post');
-            $myView->redirect('post.html?idPost='.$_GET['postId']);
-*/
+            $myView->redirect('home.html');
+
         }else{
 
             echo 'Erreur  de suppression : Ce commentaire est introuvable ';
