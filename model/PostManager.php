@@ -76,6 +76,7 @@ class PostManager extends BackManager
         $req->bindValue('id', $id, PDO::PARAM_INT);
         $req->execute();
         $coms[]=null;
+
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
             $com = new Comment();
             $com->setCommentId($row['CommentId']);
@@ -87,7 +88,8 @@ class PostManager extends BackManager
 
             $coms[] = $com;
         };
-        return $coms;
+        $comsAndPostId=array('id'=>$id,'coms'=>$coms);
+        return $comsAndPostId;
     }
 
     public function findPost($id)
