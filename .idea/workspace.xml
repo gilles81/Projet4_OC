@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92e336e6-daf6-46b4-894d-4a31ad41a4c0" name="Default" comment="twig ada">
-      <change afterPath="$PROJECT_DIR$/.idea/Projet4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="92e336e6-daf6-46b4-894d-4a31ad41a4c0" name="Default" comment="Member Manager Class creation :">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,63 +39,86 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="View.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/View.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-              <folding>
-                <element signature="e#6#56#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PostCommentManager.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/PostCommentManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#6#56#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PostManager.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model/PostManager.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="37" />
+            <state relative-caret-position="391">
+              <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+              <folding>
+                <element signature="e#6#42#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HttpRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/model/HttpRequest.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="Routeur.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/Routeur.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state relative-caret-position="340">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+              <folding>
+                <element signature="e#6#66#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="misc.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="MemberController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/MemberController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
+      <file leaf-file-name="lib.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/lib.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+            <state relative-caret-position="106">
+              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+              <folding>
+                <element signature="e#6#59#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="View.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/View.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="816">
+              <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
+              <folding>
+                <element signature="e#6#56#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BackManager.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/model/BackManager.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PostsController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/PostsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MiscController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/MiscController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -117,6 +137,19 @@
       <find>j</find>
       <find>back</find>
       <find>jpg</find>
+      <find>butt</find>
+      <find>button</find>
+      <find>primar</find>
+      <find>exec</find>
+      <find>getMember</find>
+      <find>add</find>
+      <find>session_start();</find>
+      <find>adminV</find>
+      <find>iden</find>
+      <find>die</find>
+      <find>about</find>
+      <find>dec</find>
+      <find>remove</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -125,19 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/model/Comment" />
-        <option value="$PROJECT_DIR$/model/Post" />
-        <option value="$PROJECT_DIR$/model/Post.php" />
-        <option value="$PROJECT_DIR$/model/Comment.php" />
-        <option value="$PROJECT_DIR$/lib/Router.php" />
-        <option value="$PROJECT_DIR$/controller/CommentController.php" />
-        <option value="$PROJECT_DIR$/controller/FrontOfficeHome.php" />
-        <option value="$PROJECT_DIR$/assets/index.html" />
-        <option value="$PROJECT_DIR$/view/home2.php" />
-        <option value="$PROJECT_DIR$/view/_layout2.php" />
-        <option value="$PROJECT_DIR$/view/homeOld.php" />
-        <option value="$PROJECT_DIR$/assets/about.html" />
-        <option value="$PROJECT_DIR$/view/about.html" />
         <option value="$PROJECT_DIR$/view/post.html" />
         <option value="$PROJECT_DIR$/_config.php" />
         <option value="$PROJECT_DIR$/view/home.php" />
@@ -145,7 +165,6 @@
         <option value="$PROJECT_DIR$/view/contact.php" />
         <option value="$PROJECT_DIR$/model/CommentManager.php" />
         <option value="$PROJECT_DIR$/controller/PostController.php" />
-        <option value="$PROJECT_DIR$/model/PostManager.php" />
         <option value="$PROJECT_DIR$/model/entities/Comment.php" />
         <option value="$PROJECT_DIR$/view/post.php" />
         <option value="$PROJECT_DIR$/view/_layout.php" />
@@ -153,21 +172,43 @@
         <option value="$PROJECT_DIR$/view/test2.twig" />
         <option value="$PROJECT_DIR$/assets/Style.css" />
         <option value="$PROJECT_DIR$/view/test.twig" />
-        <option value="$PROJECT_DIR$/controller/PostsController.php" />
-        <option value="$PROJECT_DIR$/controller/PostCommentController.php" />
-        <option value="$PROJECT_DIR$/model/PostCommentManager.php" />
-        <option value="$PROJECT_DIR$/view/post.twig" />
-        <option value="$PROJECT_DIR$/view/home.twig" />
-        <option value="$PROJECT_DIR$/view/_layout.twig" />
-        <option value="$PROJECT_DIR$/lib/Routeur.php" />
         <option value="$PROJECT_DIR$/view/about.php" />
         <option value="$PROJECT_DIR$/view/about.twig" />
-        <option value="$PROJECT_DIR$/controller/MiscController.php" />
-        <option value="$PROJECT_DIR$/lib/View.php" />
         <option value="$PROJECT_DIR$/view/contact.twig" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/model/HttpRequest.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/lib/Application" />
+        <option value="$PROJECT_DIR$/lib/Application.php" />
+        <option value="$PROJECT_DIR$/controller/UserIdentification.php" />
+        <option value="$PROJECT_DIR$/view/user.twig" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/view/userCnx.twig" />
+        <option value="$PROJECT_DIR$/model/entities/FlagUser.php" />
+        <option value="$PROJECT_DIR$/model/entities/ClientUser.php" />
+        <option value="$PROJECT_DIR$/model/AdminManager.php" />
+        <option value="$PROJECT_DIR$/model/entities/FlagUserDecorator.php" />
+        <option value="$PROJECT_DIR$/model/entities/UserInterface.php" />
+        <option value="$PROJECT_DIR$/view/post.twig" />
+        <option value="$PROJECT_DIR$/controller/AdminController.php" />
+        <option value="$PROJECT_DIR$/controller/UserIdentController.php" />
+        <option value="$PROJECT_DIR$/controller/PostCommentController.php" />
+        <option value="$PROJECT_DIR$/model/PostCommentManager.php" />
+        <option value="$PROJECT_DIR$/view/userCnxForm.twig" />
+        <option value="$PROJECT_DIR$/view/addPost.twig" />
+        <option value="$PROJECT_DIR$/view/home.twig" />
+        <option value="$PROJECT_DIR$/view/_layout.twig" />
+        <option value="$PROJECT_DIR$/model/PostManager.php" />
+        <option value="$PROJECT_DIR$/model/entities/BddUser.php" />
+        <option value="$PROJECT_DIR$/model/entities/User.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/model/MemberManager.php" />
+        <option value="$PROJECT_DIR$/model/BackManager.php" />
+        <option value="$PROJECT_DIR$/lib/View.php" />
+        <option value="$PROJECT_DIR$/lib/Routeur.php" />
+        <option value="$PROJECT_DIR$/lib/lib.php" />
+        <option value="$PROJECT_DIR$/controller/MiscController.php" />
+        <option value="$PROJECT_DIR$/controller/MemberController.php" />
+        <option value="$PROJECT_DIR$/controller/PostsController.php" />
       </list>
     </option>
   </component>
@@ -186,11 +227,11 @@
       <path value="$PROJECT_DIR$/vendor/twig/extensions" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="645" />
-    <option name="y" value="71" />
-    <option name="width" value="1436" />
-    <option name="height" value="848" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="295" />
+    <option name="y" value="1" />
+    <option name="width" value="929" />
+    <option name="height" value="770" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -236,11 +277,53 @@
             <path>
               <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
               <item name="Projet4" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="vendor" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Projet4" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+              <item name="PHP" type="5114b859:PhpExternalLibrariesNodePatcher$PatchedLibraryNode" />
+            </path>
+            <path>
+              <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+              <item name="PHP" type="5114b859:PhpExternalLibrariesNodePatcher$PatchedLibraryNode" />
+              <item name="Projet4" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+              <item name="PHP" type="5114b859:PhpExternalLibrariesNodePatcher$PatchedLibraryNode" />
+              <item name="Projet4" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="assets" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+              <item name="PHP" type="5114b859:PhpExternalLibrariesNodePatcher$PatchedLibraryNode" />
+              <item name="Projet4" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+              <item name="PHP" type="5114b859:PhpExternalLibrariesNodePatcher$PatchedLibraryNode" />
+              <item name="Projet4" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="view" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Projet4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="bcb0276e:PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+              <item name="PHP Runtime" type="20ee2d1f:SyntheticLibraryElementNode" />
             </path>
           </expand>
           <select />
@@ -263,11 +346,11 @@
       <recent name="C:\wamp64\www\Projet4\model\entities" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Projet4\model" />
       <recent name="C:\wamp64\www\Projet4\view" />
+      <recent name="C:\wamp64\www\Projet4\model" />
+      <recent name="C:\wamp64\www\Projet4\model\entities" />
       <recent name="C:\wamp64\www\Projet4\controller" />
       <recent name="C:\wamp64\www\Projet4\assets\RECUP\css" />
-      <recent name="C:\wamp64\www\Projet4\assets\img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -311,182 +394,10 @@
       <workItem from="1523620264836" duration="37385000" />
       <workItem from="1523741195133" duration="1763000" />
       <workItem from="1523831689638" duration="8435000" />
-      <workItem from="1523853202715" duration="16769000" />
-    </task>
-    <task id="LOCAL-00042" summary="view adaptation to receive parameters array of variable instead a simple variable&#10;and dynamic creation of a  variable">
-      <created>1523478715249</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1523478715249</updated>
-    </task>
-    <task id="LOCAL-00043" summary="new route added : post.html">
-      <created>1523478771237</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1523478771237</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Add of findOne() method to get aone post in bdd">
-      <created>1523478838582</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1523478838582</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Method correction for take into account an array in parametrs instead of a single variable.">
-      <created>1523478893878</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1523478893878</updated>
-    </task>
-    <task id="LOCAL-00046" summary="bootstrap theme adaptation : titre , etc (in french)">
-      <created>1523478976305</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1523478976305</updated>
-    </task>
-    <task id="LOCAL-00047" summary="bootstrap theme integration">
-      <created>1523480151959</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1523480151959</updated>
-    </task>
-    <task id="LOCAL-00048" summary="bootstrap file integration">
-      <created>1523480222541</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1523480222541</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Route modification  : new controller are added for a new repartion of controller and view">
-      <created>1523554854785</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1523554854786</updated>
-    </task>
-    <task id="LOCAL-00050" summary="CommentManager become PostCommentManager">
-      <created>1523554959361</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1523554959362</updated>
-    </task>
-    <task id="LOCAL-00051" summary="PostControlleur is deleted : new contolleur repartition.">
-      <created>1523555030571</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1523555030571</updated>
-    </task>
-    <task id="LOCAL-00052" summary="new Controlleur creation with following method :&#10;- __construct&#10;-findComs()&#10;-findPost()">
-      <created>1523555110726</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1523555110726</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Creation of new controller with following method :&#10;- showPost">
-      <created>1523555182872</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1523555182873</updated>
-    </task>
-    <task id="LOCAL-00054" summary="addition of Comments in view">
-      <created>1523555291285</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1523555291286</updated>
-    </task>
-    <task id="LOCAL-00055" summary="deletion due to a controller files reorganisation">
-      <created>1523555325645</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1523555325645</updated>
-    </task>
-    <task id="LOCAL-00056" summary="deletion due to a controller files reorganisation">
-      <created>1523555341181</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1523555341181</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Controller creation for Miscellanious services :&#10;showAbout()&#10;showContact()">
-      <created>1523555404421</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1523555404421</updated>
-    </task>
-    <task id="LOCAL-00058" summary="Controller creation with method :&#10;-showPosts();">
-      <created>1523555487316</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1523555487316</updated>
-    </task>
-    <task id="LOCAL-00059" summary="add of form for comments addition">
-      <created>1523583831171</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1523583831186</updated>
-    </task>
-    <task id="LOCAL-00060" summary="add cretecomment method">
-      <created>1523583875979</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1523583875995</updated>
-    </task>
-    <task id="LOCAL-00061" summary="add of addComment method.">
-      <created>1523584324718</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
-      <option name="project" value="LOCAL" />
-      <updated>1523584324718</updated>
-    </task>
-    <task id="LOCAL-00062" summary="add route for addComment">
-      <created>1523584474226</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1523584474226</updated>
-    </task>
-    <task id="LOCAL-00063" summary="add a redirect method">
-      <created>1523584534410</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1523584534410</updated>
-    </task>
-    <task id="LOCAL-00064" summary="modification of redirection root">
-      <created>1523587831220</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1523587831223</updated>
-    </task>
-    <task id="LOCAL-00065" summary="Style add for fix the header : tablette and phone">
-      <created>1523630364559</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1523630364564</updated>
-    </task>
-    <task id="LOCAL-00066" summary="route tab correction with a corresponding controller.">
-      <created>1523630390753</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1523630390753</updated>
+      <workItem from="1523853202715" duration="23288000" />
+      <workItem from="1523912175946" duration="90004000" />
+      <workItem from="1524098318505" duration="12208000" />
+      <workItem from="1524141614355" duration="18606000" />
     </task>
     <task id="LOCAL-00067" summary="implemetation of twig">
       <created>1523648734010</created>
@@ -656,27 +567,211 @@
       <option name="project" value="LOCAL" />
       <updated>1523901631763</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="node is not necessary">
+      <created>1523901750324</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1523901750324</updated>
+    </task>
+    <task id="LOCAL-00092" summary="merge from twig view">
+      <created>1523901851224</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1523901851224</updated>
+    </task>
+    <task id="LOCAL-00093" summary="correction of due to a merge error">
+      <created>1523903041394</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1523903041394</updated>
+    </task>
+    <task id="LOCAL-00094" summary="creation of class to manage the request in BDD">
+      <created>1523903144772</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1523903144772</updated>
+    </task>
+    <task id="LOCAL-00095" summary="correction of redirection &#10; - * argument instead of +&#10; - home.html for destination">
+      <created>1523908462681</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1523908462681</updated>
+    </task>
+    <task id="LOCAL-00096" summary="deletion -  this file was used to test twig">
+      <created>1523967068356</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967068376</updated>
+    </task>
+    <task id="LOCAL-00097" summary="addition of two links for comments administration">
+      <created>1523967114244</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967114244</updated>
+    </task>
+    <task id="LOCAL-00098" summary="creation of backManager for PDO gestion centralisation and modifictation of constructor with static call bdAssign parent mehtod&#10;Preparation of Admethod()">
+      <created>1523967302296</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967302296</updated>
+    </task>
+    <task id="LOCAL-00099" summary="-class extention with Bacmanager class for PDO gestion&#10;-Add of remove method to remove comments">
+      <created>1523967407212</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967407213</updated>
+    </task>
+    <task id="LOCAL-00100" summary="Creation of Backmanager class . to PDO gestion">
+      <created>1523967466272</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967466272</updated>
+    </task>
+    <task id="LOCAL-00101" summary="declarationn of 3 methods for post gestion :&#10;updatePost()&#10;deletePost()&#10;AddPost()">
+      <created>1523967548032</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967548032</updated>
+    </task>
+    <task id="LOCAL-00102" summary="Parameters in instation manager deletion (now in BackController)&#10;addition of RemoveComment() , updateComment() Method">
+      <created>1523967753169</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967753169</updated>
+    </task>
+    <task id="LOCAL-00103" summary="modification of parameters in call of buil Methd of view : array empty instead of &quot;null&quot;">
+      <created>1523967823045</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1523967823046</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Class user Definition">
+      <created>1524142104500</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1524142104500</updated>
+    </task>
+    <task id="LOCAL-00105" summary="BackManager class  defintion">
+      <created>1524142150252</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1524142150252</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Creaton of view for add post">
+      <created>1524142626244</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1524142626244</updated>
+    </task>
+    <task id="LOCAL-00107" summary="class MemberController Class creation :&#10; - public function loginSession()&#10; - public function deconnexion()">
+      <created>1524142689460</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1524142689462</updated>
+    </task>
+    <task id="LOCAL-00108" summary="userCnxform -&gt; view for password form">
+      <created>1524142746869</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1524142746869</updated>
+    </task>
+    <task id="LOCAL-00109" summary="parameters corection in build method call -&gt; arry empty replaced by value">
+      <created>1524142836305</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1524142836321</updated>
+    </task>
+    <task id="LOCAL-00110" summary="PostsControler received new method from Post Comment Controller :">
+      <created>1524142992511</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
+      <option name="project" value="LOCAL" />
+      <updated>1524142992513</updated>
+    </task>
+    <task id="LOCAL-00111" summary="deletion of this files -&gt; used by devlopper of theme bootstrap">
+      <created>1524143038543</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1524143038543</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Correction of managing Session implemetation">
+      <created>1524163946269</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1524163946269</updated>
+    </task>
+    <task id="LOCAL-00113" summary="Lib created for commun method (see if needed)">
+      <created>1524164000253</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1524164000253</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Updated or created for Session Modification">
+      <created>1524164227629</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1524164227629</updated>
+    </task>
+    <task id="LOCAL-00115" summary="uddated to take into account tinymce and session modification..">
+      <created>1524164295037</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1524164295037</updated>
+    </task>
+    <option name="localTasksCounter" value="116" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212240000" />
+    <option name="totallyTimeSpent" value="339577000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="645" y="71" width="1436" height="848" extended-state="0" />
-    <editor active="true" />
+    <frame x="295" y="1" width="929" height="770" extended-state="1" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6281755" visible="true" weight="0.22383721" />
-      <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32874355" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" weight="0.32969153" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" visible="true" weight="0.27994227" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.44227642" />
       <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3493976" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.59766763" visible="true" weight="0.31070197" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32967034" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.7301136" />
       <window_info id="Structure" order="1" sideWeight="0.37182447" side_tool="true" weight="0.18637532" />
-      <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info id="Favorites" order="2" sideWeight="0.37182447" side_tool="true" weight="0.18637532" />
+      <window_info id="Favorites" order="2" sideWeight="0.40233237" side_tool="true" visible="true" weight="0.31070197" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -685,7 +780,6 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32867134" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Find" order="2" visible="true" weight="0.4811321" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -721,32 +815,32 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="PostControlleur is deleted : new contolleur repartition." />
-    <MESSAGE value="new Controlleur creation with following method :&#10;- __construct&#10;-findComs()&#10;-findPost()" />
-    <MESSAGE value="Creation of new controller with following method :&#10;- showPost" />
-    <MESSAGE value="addition of Comments in view" />
-    <MESSAGE value="deletion due to a controller files reorganisation" />
-    <MESSAGE value="Controller creation for Miscellanious services :&#10;showAbout()&#10;showContact()" />
-    <MESSAGE value="Controller creation with method :&#10;-showPosts();" />
-    <MESSAGE value="add of form for comments addition" />
-    <MESSAGE value="add cretecomment method" />
-    <MESSAGE value="add of addComment method." />
-    <MESSAGE value="add route for addComment" />
-    <MESSAGE value="add a redirect Function" />
-    <MESSAGE value="add a redirect method" />
-    <MESSAGE value="modification of redirection root" />
-    <MESSAGE value="Style add for fix the header : tablette and phone" />
-    <MESSAGE value="route tab correction with a corresponding controller." />
-    <MESSAGE value="implemetation of twig" />
-    <MESSAGE value="twig conversion" />
-    <MESSAGE value="fixed ManNAv" />
-    <MESSAGE value="deleted because rename for twg" />
-    <MESSAGE value="add for  twig adaptation" />
-    <MESSAGE value="twig adaptation" />
-    <MESSAGE value="update" />
-    <MESSAGE value="commit" />
-    <MESSAGE value="correction of gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="correction of gitignore" />
+    <MESSAGE value="merge from twig view" />
+    <MESSAGE value="correction of due to a merge error" />
+    <MESSAGE value="creation of class to manage the request in BDD" />
+    <MESSAGE value="correction of redirection &#10; - * argument instead of +&#10; - home.html for destination" />
+    <MESSAGE value="deletion -  this file was used to test twig" />
+    <MESSAGE value="addition of two links for comments administration" />
+    <MESSAGE value="creation of backManager for PDO gestion centralisation and modifictation of constructor with static call bdAssign parent mehtod&#10;Preparation of Admethod()" />
+    <MESSAGE value="-class extention with Bacmanager class for PDO gestion&#10;-Add of remove method to remove comments" />
+    <MESSAGE value="Creation of Backmanager class . to PDO gestion" />
+    <MESSAGE value="declarationn of 3 methods for post gestion :&#10;updatePost()&#10;deletePost()&#10;AddPost()" />
+    <MESSAGE value="Parameters in instation manager deletion (now in BackController)&#10;addition of RemoveComment() , updateComment() Method" />
+    <MESSAGE value="modification of parameters in call of buil Methd of view : array empty instead of &quot;null&quot;" />
+    <MESSAGE value="Class user Definition" />
+    <MESSAGE value="BackManager class  defintion" />
+    <MESSAGE value="Member Manager Class creation :&#10; - public function getMember()&#10; - public function getMembers()&#10; - public function getAdminMember()&#10;  -public function createMenber()" />
+    <MESSAGE value="Creaton of view for add post" />
+    <MESSAGE value="class MemberController Class creation :&#10; - public function loginSession()&#10; - public function deconnexion()" />
+    <MESSAGE value="userCnxform -&gt; view for password form" />
+    <MESSAGE value="parameters corection in build method call -&gt; arry empty replaced by value" />
+    <MESSAGE value="PostsControler received new method from Post Comment Controller :" />
+    <MESSAGE value="deletion of this files -&gt; used by devlopper of theme bootstrap" />
+    <MESSAGE value="Correction of managing Session implemetation" />
+    <MESSAGE value="Lib created for commun method (see if needed)" />
+    <MESSAGE value="Updated or created for Session Modification" />
+    <MESSAGE value="uddated to take into account tinymce and session modification.." />
+    <option name="LAST_COMMIT_MESSAGE" value="uddated to take into account tinymce and session modification.." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -754,46 +848,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controller/PostCommentController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/home.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Routeur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="e#6#66#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/RECUP/css/clean-blog.css" />
-    <entry file="file://$PROJECT_DIR$/view/_layout2php" />
     <entry file="file://$PROJECT_DIR$/view/home.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -802,13 +856,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/index.html" />
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="28" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/post.html" />
     <entry file="file://$PROJECT_DIR$/assets/mail/contact_me.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -843,13 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/composer/installed.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-357" />
@@ -864,13 +904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
           <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -896,41 +929,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/entities/Comment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model/entities/Post.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="67" column="5" lean-forward="true" selection-start-line="67" selection-start-column="5" selection-end-line="67" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/view/about.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="14" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.lock">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/Projet4.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/Style.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -939,51 +943,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/MiscController.php">
+    <entry file="file://$PROJECT_DIR$/view/test.twig" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="36" lean-forward="true" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/PostCommentController.php">
+    <entry file="file://$PROJECT_DIR$/lib/Application.php" />
+    <entry file="file://$PROJECT_DIR$/assets/vendor/bootstrap/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="-1411">
+          <caret line="2515" column="11" selection-start-line="2515" selection-start-column="5" selection-end-line="2515" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controller/PostsController.php">
+    <entry file="file://$PROJECT_DIR$/assets/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/model/entities/ClientUser.php" />
+    <entry file="file://$PROJECT_DIR$/model/entities/UserInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="90" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="15" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/Routeur.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-          <folding>
-            <element signature="e#6#66#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/View.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#6#56#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/view/_layout.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -994,61 +975,187 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/home.twig">
+    <entry file="file://$PROJECT_DIR$/controller/AdminController.php" />
+    <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="35" selection-start-line="35" selection-end-line="35" selection-end-column="14" />
+        <state relative-caret-position="51">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/entities/Post.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1202">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/view/post.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="86" selection-start-line="34" selection-start-column="86" selection-end-line="34" selection-end-column="86" />
+        <state relative-caret-position="782">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/PostCommentManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="-1018">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/entities/BddUser.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/entities/FlagUserDecorator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/entities/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="92" column="5" lean-forward="true" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/addPost.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/home.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="93" selection-start-line="26" selection-start-column="78" selection-end-line="26" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/_layout.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/PostCommentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="41" lean-forward="true" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/userCnxForm.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/entities/Comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="23" column="34" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/MemberManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1989">
+          <caret line="117" column="38" lean-forward="true" selection-start-line="117" selection-start-column="38" selection-end-line="117" selection-end-column="38" />
+          <folding>
+            <element signature="e#6#19#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/View.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
           <folding>
             <element signature="e#6#56#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/view/test.twig">
+    <entry file="file://$PROJECT_DIR$/controller/MiscController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        <state relative-caret-position="102">
+          <caret line="13" column="10" selection-start-line="13" selection-start-column="10" selection-end-line="13" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/controller/MemberController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        <state relative-caret-position="119">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/Routeur.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="e#6#66#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/model/PostManager.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="37" />
+        <state relative-caret-position="391">
+          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+          <folding>
+            <element signature="e#6#42#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/model/HttpRequest.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/controller/PostsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="91">
+          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model/BackManager.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/lib.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+          <folding>
+            <element signature="e#6#59#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
