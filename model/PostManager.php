@@ -75,7 +75,7 @@ class PostManager extends BackManager
         $req = $bdd->prepare($query);
         $req->bindValue('id', $id, PDO::PARAM_INT);
         $req->execute();
-
+        $coms[]=null;
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
             $com = new Comment();
             $com->setCommentId($row['CommentId']);
