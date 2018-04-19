@@ -26,8 +26,9 @@
                     <div class="comment">
                         {{ comment.getCommentContent()}}
                     </div>
-            <a class=" btn-link btn-sm float-Left " href="{{ HOST }}delete.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Supprimer </a>
-             <a class=" btn-link btn-sm float-Left " href="{{ HOST }}reply.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Répondre </a>
+
+            <a class=" btn-link btn-sm  " href="{{ HOST }}delete.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Supprimer </a>
+            <a class=" btn-link btn-sm  " href="{{ HOST }}reply.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Répondre </a>
             {% endfor %}
         </div>
       </div>

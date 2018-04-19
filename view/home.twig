@@ -1,8 +1,8 @@
 {% extends '_layout.twig' %}
 
 {% block content %}
+    {% set admin = adminLevel %}
 <div class="container">
-
    {% for chapter in chapters %}
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -16,18 +16,27 @@
                         {{ chapter.getcontent()|truncate(100, true)}}
                     </h3>
                 </a>
-                <p class="post-meta">Posted bys
+                <p class="post-meta">Posted by
                     <a href="#">Jean Forteroche</a>
                     {{ chapter.getCreationDate() }}
+
+                </p>
+
+                {% if admin == true  %}
+                    <a class="btn btn-link btn-sm" href="{{ HOST }}updatePost.html?idPost={{ chapter.getPostId() }}">Modification</a>
+                    <a class="btn btn-link btn-sm float-Left" href="{{ HOST }}removePost.html?idPost={{ chapter.getPostId() }}">Suppression</a>
+                {% endif %}
+
             </div>
             <hr>
-
-
         </div>
     </div>
     {% endfor %}
     <!-- Pager -->
     <div class="clearfix">
+        {% if admin == true  %}
+            <a class="btn btn-link btn-sm" href="{{ HOST }}createPost.html">Ajouter un article </a>
+        {% endif %}
         <a class="btn btn-primary float-right" href="#">Ancien Post &rarr;</a>
     </div>
 
