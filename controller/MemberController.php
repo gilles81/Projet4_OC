@@ -13,9 +13,13 @@ class MemberController extends lib
      */
     public function loginSession()
     {
-        // Todo : Verifier sessionStatus() et la fction suivante doublon surement session status est utilise sur une entrée par home
-        //$this->sessionStatus();//determine status admin or not
+
+        $this->sessionStatus();//determine status admin or not
+        $myView = new View('UserCnxForm');
+        $myView->build( array('chapters'=> null ,'comments'=>null,'HOST'=>HOST,'adminLevel'=>  $_SESSION['adminLevel']));
+
         // Dectection if already in ADMIN Mode
+        /**
         if (isset($_SESSION['adminLevel']) &&  ($_SESSION['adminLevel']== 0))
         {
             $myView = new View('UserCnxForm');
@@ -24,6 +28,7 @@ class MemberController extends lib
         }else{
             //$myView = new View('home');
         }
+          */
     }
 
     /**
