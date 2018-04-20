@@ -7,13 +7,14 @@
 
 class lib
 {
+     // Todo : A raccourcir apres test
     public function sessionStatus()
     {
         if (isset($_SESSION['Status']))
         {
-            Echo 'Session Exist';
-            echo  $_SESSION['Status'];
-            echo $_SESSION['adminLevel'];
+            //Echo 'Session Exist';
+            //echo  $_SESSION['Status'];
+            //echo $_SESSION['adminLevel'];
 
         }else
         {
