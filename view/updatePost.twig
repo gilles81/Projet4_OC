@@ -9,14 +9,20 @@
               <form action="{{ HOST }}updateOnbasePost.html?idPost={{ chapters.getPostId()  }}" method="post">
                   <div>
                       <label for="titre">Titre</label><br />
-                      <input type="text" id="newTitle" name="newTitle"  />
+                      <input type="text" id="newTitle" name="newTitle" value="{{ chapters.getTitle()}}" />
                   </div>
                   <div>
                       <label for="comment">Nouveau chapitre</label><br />
-                      <textarea id="newPost" name="newPost">{{ chapters.getContent()  }}</textarea>
+                      <textarea id="newPost" name="newPost">{{ chapters.getContent()}}</textarea>
                   </div>
                   <div>
-                      <input type="submit" />
+                      <input class ="btn btn-group-sm btn-primary" type="submit" name="Validation" />
+
+                      <input class ="btn btn-group-sm btn-primary" type="submit" value ="ANNULER"   name="Annulation"/>
+
+
+
+
                   </div>
               </form>
           </div>
