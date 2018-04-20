@@ -9,53 +9,14 @@ class PostsController extends lib
     private $userLevel;
     private $Admin;
 
-    /**
-     * public function showPost()
-     *
-     *
-     *
-     */
-    public function showPost()
-    {
-        /**
-         * Todo
-         *  get one post and goto to view
-         */
-
-        if(isset($_GET['idPost'])) {
-
-
-            $idPost = $_GET['idPost'];
-
-            $manager = new PostManager();
-            $chapter= $manager->findPost($idPost);
-            $comments = $manager->findComs($idPost);
-
-            $myView = new View('post');
-            $myView->build( array('chapters'=> $chapter ,'comments'=>$comments,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
-
-        }else{
-            echo 'Cet Article m\'existe pas encore';
-
-        }
-
-    }
-
+    /**************************/
     /**
      *
-     * public function showPosts()
+     * Part of Comment's method
      *
      */
+    /**************************/
 
-    public function showPosts()
-    {
-       $this->sessionStatus();//determine status admin or not
-        $manager = new PostManager();
-        $chapters= $manager->findAll();
-
-        $myView = new View('home');
-        $myView->build( array('chapters'=> $chapters ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
-    }
 
     /**
      *
@@ -105,6 +66,205 @@ class PostsController extends lib
         }
     }
 
+
+
+
+
+
+
+
+
+    /*******************************************/
+    /**
+     *
+     * Part of Post's method
+     *
+     */
+    /*******************************************/
+
+
+    /**
+     *
+     *  public function createPost()
+     *
+     *
+     */
+
+    public function createPost()
+    {
+        // TODO
+
+        $myView = new View('addpost');
+        $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>$_SESSION['adminLevel']));
+    }
+
+    /**
+     *
+     * public function addPost()
+     *
+     *
+     */
+    public function addPost()
+    {
+        // TODO
+        if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost']) ) ) {
+
+            $newPost = new Post();
+            $newPost->setTitle($_POST['newTitle']);
+            $newPost->setContent($_POST['newPost']);
+
+            $manager = new PostManager('blogecrivain' , 'root' ,'');
+            $manager->addPost($newPost);
+
+            $myView= new View('post');
+            $myView->redirect('home.html');
+
+        }else {
+            echo 'Impossible d\'ajouter cet article . Le titre ou l\'article n\'existe pas';}
+
+
+
+    }
+
+
+    /**
+     *  public function removePost()
+     *
+     *
+     *
+     */
+    public function removePost()
+    {
+        // TODO
+        if (isset($_GET['idPost']) ){
+
+            $manager = new PostManager();
+            $manager->removePost($_GET['idPost']);
+
+            $myView= new View('post');
+            $myView->redirect('home.html');
+
+        }else{
+
+            echo 'Erreur  de suppression : Ce commentaire est introuvable ';
+        }
+
+    }
+    /**
+     *
+     * public function sendUpdatePost ()
+     *
+     *
+     */
+
+    public function sendUpdatePost () {
+
+        //echo $_POST['newTitle'] . $_POST['newPost'] . $_GET['idPost'];
+
+        if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['idPost'] ))) {
+
+            // Get Bdd ident
+            $newPost= new Post();
+            $newPost->setTitle($_POST['newTitle']);
+            $newPost->setContent($_POST['newPost']);
+            $newPost->setPostId($_GET['idPost']);
+
+            $manager = new PostManager();
+            $manager->updatePost($newPost);
+
+            $myView = new View('home');
+            $myView->redirect('home.html');
+
+        }
+    }
+
+    /**
+     * public function updatePost()
+     */
+
+    public function updatePost()
+    {
+        // TODO
+
+        if(isset($_GET['idPost'])) {
+
+            $idPost = $_GET['idPost'];
+
+            $manager = new PostManager();
+            $chapter= $manager->findPost($idPost);
+            //$comments = $manager->findComs($idPost);
+
+            $myView = new View('updatePost');
+            $myView->build( array('chapters'=> $chapter ,'comments'=>null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
+        }else{
+            echo 'Cet Article n\'existe pas encore';
+
+        }
+    }
+
+
+
+
+    /**
+     * public function showPost()
+     *
+     *
+     */
+    public function showPost()
+    {
+        /**
+         * Todo
+         *  get one post and goto to view
+         */
+
+        if(isset($_GET['idPost'])) {
+
+
+            $idPost = $_GET['idPost'];
+
+            $manager = new PostManager();
+            $chapter= $manager->findPost($idPost);
+            $comments = $manager->findComs($idPost);
+
+            $myView = new View('post');
+            $myView->build( array('chapters'=> $chapter ,'comments'=>$comments,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
+        }else{
+            echo 'Cet Article m\'existe pas encore';
+
+        }
+
+    }
+
+    /**
+     *
+     * public function showPosts()
+     *
+     */
+
+    public function showPosts()
+    {
+        $this->sessionStatus();//determine status admin or not
+        $manager = new PostManager();
+        $chapters= $manager->findAll();
+
+        $myView = new View('home');
+        $myView->build( array('chapters'=> $chapters ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
+    }
+
+
+
+    /*******************************************/
+    /**
+     *
+     * Part of Post Session supervisor
+     *
+     */
+    /*******************************************/
+
+
+
     /**
      *
      *   public function identification()
@@ -112,7 +272,7 @@ class PostsController extends lib
      */
     public function identification()
     {
-        // TO DO => test de dession yes no o
+
         if (isset($_POST['pass']) AND isset($_POST['login'])) {
             // Get Bdd ident
             $manager = new MemberManager();
@@ -158,113 +318,8 @@ class PostsController extends lib
         }
     }
 
-    public function updatePost()
-    {
-        // TODO
 
-        if(isset($_GET['idPost'])) {
-
-            $idPost = $_GET['idPost'];
-
-            $manager = new PostManager();
-            $chapter= $manager->findPost($idPost);
-            //$comments = $manager->findComs($idPost);
-
-            $myView = new View('updatePost');
-            $myView->build( array('chapters'=> $chapter ,'comments'=>null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
-
-        }else{
-            echo 'Cet Article n\'existe pas encore';
-
-        }
-    }
-
-    /**
-     *
-     * public function sendUpdatePost ()
-     *
-     *
-     */
-
-    public function sendUpdatePost () {
-
-         //echo $_POST['newTitle'] . $_POST['newPost'] . $_GET['idPost'];
-
-        if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['idPost'] ))) {
-
-            // Get Bdd ident
-            $newPost= new Post();
-            $newPost->setTitle($_POST['newTitle']);
-            $newPost->setContent($_POST['newPost']);
-            $newPost->setPostId($_GET['idPost']);
-
-            $manager = new PostManager();
-            $manager->updatePost($newPost);
-
-            $myView = new View('home');
-            $myView->redirect('home.html');
-
-        }
-    }
-
-    /**
-     *
-     *  public function createPost()
-     *
-     *
-     */
-
-    public function createPost()
-    {
-        // TODO
-
-            $myView = new View('addpost');
-            $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>$_SESSION['adminLevel']));
-    }
-        public function addPost()
-    {
-        // TODO
-        if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost']) ) ) {
-
-            $newPost = new Post();
-            $newPost->setTitle($_POST['newTitle']);
-            $newPost->setContent($_POST['newPost']);
-
-            $manager = new PostManager('blogecrivain' , 'root' ,'');
-            $manager->addPost($newPost);
-
-            $myView= new View('post');
-            $myView->redirect('home.html');
-
-        }else {
-            echo 'Impossible d\'ajouter cet article . Le titre ou l\'article n\'existe pas';}
-
-
-
-    }
-
-    /**
-     *  public function removePost()
-     *
-     *
-     *
-     */
-    public function removePost()
-    {
-        // TODO
-        if (isset($_GET['idPost']) ){
-
-            $manager = new PostManager();
-            $manager->removePost($_GET['idPost']);
-
-            $myView= new View('post');
-            $myView->redirect('home.html');
-
-        }else{
-
-            echo 'Erreur  de suppression : Ce commentaire est introuvable ';
-        }
-
-    }
 
 }
+
+
