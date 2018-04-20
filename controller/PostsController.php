@@ -39,10 +39,7 @@ class PostsController extends lib
 
     public function showPosts()
     {
-        $this->sessionStatus();//determine status admin or not
-        echo $_SESSION['adminLevel'];
-
-        //$admin = 1; // TO DO a supp c pour le debug
+       $this->sessionStatus();//determine status admin or not
         $manager = new PostManager();
         $chapters= $manager->findAll();
 
@@ -167,6 +164,8 @@ class PostsController extends lib
 
             $manager = new PostManager('blogecrivain' , 'root' ,'');
             $manager->addPost($newPost);
+
+
 
         }else {echo 'Impossible d\'ajouter cet article . Le titre ou l\'article n\'existe pas';}
         /**
