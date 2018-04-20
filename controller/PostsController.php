@@ -107,6 +107,9 @@ class PostsController extends lib
     public function addPost()
     {
         // TODO
+
+
+
         if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost']) ) ) {
 
             $newPost = new Post();
@@ -154,28 +157,41 @@ class PostsController extends lib
      *
      * public function sendUpdatePost ()
      *
+     * This Controller method  call  manager to add post modification in Bdd.
+     *
+     * Annulation is permitted by checcking Annulation variavle send by Post from View.
+     * In case of annulation a return on view form is made.
+     *
      *
      */
 
-    public function sendUpdatePost () {
+    public function sendUpdatePost ()
+    {
+        if ((!isset($_POST['Annulation']) )) {
+            if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['idPost'] ))) {
+                // Get Bdd ident
+                $newPost= new Post();
+                $newPost->setTitle($_POST['newTitle']);
+                $newPost->setContent($_POST['newPost']);
+                $newPost->setPostId($_GET['idPost']);
+                // Manager Call
+                $manager = new PostManager();
+                $manager->updatePost($newPost);
+                //View call
+                $myView = new View('home');
+                $myView->redirect('home.html');
 
-        //echo $_POST['newTitle'] . $_POST['newPost'] . $_GET['idPost'];
+            }
 
-        if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['idPost'] ))) {
-
-            // Get Bdd ident
-            $newPost= new Post();
-            $newPost->setTitle($_POST['newTitle']);
-            $newPost->setContent($_POST['newPost']);
-            $newPost->setPostId($_GET['idPost']);
-
-            $manager = new PostManager();
-            $manager->updatePost($newPost);
-
+        }else{
+            // call of view
             $myView = new View('home');
             $myView->redirect('home.html');
-
         }
+
+
+
+
     }
 
     /**
