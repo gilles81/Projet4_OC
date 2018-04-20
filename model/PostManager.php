@@ -34,7 +34,7 @@ class PostManager extends BackManager
             $post->setCreationDate($row['CreationDate']);
             $post->setModificationDate($row['ModificationDate']);
             $post->setTitle($row['Title']);
-            $post->setContent($row['PostContent']);
+            $post->setContent(( ($row['PostContent'])));
 
             $Posts[] = $post;
         };
@@ -171,7 +171,22 @@ class PostManager extends BackManager
         }
     }
 
+    public function updatePost($post)
+    {
+        $bdd = $this->bdd;
 
+        $req = $bdd->prepare('UPDATE posts SET PostContent = :Content, Title = :Title , modificationDate=NOW() WHERE PostId = :PostId');
+
+        $req->bindValue(':PostId',$post->getPostId(),PDO::PARAM_INT);
+        $req->bindValue(':Content',$post->getContent() ,PDO::PARAM_STR);
+        $req->bindValue(':Title',$post->getTitle(),PDO::PARAM_STR);
+
+
+        echo $post->getPostId() . $post->getContent() . $post->getTitle();
+
+
+        $req->execute();
+    }
 
 
 
