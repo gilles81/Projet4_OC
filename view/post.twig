@@ -6,8 +6,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <h3>{{ chapters.getTitle() }} </h3>
-              <p>{{ chapters.getContent() }} </p>
+            <h3>{{ chapters.getTitle()|raw }} </h3>
+              <p>{{ chapters.getContent() |raw }} </p>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
 
                     <h6>Auteur : {{ comment.getAuthor()}}  </h6>
                     <div class="comment">
-                        {{ comment.getCommentContent()}}
+                        {{ comment.getCommentContent()|raw }}
                     </div>
 
             <a class=" btn-link btn-sm  " href="{{ HOST }}delete.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Supprimer </a>
@@ -42,7 +42,7 @@
                  </div>
                  <div>
                      <label for="comment">Commentaire</label><br />
-                     <textarea id="comment" name="comment"></textarea>
+                     <textarea id="comment" name="comment" value="Exemple"></textarea>
                  </div>
                  <div>
                      <input type="submit" />
