@@ -270,6 +270,32 @@ class PostsController extends lib
     }
 
 
+    public function nextPost($currentPost)
+    {
+       //TODO : Dev next Post button
+        // manager
+        // recuperer le chapitre suivant basée sur l'ordre..
+
+/**
+        if (   (isset($_GET['directionRight']))     )
+        {
+            if ( (isset($_GET['Direction'])==1))
+            {
+
+                // Prend la pos actuelle
+                // tu enleves 1
+            }
+
+            if ( (isset($_GET['Direction'])==1))
+            {
+
+            }
+        }
+ * */
+    }
+
+
+
 
     /*******************************************/
     /**
