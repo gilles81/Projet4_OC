@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Class Router
  *
@@ -19,23 +20,15 @@ class Routeur
         'createPost.html'                  => ['controller' => 'PostsController', 'method' => 'createPost'],
         'addPost.html'                   => ['controller' => 'PostsController', 'method' => 'addPost'],
         'removePost.html'                   => ['controller' => 'PostsController', 'method' => 'removePost'],
+        'updatePost.html'                       => ['controller' => 'PostsController', 'method' => 'updatePost'],
+        'updateOnbasePost.html'          => ['controller' => 'PostsController', 'method' => 'sendUpdatePost'],
 
         'delete.html'                   => ['controller' => 'PostsController', 'method' => 'removeComment'],
 
         'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],
         'deconnexion.html'              => ['controller' => 'MemberController', 'method' => 'deconnexion']
 
-        /**
-        'home.html'                     => ['controller' => 'PostsController', 'method' => 'showPosts'],
-        'post.html'                     => ['controller' => 'PostsController', 'method' => 'showPost'],
-        'addComment.html'               => ['controller' => 'PostsController', 'method' => 'createComment'],
-        'about.html'                    => ['controller' => 'MiscController', 'method' => 'ShowAbout'],
-        'contact.html'                  => ['controller' => 'MiscController', 'method' => 'ShowContact'],
-        'delete.html'                   => ['controller' => 'PostsController', 'method' => 'removeComment'],
-        'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],
-        'adminverif.html'               => ['controller' => 'PostsController', 'method' => 'identification'],
-        'deconnexion.html'              => ['controller' => 'MemberController', 'method' => 'deconnexion']
-        */
+
     ];
   /**To do
   * create other road..
