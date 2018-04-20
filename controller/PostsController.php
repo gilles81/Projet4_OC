@@ -165,7 +165,8 @@ class PostsController extends lib
             $manager = new PostManager('blogecrivain' , 'root' ,'');
             $manager->addPost($newPost);
 
-
+            $myView= new View('post');
+            $myView->redirect('home.html');
 
         }else {echo 'Impossible d\'ajouter cet article . Le titre ou l\'article n\'existe pas';}
         /**
