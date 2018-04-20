@@ -9,8 +9,12 @@ class PostsController extends lib
     private $userLevel;
     private $Admin;
 
-
-
+    /**
+     * public function showPost()
+     *
+     *
+     *
+     */
     public function showPost()
     {
         /**
@@ -37,6 +41,12 @@ class PostsController extends lib
 
     }
 
+    /**
+     *
+     * public function showPosts()
+     *
+     */
+
     public function showPosts()
     {
        $this->sessionStatus();//determine status admin or not
@@ -46,6 +56,12 @@ class PostsController extends lib
         $myView = new View('home');
         $myView->build( array('chapters'=> $chapters ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
     }
+
+    /**
+     *
+     * public function createComment()
+     *
+     */
 
     public function createComment()
     {
@@ -66,7 +82,12 @@ class PostsController extends lib
         }
     }
 
-
+    /**
+     *
+     * public function removeComment()
+     *
+     *
+     */
     public function removeComment()
     {
 
@@ -84,6 +105,11 @@ class PostsController extends lib
         }
     }
 
+    /**
+     *
+     *   public function identification()
+     *
+     */
     public function identification()
     {
         // TO DO => test de dession yes no o
@@ -136,10 +162,57 @@ class PostsController extends lib
     {
         // TODO
 
+        if(isset($_GET['idPost'])) {
 
+            $idPost = $_GET['idPost'];
+
+            $manager = new PostManager();
+            $chapter= $manager->findPost($idPost);
+            //$comments = $manager->findComs($idPost);
+
+            $myView = new View('updatePost');
+            $myView->build( array('chapters'=> $chapter ,'comments'=>null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
+        }else{
+            echo 'Cet Article n\'existe pas encore';
+
+        }
     }
 
+    /**
+     *
+     * public function sendUpdatePost ()
+     *
+     *
+     */
 
+    public function sendUpdatePost () {
+
+         //echo $_POST['newTitle'] . $_POST['newPost'] . $_GET['idPost'];
+
+        if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['idPost'] ))) {
+
+            // Get Bdd ident
+            $newPost= new Post();
+            $newPost->setTitle($_POST['newTitle']);
+            $newPost->setContent($_POST['newPost']);
+            $newPost->setPostId($_GET['idPost']);
+
+            $manager = new PostManager();
+            $manager->updatePost($newPost);
+
+            $myView = new View('home');
+            $myView->redirect('home.html');
+
+        }
+    }
+
+    /**
+     *
+     *  public function createPost()
+     *
+     *
+     */
 
     public function createPost()
     {
@@ -147,11 +220,6 @@ class PostsController extends lib
 
             $myView = new View('addpost');
             $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>$_SESSION['adminLevel']));
-
-
-
-
-
     }
         public function addPost()
     {
@@ -168,13 +236,19 @@ class PostsController extends lib
             $myView= new View('post');
             $myView->redirect('home.html');
 
-        }else {echo 'Impossible d\'ajouter cet article . Le titre ou l\'article n\'existe pas';}
-        /**
+        }else {
+            echo 'Impossible d\'ajouter cet article . Le titre ou l\'article n\'existe pas';}
 
-*/
+
 
     }
 
+    /**
+     *  public function removePost()
+     *
+     *
+     *
+     */
     public function removePost()
     {
         // TODO
@@ -192,11 +266,5 @@ class PostsController extends lib
         }
 
     }
-
-
-
-
-
-
 
 }
