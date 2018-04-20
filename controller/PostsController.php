@@ -26,18 +26,18 @@ class PostsController extends lib
 
     public function createComment()
     {
-        if (isset($_GET['postId'])){
+        if (isset($_GET['postId'])) {
             $Author = $_POST['author'];
             $Comment = $_POST['comment'];
-            $values= array( 'Author'=> $Author, 'Comment'=> $Comment , 'PostId' => $_GET['postId'] );
+            $values = array('Author' => $Author, 'Comment' => $Comment, 'PostId' => $_GET['postId']);
 
-            $manager = new PostManager('blogecrivain' , 'root' ,'');
+            $manager = new PostManager('blogecrivain', 'root', '');
             $manager->addComment($values);
 
-            $myView= new View();
-            $myView->redirect('post.html?idPost='.$_GET['postId']);
+            $myView = new View();
+            $myView->redirect('post.html?idPost=' . $_GET['postId']);
 
-        }else{
+        } else {
 
             echo 'Probleme avec l\'id du post';
         }
@@ -52,15 +52,15 @@ class PostsController extends lib
     public function removeComment()
     {
 
-        if (isset($_GET['comId']) AND isset($_GET['postId']) ){
+        if (isset($_GET['comId']) AND isset($_GET['postId'])) {
 
             $manager = new PostManager();
             $manager->remove($_GET['comId']);
 
-            $myView= new View('post');
-            $myView->redirect('post.html?idPost='.$_GET['postId']);
+            $myView = new View('post');
+            $myView->redirect('post.html?idPost=' . $_GET['postId']);
 
-        }else{
+        } else {
 
             echo 'Erreur  de suppression : Ce commentaire est introuvable ';
         }
@@ -87,15 +87,14 @@ class PostsController extends lib
      *
      *  public function createPost()
      *
-     *
+     *  This method call a view with a template of Post modification form
      */
 
     public function createPost()
     {
-        // TODO
-
+        // Call of view
         $myView = new View('addpost');
-        $myView->build(array('chapters'=> null ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=>$_SESSION['adminLevel']));
+        $myView->build(array('chapters' => null, 'comments' => null, 'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
     }
 
     /**
@@ -103,31 +102,32 @@ class PostsController extends lib
      * public function addPost()
      *
      *
+     *This method add new post in database and call a view to return at the post list.
+     *
+     *
      */
     public function addPost()
     {
-        // TODO
+        if (!(isset($_POST['AnnulAddPost']))) {
+            if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost']))) {
+                // set of Post object
+                $newPost = new Post();
+                $newPost->setTitle($_POST['newTitle']);
+                $newPost->setContent($_POST['newPost']);
+                // call of manager
+                $manager = new PostManager('blogecrivain', 'root', '');
+                $manager->addPost($newPost);
 
-
-
-        if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost']) ) ) {
-
-            $newPost = new Post();
-            $newPost->setTitle($_POST['newTitle']);
-            $newPost->setContent($_POST['newPost']);
-
-            $manager = new PostManager('blogecrivain' , 'root' ,'');
-            $manager->addPost($newPost);
-
-            $myView= new View('post');
-            $myView->redirect('home.html');
-
-        }else {
-            echo 'Impossible d\'ajouter cet article . Le titre ou l\'article n\'existe pas';}
-
-
-
+            } else {
+                echo 'Impossible d\'ajouter cet article . Le titre ou l\'article n\'existe pas';
+            }
+        }
+        //cal of view
+        $myView = new View('post');
+        $myView->redirect('home.html');
     }
+
+
 
 
     /**
