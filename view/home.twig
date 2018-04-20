@@ -13,12 +13,13 @@
                         {{ chapter.gettitle() }}
                     </h2>
                     <h3 class="post-subtitle">
-                        {{ chapter.getcontent()|truncate(100, true)}}
+                        {{ chapter.getcontent()|truncate(100, true)|raw}}
                     </h3>
+
                 </a>
                 <p class="post-meta">Posted by
                     <a href="#">Jean Forteroche</a>
-                    {{ chapter.getCreationDate() }}
+                    {{ chapter.getCreationDate()  }}
 
                 </p>
 
@@ -35,7 +36,7 @@
     <!-- Pager -->
     <div class="clearfix">
         {% if admin == true  %}
-            <a class="btn btn-link btn-sm" href="{{ HOST }}createPost.html">Ajouter un article </a>
+            <a class="btn btn-link btn-sm" href="{{ HOST }}createPost.html">Ajouter un chapitre </a>
         {% endif %}
         <a class="btn btn-primary float-right" href="#">Ancien Post &rarr;</a>
     </div>
