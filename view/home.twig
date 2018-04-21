@@ -4,33 +4,35 @@
     {% set admin = adminLevel %}
 <div class="container">
    {% for chapter in chapters %}
-    <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-            <div class="post-preview">
-                <a href="{{ HOST }}post.html?idPost={{ chapter.getPostId() }}">
+       {% if chapter.getPostId() != null %}
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="post-preview">
+                        <a href="{{ HOST }}post.html?idPost={{ chapter.getPostId() }}">
 
-                    <h2 class="post-title">
-                        {{ chapter.gettitle() }}
-                    </h2>
-                    <h3 class="post-subtitle">
-                        {{ chapter.getcontent()|truncate(100, true)|raw}}
-                    </h3>
+                            <h2 class="post-title">
+                                {{ chapter.gettitle() }}
+                            </h2>
+                            <h3 class="post-subtitle">
+                                {{ chapter.getcontent()|truncate(100, true)|raw}}
+                            </h3>
 
-                </a>
-                <p class="post-meta">Posted by
-                    <a href="#">Jean Forteroche</a>
-                    {{ chapter.getCreationDate()  }}
+                        </a>
+                        <p class="post-meta">Posted by
+                            <a href="#">Jean Forteroche</a>
+                            {{ chapter.getCreationDate()  }}
 
-                </p>
+                        </p>
 
-                {% if admin == true  %}
-                    <a class="btn btn-link btn-sm" href="{{ HOST }}updatePost.html?idPost={{ chapter.getPostId() }}">Modification</a>
-                    <a class="btn btn-link btn-sm float-Left" href="{{ HOST }}removePost.html?idPost={{ chapter.getPostId() }}">Suppression</a>
-                {% endif %}
+                        {% if admin == true  %}
+                            <a class="btn btn-link btn-sm" href="{{ HOST }}updatePost.html?idPost={{ chapter.getPostId() }}">Modification</a>
+                            <a class="btn btn-link btn-sm float-Left" href="{{ HOST }}removePost.html?idPost={{ chapter.getPostId() }}">Suppression</a>
+                        {% endif %}
 
-            </div>
-            <hr>
-        </div>
+                    </div>
+                    <hr>
+                </div>
+        {% endif  %}
     </div>
     {% endfor %}
     <!-- Pager -->
