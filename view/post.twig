@@ -27,15 +27,18 @@
           <h3>Commentaires</h3>
             {% set idp = comments['id'] %}
             {% for comment in  comments['coms'] %}
+                {% if comment.getCommentId != null %}
 
                     <h6>Auteur : {{ comment.getAuthor()}}  </h6>
                     <div class="comment">
                         {{ comment.getCommentContent()|raw }}
                     </div>
 
-            <a class=" btn-link btn-sm  " href="{{ HOST }}delete.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Supprimer </a>
-            <a class=" btn-link btn-sm  " href="{{ HOST }}reply.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Répondre </a>
+                    <a class=" btn-link btn-sm  " href="{{ HOST }}delete.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Supprimer </a>
+                    <a class=" btn-link btn-sm  " href="{{ HOST }}reply.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Répondre </a>
+            {% endif %}
             {% endfor %}
+
         </div>
       </div>
       <div class="row">
