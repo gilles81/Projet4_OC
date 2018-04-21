@@ -10,6 +10,7 @@ class PostManager extends BackManager
 {
     private  $bdd;
 
+
     public function __construct()
     {
         $this->bdd = parent ::bddAssign();
@@ -25,6 +26,8 @@ class PostManager extends BackManager
 
         $req = $bdd->prepare($query);
         $req->execute();
+
+        $Posts[]= null;
 
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
 
@@ -68,6 +71,7 @@ class PostManager extends BackManager
 
     public function findComs($id)
     {
+
         $bdd = $this->bdd;
 
         $query = "SELECT * FROM comments WHERE PostId =:id";
@@ -76,6 +80,7 @@ class PostManager extends BackManager
         $req->bindValue('id', $id, PDO::PARAM_INT);
         $req->execute();
         $coms[]=null;
+
 
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
             $com = new Comment();
@@ -182,7 +187,7 @@ class PostManager extends BackManager
         $req->bindValue(':Title',$post->getTitle(),PDO::PARAM_STR);
 
 
-        echo $post->getPostId() . $post->getContent() . $post->getTitle();
+
 
 
         $req->execute();
