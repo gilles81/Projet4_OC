@@ -11,23 +11,25 @@ class Post
     private $creationDate;
     private $modificationDate;
     private $title;
-    private $order;
+    private $Position;
 
     /**
      * @return mixed
      */
-    public function getOrder()
+    public function getPosition()
     {
-        return $this->order;
+        return $this->Position;
     }
 
     /**
-     * @param mixed $order
+     * @param mixed $Position
      */
-    public function setOrder($order)
+    public function setPosition($Position)
     {
-        $this->order = $order;
+        $this->Position = $Position;
     }
+
+
 
     /**
      * @return mixed
