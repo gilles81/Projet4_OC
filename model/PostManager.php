@@ -10,11 +10,11 @@ class PostManager extends BackManager
 {
     private  $bdd;
 
-
     public function __construct()
     {
         $this->bdd = parent ::bddAssign();
     }
+
 
     public function findAll()
     {
@@ -22,12 +22,13 @@ class PostManager extends BackManager
         /**
          * model access
          * */
-        $query = "SELECT * FROM Posts";
+        $query = "SELECT * FROM Posts ORDER BY Position";
 
         $req = $bdd->prepare($query);
         $req->execute();
 
-        $Posts[]= null;
+        //$Posts[]= null;
+        $Posts=  array();
 
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
 
@@ -38,10 +39,17 @@ class PostManager extends BackManager
             $post->setModificationDate($row['ModificationDate']);
             $post->setTitle($row['Title']);
             $post->setContent(( ($row['PostContent'])));
-
+            $post->setPosition(( ($row['Position'])));
             $Posts[] = $post;
+
         };
+
+
         return $Posts;
+
+
+
+
     }
 
     public function findOne($id)
@@ -65,6 +73,8 @@ class PostManager extends BackManager
         $post->setModificationDate($row['ModificationDate']);
         $post->setTitle($row['Title']);
         $post->setContent($row['PostContent']);
+        $post->setPosition(( ($row['Position'])));
+
 
         return $post;
     }
@@ -81,7 +91,6 @@ class PostManager extends BackManager
         $req->execute();
         $coms[]=null;
 
-
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
             $com = new Comment();
             $com->setCommentId($row['CommentId']);
@@ -92,8 +101,9 @@ class PostManager extends BackManager
             $com->setCommentContent($row['CommentContent']);
 
             $coms[] = $com;
-        };
+        }
         $comsAndPostId=array('id'=>$id,'coms'=>$coms);
+
         return $comsAndPostId;
     }
 
@@ -102,9 +112,6 @@ class PostManager extends BackManager
         /**
          * model access
          * */
-
-
-        //$bdd = $this->bdd;
         $bdd = $this->bdd;
         $query = "SELECT * FROM Posts WHERE PostId =:id";
 
@@ -120,16 +127,16 @@ class PostManager extends BackManager
         $post->setModificationDate($row['ModificationDate']);
         $post->setTitle($row['Title']);
         $post->setContent($row['PostContent']);
+        $post->setPosition(( ($row['Position'])));
 
         return $post;
-
     }
 
 
     public function addComment($values)
     {
         $bdd = $this->bdd;
-        $query = "INSERT INTO comments (CommentId , Postid , Author,CreationDate,ModificationDate,CommentContent) VALUES (NULL , :Postid ,:Author, NOW(), NOW(),:CommentContent);";
+        $query = "INSERT INTO comments (CommentId , Postid , Author,CreationDate,ModificationDate,CommentContent,PostPosition) VALUES (NULL , :Postid ,:Author, NOW(), NOW(),:CommentContent);";
         $req = $bdd->prepare($query);
 
         $req->bindValue(':Postid',$values['PostId'],PDO::PARAM_INT);
@@ -152,17 +159,14 @@ class PostManager extends BackManager
     public function addPost($post)
     {
         $bdd = $this->bdd;
-        $query = "INSERT INTO posts (Postid , Author,CreationDate,ModificationDate,Title,PostContent) VALUES ( NULL ,:Author, NOW(), NOW(),:Title,:PostContent);";
+        $query = "INSERT INTO posts (Postid , Author,CreationDate,ModificationDate,Title,PostContent,Position) VALUES ( NULL ,:Author, NOW(), NOW(),:Title,:PostContent,:PostPosition);";
         $req = $bdd->prepare($query);
 
         $req->bindValue(':Title',$post->getTitle(),PDO::PARAM_STR);
         $req->bindValue(':Author','Jean Forteroche',PDO::PARAM_STR);
         $req->bindValue(':PostContent',$post->getContent(),PDO::PARAM_STR);
-
+        $req->bindValue(':PostPosition',$post->getPosition(),PDO::PARAM_INT);
         $req -> execute();
-
-
-
     }
 
 
@@ -180,19 +184,13 @@ class PostManager extends BackManager
     {
         $bdd = $this->bdd;
 
-        $req = $bdd->prepare('UPDATE posts SET PostContent = :Content, Title = :Title , modificationDate=NOW() WHERE PostId = :PostId');
+        $req = $bdd->prepare('UPDATE posts SET PostContent = :Content, Title = :Title , modificationDate=NOW(),Position= :PostPosition WHERE PostId = :PostId');
 
         $req->bindValue(':PostId',$post->getPostId(),PDO::PARAM_INT);
         $req->bindValue(':Content',$post->getContent() ,PDO::PARAM_STR);
         $req->bindValue(':Title',$post->getTitle(),PDO::PARAM_STR);
-
-
-
-
+        $req->bindValue(':PostPosition',$post->getPosition(),PDO::PARAM_INT);
 
         $req->execute();
     }
-
-
-
 }
