@@ -89,8 +89,8 @@ class PostManager extends BackManager
         $req = $bdd->prepare($query);
         $req->bindValue('id', $id, PDO::PARAM_INT);
         $req->execute();
-        $coms[]=null;
-
+        //$coms[]=null;
+        $coms[]=array();
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
             $com = new Comment();
             $com->setCommentId($row['CommentId']);
@@ -135,15 +135,18 @@ class PostManager extends BackManager
 
     public function addComment($values)
     {
-        $bdd = $this->bdd;
-        $query = "INSERT INTO comments (CommentId , Postid , Author,CreationDate,ModificationDate,CommentContent,PostPosition) VALUES (NULL , :Postid ,:Author, NOW(), NOW(),:CommentContent);";
-        $req = $bdd->prepare($query);
 
-        $req->bindValue(':Postid',$values['PostId'],PDO::PARAM_INT);
-        $req->bindValue(':Author',$values['Author'],PDO::PARAM_STR);
-        $req->bindValue(':CommentContent',$values['Comment'],PDO::PARAM_STR);
+            $bdd = $this->bdd;
+            $query = "INSERT INTO comments (CommentId , PostId , Author,CreationDate,ModificationDate,CommentContent) VALUES (NULL , :Postid ,:Author, NOW(), NOW(),:CommentContent);";
+            $req = $bdd->prepare($query);
 
-        $req -> execute();
+
+            $req->bindValue(':Postid', $values['PostId'], PDO::PARAM_INT);
+            $req->bindValue(':Author', $values['Author'], PDO::PARAM_STR);
+            $req->bindValue(':CommentContent', $values['Comment'], PDO::PARAM_STR);
+
+            $req->execute();
+
     }
 
     public function remove($ComId)
@@ -172,11 +175,14 @@ class PostManager extends BackManager
 
     public function removePost($PostId)
     {
+
         $bdd = $this->bdd;
         $req = $bdd->exec("DELETE FROM `posts` WHERE `PostId` = $PostId");
 
         if (!$req) {
+
             echo 'Erreur a la suppression du chapitre';
+
         }
     }
 
