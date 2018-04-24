@@ -19,7 +19,7 @@ class Routeur
         'adminverif.html'               => ['controller' => 'PostsController', 'method' => 'identification'],
         'createPost.html'                  => ['controller' => 'PostsController', 'method' => 'createPost'],
         'addPost.html'                   => ['controller' => 'PostsController', 'method' => 'addPost'],
-        'removePost.html'                   => ['controller' => 'PostsController', 'method' => 'removePost'],
+        'removePost.html'                   => ['controller' => 'PostsController', 'method' => 'deletePost'],
         'updatePost.html'                       => ['controller' => 'PostsController', 'method' => 'updatePost'],
         'updateOnbasePost.html'          => ['controller' => 'PostsController', 'method' => 'sendUpdatePost'],
 
