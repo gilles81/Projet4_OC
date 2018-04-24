@@ -29,6 +29,8 @@ class PostsController extends lib
         if (isset($_GET['postId'])) {
             $Author = $_POST['author'];
             $Comment = $_POST['comment'];
+
+
             $values = array('Author' => $Author, 'Comment' => $Comment, 'PostId' => $_GET['postId']);
 
             $manager = new PostManager('blogecrivain', 'root', '');
@@ -142,15 +144,16 @@ class PostsController extends lib
      *
      *
      */
-    public function removePost()
+    public function deletePost()
     {
         // TODO
         if (isset($_GET['idPost']) ){
 
+
             $manager = new PostManager();
             $manager->removePost($_GET['idPost']);
 
-            $myView= new View('post');
+            $myView= new View('home');
             $myView->redirect('home.html');
         }else{
 
