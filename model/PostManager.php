@@ -15,7 +15,14 @@ class PostManager extends BackManager
         $this->bdd = parent ::bddAssign();
     }
 
-
+    /**
+     *
+     *  public function findAll()
+     *
+     * Get all Posts in database in an array ordored ready to display
+     *
+     * @return array
+     */
     public function findAll()
     {
         $bdd = $this->bdd;
@@ -23,15 +30,12 @@ class PostManager extends BackManager
          * model access
          * */
         $query = "SELECT * FROM Posts ORDER BY Position";
-
         $req = $bdd->prepare($query);
         $req->execute();
-
-        //$Posts[]= null;
         $Posts=  array();
 
-        while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
-
+        while ($row = $req-> fetch(PDO::FETCH_ASSOC))
+        {
             $post = new Post();
             $post->setPostId($row['PostId']);
             $post->setAuthor($row['Author']);
@@ -41,24 +45,26 @@ class PostManager extends BackManager
             $post->setContent(( ($row['PostContent'])));
             $post->setPosition(( ($row['Position'])));
             $Posts[] = $post;
-
         };
-
-
         return $Posts;
-
-
-
-
     }
 
+    /**
+     *
+     *   public function findOne($id)
+     *
+     * Get a Post thanks to  Post id  from database  .
+     *
+     *
+     * @param $id
+     * @return Post
+     */
     public function findOne($id)
     {
         /**
          * model access
          * */
         $bdd = $this->bdd;
-
         $query = "SELECT * FROM Posts WHERE PostId =:id";
 
         $req = $bdd->prepare($query);
@@ -75,11 +81,49 @@ class PostManager extends BackManager
         $post->setContent($row['PostContent']);
         $post->setPosition(( ($row['Position'])));
 
-
         return $post;
     }
 
-    public function findComs($id)
+    /**
+     *
+     *  public function findComTopic($id)
+     *
+     *  Get a Com from database thank to id .
+     *This function return  an object with data from Topic Com and answer of this topic
+     *
+     * @param $id
+     * @return Topic
+     */
+    public function findCom($id)
+    {
+        $bdd = $this->bdd;
+        $query = "SELECT * FROM comments WHERE CommentId =:id";
+
+        $req = $bdd->prepare($query);
+        $req->bindValue('id', $id, PDO::PARAM_INT);
+        $req->execute();
+        $row= $req->fetch(PDO::FETCH_ASSOC);
+
+        $com = new Topic();
+        $com->setCommentId($row['CommentId']);
+        $com->setPostId($row['PostId']);
+        $com->setAuthor($row['Author']);
+        $com->setCreationDate($row['CreationDate']);
+        $com->setModerationDate($row['ModificationDate']);
+        $com->setCommentContent($row['CommentContent']);
+        //$com->setAnswers($row['Answ']);
+        //$com->setAnswersID($row['AnswerId']);
+
+        return $com;
+    }
+
+
+
+
+//* test ajout des reponses
+
+
+    public function findComs($id) //topics
     {
 
         $bdd = $this->bdd;
@@ -89,23 +133,71 @@ class PostManager extends BackManager
         $req = $bdd->prepare($query);
         $req->bindValue('id', $id, PDO::PARAM_INT);
         $req->execute();
-        //$coms[]=null;
+
         $coms[]=array();
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
-            $com = new Comment();
-            $com->setCommentId($row['CommentId']);
-            $com->setPostId($row['PostId']);
-            $com->setAuthor($row['Author']);
-            $com->setCreationDate($row['CreationDate']);
-            $com->setModerationDate($row['ModificationDate']);
-            $com->setCommentContent($row['CommentContent']);
+            if (is_null(($row['AnswerId']))){
+                $com = new Topic();
+                $com->setCommentId($row['CommentId']);
+                $com->setPostId($row['PostId']);
+                $com->setAuthor($row['Author']);
+                $com->setCreationDate($row['CreationDate']);
+                $com->setModerationDate($row['ModificationDate']);
+                $com->setCommentContent($row['CommentContent']);
+                //$com->setAnswers($row['Answ']);
+                $com->setAnswerId($row['AnswerId']);
 
-            $coms[] = $com;
+                $coms[] = $com;
+            }
+
         }
+
+
         $comsAndPostId=array('id'=>$id,'coms'=>$coms);
 
         return $comsAndPostId;
     }
+
+    /**
+     *
+     *  public function findAnswers($id, $comment)
+     *
+     * Get answer  tha
+     *
+     * @param $id
+     * @param $comment
+     * @return array
+     */
+    public function findAnswersTopic($idTopic)
+    {
+        $bdd = $this->bdd;
+
+        $query = "SELECT * FROM comments WHERE AnswerId =$idTopic";
+
+        $req = $bdd->prepare($query);
+        $req->bindValue('id', $idTopic, PDO::PARAM_INT);
+        $req->execute();
+
+        $answs =  array();
+
+        while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
+
+            $answ = new Reply();
+            //$answ->setCommentId($row['CommentId']);
+            //$answ->setPostId($row['PostId']);
+            //$answ->setAuthor($commentTopic->getAuthor());
+            $answ->setAuthor($row['Author']);
+            //$answ->setModerationDate($row['ModificationDate']);
+           // $answ->setCreationDate($row['CreationDate']);
+            //$answ->setCommentContent('NULL');
+            $answ->setAnswer($row['Answ']);
+            $answ->setAnswerId($row['AnswerId']);
+
+            $answs[] = $answ;
+        }
+   return $answs;
+    }
+
 
     public function findPost($id)
     {
@@ -135,20 +227,37 @@ class PostManager extends BackManager
 
     public function addComment($values)
     {
-
             $bdd = $this->bdd;
-            $query = "INSERT INTO comments (CommentId , PostId , Author,CreationDate,ModificationDate,CommentContent) VALUES (NULL , :Postid ,:Author, NOW(), NOW(),:CommentContent);";
+            $query = "INSERT INTO comments (CommentId , PostId , Author,CreationDate,ModificationDate,CommentContent,Answ) VALUES (NULL, :Postid ,:Author, NOW(), NOW(),:CommentContent,'');";
             $req = $bdd->prepare($query);
 
 
             $req->bindValue(':Postid', $values['PostId'], PDO::PARAM_INT);
             $req->bindValue(':Author', $values['Author'], PDO::PARAM_STR);
-            $req->bindValue(':CommentContent', $values['Comment'], PDO::PARAM_STR);
+            $req->bindValue(':CommentContent', $values['Topic'], PDO::PARAM_STR);
 
             $req->execute();
 
     }
 
+
+    public function addAnswer($values)
+    {
+        $bdd = $this->bdd;
+        $query = "INSERT INTO comments (CommentId , PostId , Author,CreationDate,ModificationDate,CommentContent,Answ,AnswerId) VALUES (NULL, :Postid ,:Author, NOW(), NOW(),:CommentContent,:Answ,:AnswerId);";
+        $req = $bdd->prepare($query);
+
+        //
+        $req->bindValue(':Postid',  $values['PostId'], PDO::PARAM_INT);
+        //
+        $req->bindValue(':CommentContent', 'NA', PDO::PARAM_STR);
+        //
+        $req->bindValue(':Author', $values['Author'], PDO::PARAM_STR);
+        $req->bindValue(':AnswerId', $values['AnswerId'], PDO::PARAM_INT);
+        $req->bindValue(':Answ', $values['Answ'], PDO::PARAM_STR);
+
+        $req->execute();
+    }
     public function remove($ComId)
     {
         $bdd = $this->bdd;
