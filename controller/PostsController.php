@@ -12,7 +12,7 @@ class PostsController extends lib
     /**************************/
     /**
      *
-     * Part of Comment's method
+     * Part of Topic's method
      *
      */
     /**************************/
@@ -27,11 +27,10 @@ class PostsController extends lib
     public function createComment()
     {
         if (isset($_GET['postId'])) {
-            $Author = $_POST['author'];
-            $Comment = $_POST['comment'];
+            $author = $_POST['author'];
+            $topic = $_POST['com'];
 
-
-            $values = array('Author' => $Author, 'Comment' => $Comment, 'PostId' => $_GET['postId']);
+            $values = array('Author' => $author, 'Topic' => $topic, 'PostId' => $_GET['postId']);
 
             $manager = new PostManager('blogecrivain', 'root', '');
             $manager->addComment($values);
@@ -53,19 +52,64 @@ class PostsController extends lib
      */
     public function removeComment()
     {
-
         if (isset($_GET['comId']) AND isset($_GET['postId'])) {
-
             $manager = new PostManager();
             $manager->remove($_GET['comId']);
-
             $myView = new View('post');
             $myView->redirect('post.html?idPost=' . $_GET['postId']);
-
         } else {
 
             echo 'Erreur  de suppression : Ce commentaire est introuvable ';
         }
+    }
+
+    public function answer() //display
+    {
+
+        if (isset($_GET['comId']) AND isset($_GET['postId'])) {
+
+            $manager = new PostManager('blogecrivain', 'root', '');
+            $commentTopic = $manager->findCom($_GET['comId']); // object of Topic
+
+            $answers = $manager->findAnswersTopic($_GET['comId']); //array of Object of answer from a topic
+
+            $CommentsToDisplay = [$commentTopic , $answers];
+
+            $myView = new View('answer');
+            $myView->build(array('chapters' => null, 'comments' => $CommentsToDisplay, 'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
+
+        } else {
+
+            //TODO : Revoie si var n'esiste pas
+        }
+    }
+
+
+    /**
+     * public function newAnswer()
+     *
+     * retrieve data from form to add in database
+     *
+     */
+
+
+        public function newAnswer() //add a new asnwer
+    {
+        if ((isset($_GET['comId']))  AND (isset($_POST['author'])) AND (isset($_POST['answer'])) AND (isset($_GET['postId']))  )
+        {
+            $values = array( 'Answ' => $_POST['answer'], 'CommentId' => $_GET['comId']);
+            $manager = new PostManager('blogecrivain', 'root', '');
+            $values = array('Author' => $_POST['author'], 'Topic' => '', 'PostId' =>$_GET['postId'], 'Answ'=>$_POST['answer'] , 'AnswerId'=>$_GET['comId'],  );
+            $answer = $manager->addAnswer($values);
+           $myView = new View();
+           $myView->redirect('post.html?idPost=' . $_GET['postId']);
+
+        }else
+        {
+            echo ' Pas de comm ';
+        }
+
     }
 
 
@@ -76,7 +120,8 @@ class PostsController extends lib
 
 
 
-    /*******************************************/
+
+        /*******************************************/
     /**
      *
      * Part of Post's method
@@ -245,17 +290,17 @@ class PostsController extends lib
     {
         /**
          * Todo
-         *  get one post and goto to view
+         *  get one post and go to to view
          */
 
         if(isset($_GET['idPost'])) {
             $idPost = $_GET['idPost'];
             $manager = new PostManager();
             $chapter= $manager->findPost($idPost);
-            $comments = $manager->findComs($idPost);
+            $Topics = $manager->findComs($idPost);
 
             $myView = new View('post');
-            $myView->build( array('chapters'=> $chapter ,'comments'=>$comments,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+            $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
 
         }else{
             echo 'Cet Article m\'existe pas encore';
