@@ -22,11 +22,11 @@ class Routeur
         'removePost.html'                   => ['controller' => 'PostsController', 'method' => 'deletePost'],
         'updatePost.html'                       => ['controller' => 'PostsController', 'method' => 'updatePost'],
         'updateOnbasePost.html'          => ['controller' => 'PostsController', 'method' => 'sendUpdatePost'],
-
         'delete.html'                   => ['controller' => 'PostsController', 'method' => 'removeComment'],
-
         'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],
-        'deconnexion.html'              => ['controller' => 'MemberController', 'method' => 'deconnexion']
+        'deconnexion.html'              => ['controller' => 'MemberController', 'method' => 'deconnexion'],
+        'reply.html'                     => ['controller' =>'PostsController', 'method' => 'answer'],
+        'addAnswer.html'                 => ['controller' =>'PostsController', 'method' => 'newAnswer']
 
 
     ];
