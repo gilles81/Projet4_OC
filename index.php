@@ -19,8 +19,15 @@ MyAutoload::start();
 
 $request = $_GET['r'];
 
+$requestVisitor = "home.html";
+$requestAdmin = "admin.html";
 
+if ($request == "")  {
+    $request = "home.html";
+}else {
+    $request = $_GET['r'] ;
 
+}
 // Routeur
 $routeur = new Routeur($request);
 $routeur ->findController();
