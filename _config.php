@@ -20,6 +20,8 @@ class MyAutoload
          */
         define('HOST','http://' . $host . '/Projet4/');
         define('ROOT',$root .'/Projet4/');
+
+
         /**
          * Constant for absolute link
          */
@@ -32,7 +34,7 @@ class MyAutoload
         define('ASSETS', HOST . 'assets/');
 
         define('BLOGNAME','blogecrivain');
-
+        define('BDDDIR','localhost');
     }
     Public static function autoload($class)
     {
