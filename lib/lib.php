@@ -1,28 +1,23 @@
 <?php
 /**
- * Class
+ * Class lib
  *
- *Create route et find controller
+ *D if a seesion is not create (ie after admin deconection) session level  0 "visitor" is created.
  */
 
 class lib
-{
-     // Todo : A raccourcir apres test
-    public function sessionStatus()
-    {
-        if (isset($_SESSION['Status']))
-        {
-            //Echo 'Session Exist';
-            //echo  $_SESSION['Status'];
-            //echo $_SESSION['adminLevel'];
 
-        }else
+    {
+
+        public function sessionStatus()
         {
-            //session_start();
-            $_SESSION['Status']=1;
-            $_SESSION['adminLevel']=0; // Direct in VISITOR MODE
-            Echo 'Session Exist';
-            echo $_SESSION['adminLevel'];
+            if (!isset($_SESSION['Status']))
+            {
+
+                $_SESSION['Status'] = 1;
+                $_SESSION['adminLevel'] = 0; // Direct in VISITOR MODE
+
+            }
         }
-    }
+
 }
