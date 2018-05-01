@@ -31,6 +31,8 @@ class MyAutoload
 
         define('ASSETS', HOST . 'assets/');
 
+        define('BLOGNAME','blogecrivain');
+
     }
     Public static function autoload($class)
     {
