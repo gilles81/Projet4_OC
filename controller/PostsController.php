@@ -32,7 +32,7 @@ class PostsController extends lib
 
             $values = array('Author' => $author, 'Topic' => $topic, 'PostId' => $_GET['postId']);
 
-            $manager = new PostManager('blogecrivain', 'root', '');
+            $manager = new PostManager();
             $manager->addComment($values);
 
             $myView = new View();
@@ -68,7 +68,7 @@ class PostsController extends lib
 
         if (isset($_GET['comId']) AND isset($_GET['postId'])) {
 
-            $manager = new PostManager('blogecrivain', 'root', '');
+            $manager = new PostManager();
             $commentTopic = $manager->findCom($_GET['comId']); // object of Topic
 
             $answers = $manager->findAnswersTopic($_GET['comId']); //array of Object of answer from a topic
@@ -99,7 +99,7 @@ class PostsController extends lib
         if ((isset($_GET['comId']))  AND (isset($_POST['author'])) AND (isset($_POST['answer'])) AND (isset($_GET['postId']))  )
         {
             $values = array( 'Answ' => $_POST['answer'], 'CommentId' => $_GET['comId']);
-            $manager = new PostManager('blogecrivain', 'root', '');
+            $manager = new PostManager();
             $values = array('Author' => $_POST['author'], 'Topic' => '', 'PostId' =>$_GET['postId'], 'Answ'=>$_POST['answer'] , 'AnswerId'=>$_GET['comId'],  );
             $answer = $manager->addAnswer($values);
            $myView = new View();
@@ -168,7 +168,7 @@ class PostsController extends lib
                 $newPost->setContent($_POST['newPost']);
                 $newPost->setPosition($_POST['position']);
                 // call of manager
-                $manager = new PostManager('blogecrivain', 'root', '');
+                $manager = new PostManager();
 
                 $manager->addPost($newPost);
             } else {
@@ -261,13 +261,10 @@ class PostsController extends lib
 
     public function updatePost()
     {
-        // TODO
 
         if(isset($_GET['idPost'])) {
             $manager = new PostManager();
             $chapter= $manager->findPost($_GET['idPost']);
-
-
 
             $myView = new View('updatePost');
             $myView->build( array('chapters'=> $chapter ,'comments'=>null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
