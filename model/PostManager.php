@@ -187,9 +187,9 @@ class PostManager extends BackManager
             //$answ->setPostId($row['PostId']);
             //$answ->setAuthor($commentTopic->getAuthor());
             $answ->setAuthor($row['Author']);
-            //$answ->setModerationDate($row['ModificationDate']);
-           // $answ->setCreationDate($row['CreationDate']);
-            //$answ->setCommentContent('NULL');
+           // $answ->setModerationDate($row['ModificationDate']);
+          $answ->setCreationDate($row['CreationDate']);
+         //   $answ->setCommentContent('NULL');
             $answ->setAnswer($row['Answ']);
             $answ->setAnswerId($row['AnswerId']);
 
