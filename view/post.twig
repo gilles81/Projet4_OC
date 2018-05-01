@@ -1,6 +1,7 @@
 {% extends '_layout.twig' %}
 
 {% block content %}
+    {% set admin = adminLevel %}
     <!-- Post Content -->
     <article>
       <div class="container">
@@ -33,9 +34,11 @@
                     <div class="comment">
                         {{ comment.getCommentContent()|raw }}
                     </div>
-
-                    <a class=" btn-link btn-sm  " href="{{ HOST }}delete.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Supprimer </a>
+                    {% if admin == 1 %}
+                        <a class=" btn-link btn-sm  " href="{{ HOST }}delete.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Supprimer </a>
+                    {% endif %}
                     <a class=" btn-link btn-sm  " href="{{ HOST }}reply.html?comId={{ comment.getCommentId() }}&amp;postId={{ idp }}"> Réponses </a>
+
                 {% endif %}
             {% endfor %}
         </div>
