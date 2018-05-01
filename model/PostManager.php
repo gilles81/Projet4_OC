@@ -183,7 +183,7 @@ class PostManager extends BackManager
         while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
 
             $answ = new Reply();
-            //$answ->setCommentId($row['CommentId']);
+            $answ->setId($row['CommentId']);
             //$answ->setPostId($row['PostId']);
             //$answ->setAuthor($commentTopic->getAuthor());
             $answ->setAuthor($row['Author']);
