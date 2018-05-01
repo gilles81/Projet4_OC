@@ -1,8 +1,8 @@
 <?php
 /**
- * Class FrontOfficeHome
+ * Class PostsController
  *
- * used to show the Post.php on home page
+ * used to show the Post  on home page
  */
 class PostsController extends lib
 {
@@ -56,33 +56,48 @@ class PostsController extends lib
             $manager = new PostManager();
             $manager->remove($_GET['comId']);
             $myView = new View('post');
-            $myView->redirect('post.html?idPost=' . $_GET['postId']);
+            $myView->redirect('post.html?idPost='.$_GET['postId']);
+        } else {
+            echo 'Erreur  de suppression : Ce commentaire est introuvable- ';
+        }
+    }
+
+
+    public function removeReply()
+    {
+        if (isset($_GET['comId']) AND isset($_GET['answId']) ) {
+            $manager = new PostManager();
+            $manager->remove($_GET['answId']);
+            $myView = new View('answer');
+            $myView->redirect('reply.html?comId=' . $_GET['comId']);
         } else {
 
-            echo 'Erreur  de suppression : Ce commentaire est introuvable ';
+            echo 'Erreur  de suppression : Ce commentaire est introuvable- ';
         }
     }
 
     public function answer() //display
     {
 
-        if (isset($_GET['comId']) AND isset($_GET['postId'])) {
+      //  if (isset($_GET['comId']) AND isset($_GET['postId'])) {
+            if (isset($_GET['comId']) ) {
 
-            $manager = new PostManager();
-            $commentTopic = $manager->findCom($_GET['comId']); // object of Topic
+                $manager = new PostManager();
+                $commentTopic = $manager->findCom($_GET['comId']); // object of Topic
 
-            $answers = $manager->findAnswersTopic($_GET['comId']); //array of Object of answer from a topic
+                $answers = $manager->findAnswersTopic($_GET['comId']); //array of Object of answer from a topic
 
-            $CommentsToDisplay = [$commentTopic , $answers];
+                $CommentsToDisplay = [$commentTopic , $answers];
 
-            $myView = new View('answer');
-            $myView->build(array('chapters' => null, 'comments' => $CommentsToDisplay, 'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
+                $myView = new View('answer');
+                $myView->build(array('chapters' => null, 'comments' => $CommentsToDisplay, 'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
 
 
-        } else {
+            } else {
 
-            //TODO : Revoie si var n'esiste pas
-        }
+                //TODO : Revoie si var n'esiste pas
+            }
+
     }
 
 
