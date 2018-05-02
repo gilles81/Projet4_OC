@@ -24,9 +24,17 @@ class Routeur
         'updateOnbasePost.html'          => ['controller' => 'PostsController', 'method' => 'sendUpdatePost'],
         'delete.html'                   => ['controller' => 'PostsController', 'method' => 'removeComment'],
         'deleteReply.html'                   => ['controller' => 'PostsController', 'method' => 'removeReply'],
-        'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],
+        'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],//En dev
+        //'warning.html'                    => ['controller' => 'PostsController', 'method' => 'verifyWarning'],//En dev
         'deconnexion.html'              => ['controller' => 'MemberController', 'method' => 'deconnexion'],
         'reply.html'                     => ['controller' =>'PostsController', 'method' => 'answer'],
+        'setTopicWarning.html'         => ['controller' =>'PostsController', 'method' => 'setTopicWarning'], //En dev
+
+        'unsetTopicWarning.html'         => ['controller' =>'PostsController', 'method' => 'unsetTopicWarning'],
+        'unsetAnswerWarning.html'         => ['controller' =>'PostsController', 'method' => 'unsetAnswerWarning'],
+
+        'setAnswerWarning.html'         => ['controller' =>'PostsController', 'method' => 'setAnswerWarning'], //En dev
+
         'addAnswer.html'                 => ['controller' =>'PostsController', 'method' => 'newAnswer']
 
 
