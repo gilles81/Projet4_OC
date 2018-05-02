@@ -111,6 +111,7 @@ class PostManager extends BackManager
         $com->setCreationDate($row['CreationDate']);
         $com->setModerationDate($row['ModificationDate']);
         $com->setCommentContent($row['CommentContent']);
+        $com->setModeration($row['Warning']);
         //$com->setAnswers($row['Answ']);
         //$com->setAnswersID($row['AnswerId']);
 
@@ -146,6 +147,7 @@ class PostManager extends BackManager
                 $com->setCommentContent($row['CommentContent']);
                 //$com->setAnswers($row['Answ']);
                 $com->setAnswerId($row['AnswerId']);
+                $com->setModeration($row['Warning']);
 
                 $coms[] = $com;
             }
@@ -192,6 +194,7 @@ class PostManager extends BackManager
          //   $answ->setCommentContent('NULL');
             $answ->setAnswer($row['Answ']);
             $answ->setAnswerId($row['AnswerId']);
+            $answ->setModeration($row['Warning']);
 
             $answs[] = $answ;
         }
@@ -308,4 +311,45 @@ class PostManager extends BackManager
 
         $req->execute();
     }
+    public function Warning($id , $value)
+    {
+        $bdd = $this->bdd;
+        $req = $bdd->prepare('UPDATE comments SET Warning = :Warning  WHERE CommentId = :CommentId');
+        $req->bindValue(':Warning',$value,PDO::PARAM_INT);
+        $req->bindValue(':CommentId',$id,PDO::PARAM_INT);
+
+        $req->execute();
+    }
+    public function getWarnings()
+    {
+        $bdd = $this->bdd;
+        $req = $bdd->prepare($query = "SELECT * FROM comments WHERE Warning =:warning");
+
+
+        $req->bindValue(':warning','1',PDO::PARAM_INT);
+        $req->execute();
+
+        //$req->fetch(PDO::FETCH_ASSOC);
+
+        $warnings = array();
+
+        while ($row = $req-> fetch(PDO::FETCH_ASSOC)){
+            $warning = new Warning();
+            $warning->setPostId($row['PostId']);
+            $warning->setCommentId($row['CommentId']);
+            $warning->setAnswerId($row['AnswerId']);
+            $warning->setAnswer($row['Answ']);
+            $warning->setTopic($row['CommentContent']);
+            $warning->setAuthor($row['Author']);
+
+            $warnings[] = $warning;
+
+        }
+
+        return $warnings;
+
+
+    }
+
+    
 }
