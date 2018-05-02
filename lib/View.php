@@ -34,7 +34,7 @@ class View {
                 $$a = $value;
             }
 
-            echo $twig->render($template . '.twig', ['chapters' => $chapters,'comments' => $comments ,'HOST'=>$HOST, 'adminLevel' => $adminLevel]);
+            echo $twig->render($template . '.twig', ['chapters' => $chapters,'comments' => $comments ,'warningList' => $warningList,'HOST'=>$HOST, 'adminLevel' => $adminLevel]);
         }else {
 
             //echo $twig->render($template . '.twig' , ['users' => $users] );
@@ -46,13 +46,6 @@ class View {
 
 public function redirect($route)
     {
-        echo session_save_path();
-
-
-        echo '     laa 5 </br> ';
-        echo '   ----------</br> ';
-        echo '   ---------- </br> ' .$_SESSION['adminLevel'];
-
 
         header("location: ".HOST.$route );
 
