@@ -18,6 +18,23 @@ class Topic
     private $moderationDate;
     private $commentContent;
     private $AnswerId;
+    private $Moderation;
+
+    /**
+     * @return mixed
+     */
+    public function getModeration()
+    {
+        return $this->Moderation;
+    }
+
+    /**
+     * @param mixed $Moderation
+     */
+    public function setModeration($Moderation)
+    {
+        $this->Moderation = $Moderation;
+    }
 
     /**
      * @return mixed
