@@ -2,13 +2,42 @@
 
 {% block content %}
     {% set admin = adminLevel %}
+
+
+
 <div class="container">
+    {% if admin == true  %}
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <h6 class="post-title"> Les Commentaires signalés pr un lecteurs </h6>
+           {% for warning in warningList %}
+               {% if warning.getAnswerId == null %}
+                 <a href="{{ HOST }}post.html?postId={{ warning.getPostId() }}" > <p>- Auteur : {{ warning.getAuthor() }} - Contenu : {{ warning.getTopic()|truncate (100,true) | raw }}</p></a>
+
+               {% endif %}
+           {% endfor %}
+
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <h6 class="post-title"> Les reponses aux commentaires signalés par un lecteur </h6>
+                {% for warning in warningList %}
+                    {% if warning.getAnswerId != null %}
+                        <a href="{{ HOST }}reply.html?comId={{ warning.getCommentId() }}" > <p>- Auteur : {{ warning.getAuthor() }} - Contenu : {{ warning.getAnswer()|truncate (100,true) | raw }}</p></a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+    </div>
+
+    {% endif %}
+    <hr><hr>
    {% for chapter in chapters %}
        {% if chapter.getPostId() != null %}
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="post-preview">
-                        <a href="{{ HOST }}post.html?idPost={{ chapter.getPostId() }}">
+                        <a href="{{ HOST }}post.html?postId={{ chapter.getPostId() }}">
 
                             <h2 class="post-title">
                                 {{ chapter.gettitle() }}
@@ -25,8 +54,8 @@
                         </p>
 
                         {% if admin == true  %}
-                            <a class="btn btn-link btn-sm" href="{{ HOST }}updatePost.html?idPost={{ chapter.getPostId() }}">Modification</a>
-                            <a class="btn btn-link btn-sm float-Left" href="{{ HOST }}removePost.html?idPost={{ chapter.getPostId() }}">Suppression</a>
+                            <a class="btn btn-link btn-sm" href="{{ HOST }}updatePost.html?postId={{ chapter.getPostId() }}">Modification</a>
+                            <a class="btn btn-link btn-sm float-Left" href="{{ HOST }}removePost.html?postId={{ chapter.getPostId() }}">Suppression</a>
                         {% endif %}
 
                     </div>
