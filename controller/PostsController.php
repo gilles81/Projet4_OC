@@ -35,6 +35,8 @@ class PostsController extends lib
             $manager = new PostManager();
             $manager->addComment($values);
 
+
+
             $myView = new View();
             $myView->redirect('post.html?idPost=' . $_GET['postId']);
 
@@ -55,7 +57,7 @@ class PostsController extends lib
         if (isset($_GET['comId']) AND isset($_GET['postId'])) {
             $manager = new PostManager();
             $manager->remove($_GET['comId']);
-            $myView = new View('post');
+            $myView = new View ();
             $myView->redirect('post.html?idPost='.$_GET['postId']);
         } else {
             echo 'Erreur  de suppression : Ce commentaire est introuvable- ';
@@ -68,7 +70,7 @@ class PostsController extends lib
         if (isset($_GET['comId']) AND isset($_GET['answId']) ) {
             $manager = new PostManager();
             $manager->remove($_GET['answId']);
-            $myView = new View('answer');
+            $myView = new View();
             $myView->redirect('reply.html?comId=' . $_GET['comId']);
         } else {
 
@@ -79,8 +81,8 @@ class PostsController extends lib
     public function answer() //display
     {
 
-      //  if (isset($_GET['comId']) AND isset($_GET['postId'])) {
-            if (isset($_GET['comId']) ) {
+        //if (isset($_GET['comId']) AND isset($_GET['postId'])) {
+           if (isset($_GET['comId']) ) {
 
                 $manager = new PostManager();
                 $commentTopic = $manager->findCom($_GET['comId']); // object of Topic
@@ -90,10 +92,11 @@ class PostsController extends lib
                 $CommentsToDisplay = [$commentTopic , $answers];
 
                 $myView = new View('answer');
-                $myView->build(array('chapters' => null, 'comments' => $CommentsToDisplay, 'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
+                $myView->build(array('chapters' => null, 'comments' => $CommentsToDisplay,'warningList' => null, 'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
 
 
             } else {
+
 
                 //TODO : Revoie si var n'esiste pas
             }
@@ -156,7 +159,7 @@ class PostsController extends lib
     {
         // Call of view
         $myView = new View('addpost');
-        $myView->build(array('chapters' => null, 'comments' => null, 'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
+        $myView->build(array('chapters' => null, 'comments' => null, 'warningList' => null,'warningList' => null,'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
     }
 
 
@@ -191,7 +194,7 @@ class PostsController extends lib
             }
         }
         //cal of view
-        $myView = new View('post');
+        $myView = new View();
         $myView->redirect('home.html');
     }
 
@@ -282,7 +285,7 @@ class PostsController extends lib
             $chapter= $manager->findPost($_GET['idPost']);
 
             $myView = new View('updatePost');
-            $myView->build( array('chapters'=> $chapter ,'comments'=>null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+            $myView->build( array('chapters'=> $chapter ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
 
         }else{
             echo 'Cet Article n\'existe pas encore';
@@ -300,26 +303,40 @@ class PostsController extends lib
      */
     public function showPost()
     {
-        /**
+        /*****
          * Todo
          *  get one post and go to to view
          */
+        echo '---showpostavant' .$_GET['postId'] ;
+        if(isset($_GET['postId'])) {
+            $idPost = $_GET['postId'];
+            echo '---showpost' .$_GET['postId'] ;
 
-        if(isset($_GET['idPost'])) {
-            $idPost = $_GET['idPost'];
             $manager = new PostManager();
             $chapter= $manager->findPost($idPost);
             $Topics = $manager->findComs($idPost);
 
             $myView = new View('post');
-            $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+            $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
 
         }else{
-            echo 'Cet Article m\'existe pas encore';
+            echo 'Cet Article m\'existe pas encoreffff';
 
         }
 
     }
+
+    /**
+     *
+     * function verifyWarning()
+     *
+     * verify if a message is in status Warning (set by visitor)
+     */
+
+
+
+
+
 
 
 
@@ -332,12 +349,30 @@ class PostsController extends lib
     public function showPosts()
     {
         $this->sessionStatus();//determine status admin or not
+
         $manager = new PostManager();
         $chapters= $manager->findAll();
-        //$chaptersSorted=$this->chaptersList($chapters);
 
-        $myView = new View('home');
-        $myView->build( array('chapters'=> $chapters ,'comments'=>null,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
+        $warningListManager = new PostManager();
+        $warningList= $warningListManager->getWarnings();
+
+        //$warningsList = $warningsListManager ->getCommentsWarning();
+
+        if (empty($warningList)){
+
+
+            $myView = new View('home');
+            $myView->build( array('chapters'=> $chapters ,'comments'=>null,'warningList' => null ,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
+
+        } else{
+            //$chaptersSorted=$this->chaptersList($chapters);
+
+            $myView = new View('home');
+            $myView->build( array('chapters'=> $chapters ,'comments'=>null,'warningList' => $warningList,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
+
+        }
+
+
     }
 
 
@@ -364,6 +399,79 @@ class PostsController extends lib
         }
  * */
     }
+
+    /**
+     *  This function add in database a warning on comment
+     */
+
+    public function setTopicWarning()
+    {
+        if (isset($_GET['comId']) AND isset($_GET['postId'])) {
+            $manager = new PostManager();
+            $manager->Warning($_GET['comId'], "1");
+
+            $myView = new View();
+            $myView->redirect('post.html?postId='.$_GET['postId']);
+        } else {
+
+            echo ' Ce commentaire est introuvable ';
+        }
+    }
+
+
+        public function setAnswerWarning()
+    {
+
+        if (isset($_GET['comId']) AND isset($_GET['postId'])    ) {
+            $manager = new PostManager();
+            $manager->Warning($_GET['comId'] , "1");
+
+            $myView = new View();
+            $myView->redirect('reply.html?comId='.$_GET['postId']);
+        } else {
+
+            echo ' Ce commentaire est introuvable ';
+        }
+
+
+    }
+    public function unsetAnswerWarning()
+    {
+        if (isset($_GET['comId']) AND isset($_GET['postId'])AND isset($_GET['comIdWarning']) ) {
+            $manager = new PostManager();
+            $manager->Warning($_GET['comIdWarning'] , "0");
+
+            $myView = new View('');
+            $myView->redirect('reply.html?comId=' . $_GET['comId'].'&amp;postId='.$_GET['postId']);
+        } else {
+
+            echo ' Ce commentaire est introuvable ';
+        }
+
+
+    }
+
+    public function unsetTopicWarning()
+    {
+        if (isset($_GET['comId']) AND isset($_GET['postId'])  ) {
+            $manager = new PostManager();
+            $manager->Warning($_GET['comId'] , "0");
+
+            echo  ($_GET['comId'].'----'. $_GET['postId']) ;
+
+
+            $myView = new View();
+            $myView->redirect('post.html?postId='.$_GET['postId']);
+        } else {
+
+            echo ' Ce commentaire est introuvable ';
+        }
+
+
+    }
+
+
+
 
 
 
