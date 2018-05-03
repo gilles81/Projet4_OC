@@ -11,7 +11,7 @@ class BackManager extends lib
     Public function bddAssign() {
         try {
             return $this->bdd = new PDO("mysql:host=".BDDDIR.";dbname=".BLOGNAME.";charset=utf8", "root", "");
-        }catch(Execption $e){
+        }catch(Exception $e){
             die('Erreur : '.$e->getMessage());
         }
     }
