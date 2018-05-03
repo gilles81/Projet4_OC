@@ -9,9 +9,8 @@ class Warning
     private $postId;
     private $answerId;
     private $author;
-
-private $answer;
-private $topic;
+    private $answer;
+    private $topic;
 
     /**
      * @return mixed
