@@ -2,12 +2,12 @@
 /**
  * Class MemberController
  *
- * used to show the Post.php on home page
+ * used to manage loggin session and deconnection
  */
 class MemberController extends lib
 {
     /**
-     * loginSession() Method
+     * public function loginSession()
      *
      * Loggin : Call loggin view for define Log an Pswd
      */
@@ -19,17 +19,19 @@ class MemberController extends lib
     }
 
     /**
-     *  deconnexion() method
+     *   public function deconnexion()
      *
      * Used to deconnect from admin mode .
      *
-     * (session are managed by automatic creation : php.ini updated for that.
+     *
      */
+
     public function deconnexion()
 
     {
         session_destroy();
-        $myView = new View('home');
+        // redirect to Home Page
+        $myView = new View(' ');
         $myView->redirect('home.html');
     }
 
