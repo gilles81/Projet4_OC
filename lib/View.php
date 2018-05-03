@@ -25,9 +25,6 @@ class View {
 
         $twig->addExtension(new Twig_Extensions_Extension_Text());
 
-
-
-
         if ($datas){
             foreach ($datas as $name => $value) {
                 $a = $name;
@@ -35,9 +32,6 @@ class View {
             }
 
             echo $twig->render($template . '.twig', ['chapters' => $chapters,'comments' => $comments ,'warningList' => $warningList,'HOST'=>$HOST, 'adminLevel' => $adminLevel]);
-        }else {
-
-            //echo $twig->render($template . '.twig' , ['users' => $users] );
         }
 
 
