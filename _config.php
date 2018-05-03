@@ -12,6 +12,7 @@ class MyAutoload
     {
         spl_autoload_register(array(__CLASS__,'autoload'));
 
+
         $root= $_SERVER['DOCUMENT_ROOT'];
         $host= $_SERVER['HTTP_HOST'];
 
@@ -33,16 +34,7 @@ class MyAutoload
 
         define('ASSETS', HOST . 'assets/');
 
-        define('BLOGNAME','blogecrivain');
-        define('BDDDIR','localhost');
-        define('USERNAME','root');
-        define('PSWDB','');
-/**
-        define('BLOGNAME','db736607164');
-        define('BDDDIR','/db736607164.db.1and1.com');
-        define('USERNAME','dbo736607164');
-        define('PSWDB','JForteroche1234.');
-      **/
+        include_once('./admin/admin.php');
 
 
     }
