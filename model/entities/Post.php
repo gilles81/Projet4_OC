@@ -12,6 +12,7 @@ class Post
     private $modificationDate;
     private $title;
     private $Position;
+    private $content;
 
     /**
      * @return mixed
@@ -46,7 +47,7 @@ class Post
     {
         $this->title = $title;
     }
-    private $content;
+
 
     /**
      * @return mixed
