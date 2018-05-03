@@ -1,0 +1,76 @@
+{% extends '_layout.twig' %}
+
+{% block content %}
+    <!-- Post Content -->
+    <hr>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <h3>Commentaires</h3>
+            <h6 > Auteur : {{ comments[0].getAuthor}} </h6>
+            {% if admin == 1 %}
+                {%  if comments[0].getModeration %}
+                    <p class ="alert-danger moderation" >Post Signalé</p>
+                {%  endif %}
+            {%  endif %}
+            <div class="comment">
+                <p class="topicContent">{{ comments[0].getCommentContent()|raw }}</p>
+                <p class="text-muted topicDate">-->Publié le : {{  comments[0].getCreationDate()|raw }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <h3>Réponses au commentaire</h3>
+            {% for answer in comments[1] %}
+                <div class="row">
+                     <div class="col-lg-8 col-md-10 mx-auto">
+                        <h6>  Auteur : {{ answer.getAuthor}}  </h6>
+                         {% if admin == 1 %}
+                             {%  if answer.getModeration %}
+                                 <p class ="alert-danger moderation" >Post Signalé</p>
+                             {%  endif %}
+                         {%  endif %}
+                        <div class="comment">
+                            <p class="topicContent">{{ answer.getAnswer()|raw }}</p>
+                        </div>
+                        <p class="text-muted topicDate">-->Publié le : {{answer.getCreationDate ()|raw }}</p>
+                         {% if admin == 1  %}
+                             <a class="btn btn-link btn-sm" href="{{ HOST }}deleteReply.html?answId={{answer.getId()}}&amp;comId={{ comments[0].getCommentId }}">Supprimer</a>
+                             <a class=" btn-link btn-sm  " href="{{ HOST }}unsetAnswerWarning.html?comId={{ answer.getAnswerId() }}&amp;postId={{comments[0].getPostId }}&amp;comIdWarning={{ answer.getId  }}"> Annuler Signaler </a>
+                         {% endif %}
+
+                         <a class=" btn-link btn-sm  " href="{{ HOST }}setAnswerWarning.html?comId={{ answer.getId() }}&amp;postId={{answer.getAnswerId() }}"> Signaler </a>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <a class="nav-link" href='{{ HOST }}post.html?postId={{ comments[0].getPostId() }}'> Retour au Post </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <hr>
+            <hr>
+            <form action="{{ HOST }}addAnswer.html?comId= {{ comments[0].getCommentId() }}&amp;postId= {{comments[0].getPostId}}" method="post">
+                <div>
+                    <label for="author">Auteur</label><br />
+                    <input type="text" id="author" name="author" />
+                </div>
+                <div>
+                    <label for="comment">Commentaire</label><br />
+                    <textarea id="comment" name="answer" ></textarea>
+                </div>
+                <div>
+                    <input type="submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+{% endblock %}
