@@ -116,16 +116,18 @@ class PostsController extends lib
     {
         if ((isset($_GET['comId']))  AND (isset($_POST['author'])) AND (isset($_POST['answer'])) AND (isset($_GET['postId']))  )
         {
-            $values = array( 'Answ' => $_POST['answer'], 'CommentId' => $_GET['comId']);
+            //$values = array( 'Answ' => $_POST['answer'], 'CommentId' => $_GET['comId']);
             $manager = new PostManager();
             $values = array('Author' => $_POST['author'], 'Topic' => '', 'PostId' =>$_GET['postId'], 'Answ'=>$_POST['answer'] , 'AnswerId'=>$_GET['comId'],  );
-            $answer = $manager->addAnswer($values);
+            //$answer = $manager->addAnswer($values);
+            $manager->addAnswer($values);
+            //redirection to current post
            $myView = new View('');
            $myView->redirect('post.html?postId=' . $_GET['postId']);
 
         }else
         {
-            echo ' Pas de comm ';
+            echo ' Pas de commentaire ';
         }
 
     }
@@ -274,17 +276,15 @@ class PostsController extends lib
 
     public function updatePost()
     {
-
         if(isset($_GET['postId'])) {
+            //call of manager
             $manager = new PostManager();
             $chapter= $manager->findPost($_GET['postId']);
-
+            //cal of view
             $myView = new View('updatePost');
             $myView->build( array('chapters'=> $chapter ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
-
         }else{
             echo 'Cet Article n\'existe pas encore';
-
         }
     }
 
@@ -302,15 +302,12 @@ class PostsController extends lib
          * Todo
          *  get one post and go to to view
          */
-        echo '---showpostavant' .$_GET['postId'] ;
         if(isset($_GET['postId'])) {
-
-            echo '---showpost' .$_GET['postId'] ;
-
+            // call of manager to retrieve Post and coms (topics)
             $manager = new PostManager();
             $chapter= $manager->findPost( $_GET['postId']);
             $Topics = $manager->findComs( $_GET['postId']);
-
+            // call of view
             $myView = new View('post');
             $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
 
@@ -323,20 +320,6 @@ class PostsController extends lib
 
     /**
      *
-     * function verifyWarning()
-     *
-     * verify if a message is in status Warning (set by visitor)
-     */
-
-
-
-
-
-
-
-
-    /**
-     *
      * public function showPosts()
      *
      */
@@ -344,30 +327,23 @@ class PostsController extends lib
     public function showPosts()
     {
         $this->sessionStatus();//determine status admin or not
-
+        // Call of manager to get all Chapters in DB
         $manager = new PostManager();
         $chapters= $manager->findAll();
-
+        // call of manager to get all warningList ( items and reply comment signaled by user)
         $warningListManager = new PostManager();
         $warningList= $warningListManager->getWarnings();
 
-        //$warningsList = $warningsListManager ->getCommentsWarning();
-
         if (empty($warningList)){
-
-
+            // call of view in case of no warnings on comments and topic
             $myView = new View('home');
             $myView->build( array('chapters'=> $chapters ,'comments'=>null,'warningList' => null ,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
 
         } else{
-            //$chaptersSorted=$this->chaptersList($chapters);
-
+            // call of view in case of warnings on comments and topic
             $myView = new View('home');
             $myView->build( array('chapters'=> $chapters ,'comments'=>null,'warningList' => $warningList,'HOST'=>HOST ,'adminLevel'=> $_SESSION['adminLevel']));
-
         }
-
-
     }
 
 
