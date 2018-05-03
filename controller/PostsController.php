@@ -451,10 +451,6 @@ class PostsController extends lib
         if (isset($_GET['comId']) AND isset($_GET['postId'])  ) {
             $manager = new PostManager();
             $manager->Warning($_GET['comId'] , "0");
-
-            echo  ($_GET['comId'].'----'. $_GET['postId']) ;
-
-
             $myView = new View('');
             $myView->redirect('post.html?postId='.$_GET['postId']);
         } else {
