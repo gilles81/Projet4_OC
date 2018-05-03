@@ -21,6 +21,8 @@ class PostManager extends BackManager
      *
      * Get all Posts in database in an array ordored ready to display
      *
+     *
+
      * @return array
      */
     public function findAll()
@@ -29,7 +31,7 @@ class PostManager extends BackManager
         /**
          * model access
          * */
-        $query = "SELECT * FROM Posts ORDER BY Position";
+        $query = "SELECT * FROM posts ORDER BY Position";
         $req = $bdd->prepare($query);
         $req->execute();
         $Posts=  array();
@@ -45,7 +47,7 @@ class PostManager extends BackManager
             $post->setContent(( ($row['PostContent'])));
             $post->setPosition(( ($row['Position'])));
             $Posts[] = $post;
-        };
+        }
         return $Posts;
     }
 
@@ -65,7 +67,7 @@ class PostManager extends BackManager
          * model access
          * */
         $bdd = $this->bdd;
-        $query = "SELECT * FROM Posts WHERE PostId =:id";
+        $query = "SELECT * FROM posts WHERE PostId =:id";
 
         $req = $bdd->prepare($query);
         $req->bindValue(':id', $id , PDO::PARAM_INT);
@@ -126,7 +128,6 @@ class PostManager extends BackManager
 
     public function findComs($id) //topics
     {
-
         $bdd = $this->bdd;
 
         $query = "SELECT * FROM comments WHERE PostId =:id";
@@ -166,8 +167,8 @@ class PostManager extends BackManager
      *
      * Get answer  tha
      *
-     * @param $id
-     * @param $comment
+
+     * @param $idTopic
      * @return array
      */
     public function findAnswersTopic($idTopic)
@@ -208,7 +209,7 @@ class PostManager extends BackManager
          * model access
          * */
         $bdd = $this->bdd;
-        $query = "SELECT * FROM Posts WHERE PostId =:id";
+        $query = "SELECT * FROM posts WHERE PostId =:id";
 
         $req = $bdd->prepare($query);
         $req->bindValue(':id', $id , PDO::PARAM_INT);
@@ -271,7 +272,7 @@ class PostManager extends BackManager
         }
     }
 
-    public function addPost($post)
+    public function addPost(Post $post)
     {
         $bdd = $this->bdd;
         $query = "INSERT INTO posts (Postid , Author,CreationDate,ModificationDate,Title,PostContent,Position) VALUES ( NULL ,:Author, NOW(), NOW(),:Title,:PostContent,:PostPosition);";
@@ -298,7 +299,7 @@ class PostManager extends BackManager
         }
     }
 
-    public function updatePost($post)
+    public function updatePost(Post $post)
     {
         $bdd = $this->bdd;
 
@@ -324,8 +325,6 @@ class PostManager extends BackManager
     {
         $bdd = $this->bdd;
         $req = $bdd->prepare($query = "SELECT * FROM comments WHERE Warning =:warning");
-
-
         $req->bindValue(':warning','1',PDO::PARAM_INT);
         $req->execute();
 
