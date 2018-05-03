@@ -6,8 +6,8 @@
  */
 class PostsController extends lib
 {
-    private $userLevel;
-    private $Admin;
+   // private $userLevel;
+   // private $Admin;
 
     /**************************/
     /**
@@ -37,7 +37,7 @@ class PostsController extends lib
 
 
 
-            $myView = new View();
+            $myView = new View('');
             $myView->redirect('post.html?idPost=' . $_GET['postId']);
 
         } else {
@@ -57,7 +57,7 @@ class PostsController extends lib
         if (isset($_GET['comId']) AND isset($_GET['postId'])) {
             $manager = new PostManager();
             $manager->remove($_GET['comId']);
-            $myView = new View ();
+            $myView = new View ('');
             $myView->redirect('post.html?idPost='.$_GET['postId']);
         } else {
             echo 'Erreur  de suppression : Ce commentaire est introuvable- ';
@@ -70,7 +70,7 @@ class PostsController extends lib
         if (isset($_GET['comId']) AND isset($_GET['answId']) ) {
             $manager = new PostManager();
             $manager->remove($_GET['answId']);
-            $myView = new View();
+            $myView = new View('');
             $myView->redirect('reply.html?comId=' . $_GET['comId']);
         } else {
 
@@ -120,7 +120,7 @@ class PostsController extends lib
             $manager = new PostManager();
             $values = array('Author' => $_POST['author'], 'Topic' => '', 'PostId' =>$_GET['postId'], 'Answ'=>$_POST['answer'] , 'AnswerId'=>$_GET['comId'],  );
             $answer = $manager->addAnswer($values);
-           $myView = new View();
+           $myView = new View('');
            $myView->redirect('post.html?idPost=' . $_GET['postId']);
 
         }else
@@ -159,7 +159,7 @@ class PostsController extends lib
     {
         // Call of view
         $myView = new View('addpost');
-        $myView->build(array('chapters' => null, 'comments' => null, 'warningList' => null,'warningList' => null,'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
+        $myView->build(array('chapters' => null, 'comments' => null, 'warningList' => null,'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
     }
 
 
@@ -194,7 +194,7 @@ class PostsController extends lib
             }
         }
         //cal of view
-        $myView = new View();
+        $myView = new View('');
         $myView->redirect('home.html');
     }
 
@@ -236,6 +236,7 @@ class PostsController extends lib
      *
      */
 
+
     public function sendUpdatePost ()
     {
         if ((!isset($_POST['Annulation']) )) {
@@ -257,15 +258,9 @@ class PostsController extends lib
             }
 
         }else{
-
             // call of view
-
-            $myView = new View('home');
+            $myView = new View(' ');
             $myView->redirect('home.html');
-
-
-
-
         }
 
 
@@ -410,7 +405,7 @@ class PostsController extends lib
             $manager = new PostManager();
             $manager->Warning($_GET['comId'], "1");
 
-            $myView = new View();
+            $myView = new View('');
             $myView->redirect('post.html?postId='.$_GET['postId']);
         } else {
 
@@ -426,7 +421,7 @@ class PostsController extends lib
             $manager = new PostManager();
             $manager->Warning($_GET['comId'] , "1");
 
-            $myView = new View();
+            $myView = new View('');
             $myView->redirect('reply.html?comId='.$_GET['postId']);
         } else {
 
@@ -460,7 +455,7 @@ class PostsController extends lib
             echo  ($_GET['comId'].'----'. $_GET['postId']) ;
 
 
-            $myView = new View();
+            $myView = new View('');
             $myView->redirect('post.html?postId='.$_GET['postId']);
         } else {
 
