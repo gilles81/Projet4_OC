@@ -38,7 +38,7 @@ class PostsController extends lib
 
 
             $myView = new View('');
-            $myView->redirect('post.html?idPost=' . $_GET['postId']);
+            $myView->redirect('post.html?postId=' . $_GET['postId']);
 
         } else {
 
@@ -58,7 +58,7 @@ class PostsController extends lib
             $manager = new PostManager();
             $manager->remove($_GET['comId']);
             $myView = new View ('');
-            $myView->redirect('post.html?idPost='.$_GET['postId']);
+            $myView->redirect('post.html?postId='.$_GET['postId']);
         } else {
             echo 'Erreur  de suppression : Ce commentaire est introuvable- ';
         }
@@ -121,7 +121,7 @@ class PostsController extends lib
             $values = array('Author' => $_POST['author'], 'Topic' => '', 'PostId' =>$_GET['postId'], 'Answ'=>$_POST['answer'] , 'AnswerId'=>$_GET['comId'],  );
             $answer = $manager->addAnswer($values);
            $myView = new View('');
-           $myView->redirect('post.html?idPost=' . $_GET['postId']);
+           $myView->redirect('post.html?postId=' . $_GET['postId']);
 
         }else
         {
@@ -210,13 +210,13 @@ class PostsController extends lib
     public function deletePost()
     {
         // TODO
-        if (isset($_GET['idPost']) ){
+        if (isset($_GET['postId']) ){
 
 
             $manager = new PostManager();
-            $manager->removePost($_GET['idPost']);
+            $manager->removePost($_GET['postId']);
 
-            $myView= new View('home');
+            $myView= new View(' ');
             $myView->redirect('home.html');
         }else{
 
@@ -240,12 +240,12 @@ class PostsController extends lib
     public function sendUpdatePost ()
     {
         if ((!isset($_POST['Annulation']) )) {
-            if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['idPost'] )) AND (isset($_POST['position'] ))         ) {
+            if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['postId'] )) AND (isset($_POST['position'] ))         ) {
                 // Get Bdd ident
                 $newPost= new Post();
                 $newPost->setTitle($_POST['newTitle']);
                 $newPost->setContent($_POST['newPost']);
-                $newPost->setPostId($_GET['idPost']);
+                $newPost->setPostId($_GET['postId']);
 
                 $newPost->setPosition($_POST['position']);
 
@@ -253,7 +253,7 @@ class PostsController extends lib
                 $manager = new PostManager();
                 $manager->updatePost($newPost);
                 //View call
-                $myView = new View('home');
+                $myView = new View(' ');
                 $myView->redirect('home.html');
             }
 
@@ -275,9 +275,9 @@ class PostsController extends lib
     public function updatePost()
     {
 
-        if(isset($_GET['idPost'])) {
+        if(isset($_GET['postId'])) {
             $manager = new PostManager();
-            $chapter= $manager->findPost($_GET['idPost']);
+            $chapter= $manager->findPost($_GET['postId']);
 
             $myView = new View('updatePost');
             $myView->build( array('chapters'=> $chapter ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
@@ -304,12 +304,12 @@ class PostsController extends lib
          */
         echo '---showpostavant' .$_GET['postId'] ;
         if(isset($_GET['postId'])) {
-            $idPost = $_GET['postId'];
+
             echo '---showpost' .$_GET['postId'] ;
 
             $manager = new PostManager();
-            $chapter= $manager->findPost($idPost);
-            $Topics = $manager->findComs($idPost);
+            $chapter= $manager->findPost( $_GET['postId']);
+            $Topics = $manager->findComs( $_GET['postId']);
 
             $myView = new View('post');
             $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
@@ -506,25 +506,26 @@ class PostsController extends lib
                         $_SESSION['id'] = $member->getId();
                         $_SESSION['pseudo'] = $member->getPseudo();
                         $_SESSION['adminLevel'] = 1;
+
                         /** Redirection to home Page with all Posts**/
-                        $myView = new View('home');
+                        $myView = new View(' ');
                         $myView->redirect('home.html');
                     } else {
                         echo 'Mauvais identifiant ou mot de passe !';
                         /** Redirection to home Page with all Posts**/
-                        $myView = new View('home');
+                        $myView = new View(' ');
                         $myView->redirect('home.html');
                     }
                 } else {
                     echo ' Ce membre existe dans la Base de donnée mais n a pas de droit admin  !';
                     /** Redirection to PWD Page **/
-                    $myView = new View('UserCnx');
+                    $myView = new View(' ');
                     $myView->redirect('admin.html');
                 }
             }
         }else{
             echo ' Probleme d\'identification  !';
-            $myView = new View('UserCnx');
+            $myView = new View(' ');
             $myView->redirect('admin.html');
         }
     }
