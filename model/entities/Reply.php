@@ -19,6 +19,23 @@ class Reply
     private $author;
 
     private $moderation;
+    private $creationDate;
+
+    /**
+     * @return mixed
+     */
+    public function getCreationDate()
+    {
+        return $this->creationDate;
+    }
+
+    /**
+     * @param mixed $creationDate
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+    }
 
     /**
      * @return mixed
