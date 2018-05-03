@@ -13,12 +13,9 @@ class MemberController extends lib
      */
     public function loginSession()
     {
-
        $this->sessionStatus();//determine status admin or not
-        $myView = new View('UserCnxForm');
+        $myView = new View('userCnxForm');
         $myView->build( array('chapters'=> null ,'comments'=>null,'HOST'=>HOST,'adminLevel'=>  $_SESSION['adminLevel']));
-
-
     }
 
     /**
