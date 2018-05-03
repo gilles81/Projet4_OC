@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
-              <form action="{{ HOST }}updateOnbasePost.html?idPost={{ chapters.getPostId()  }}" method="post">
+              <form action="{{ HOST }}updateOnbasePost.html?postId={{ chapters.getPostId()  }}" method="post">
                   <div>
                       <label for="titre">Titre</label><br />
                       <input type="text" id="newTitle" name="newTitle" value="{{ chapters.getTitle()}}" />
