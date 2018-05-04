@@ -24,22 +24,24 @@ class Routeur
         'updateOnbasePost.html'          => ['controller' => 'PostsController', 'method' => 'sendUpdatePost'],
         'delete.html'                   => ['controller' => 'PostsController', 'method' => 'removeComment'],
         'deleteReply.html'                   => ['controller' => 'PostsController', 'method' => 'removeReply'],
-        'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],//En dev
-        //'warning.html'                    => ['controller' => 'PostsController', 'method' => 'verifyWarning'],//En dev
+        'next.html'                   => ['controller' => 'PostsController', 'method' => 'nextChapter'],
+        'prev.html'                   => ['controller' => 'PostsController', 'method' => 'prevChapter'],
+        'admin.html'                    => ['controller' => 'MemberController', 'method' => 'loginSession'],
+
         'deconnexion.html'              => ['controller' => 'MemberController', 'method' => 'deconnexion'],
         'reply.html'                     => ['controller' =>'PostsController', 'method' => 'answer'],
-        'setTopicWarning.html'         => ['controller' =>'PostsController', 'method' => 'setTopicWarning'], //En dev
+        'setTopicWarning.html'         => ['controller' =>'PostsController', 'method' => 'setTopicWarning'],
 
         'unsetTopicWarning.html'         => ['controller' =>'PostsController', 'method' => 'unsetTopicWarning'],
         'unsetAnswerWarning.html'         => ['controller' =>'PostsController', 'method' => 'unsetAnswerWarning'],
 
-        'setAnswerWarning.html'         => ['controller' =>'PostsController', 'method' => 'setAnswerWarning'], //En dev
+        'setAnswerWarning.html'         => ['controller' =>'PostsController', 'method' => 'setAnswerWarning'],
 
         'addAnswer.html'                 => ['controller' =>'PostsController', 'method' => 'newAnswer']
 
 
     ];
-  /**To do
+  /**
   * create other road..
   */
     public function __construct($request)
@@ -47,14 +49,13 @@ class Routeur
         $this -> request =$request;
     }
 
+
+
     /**
+     *  public function findController()
      *
-     *
-     * TO DO ...........
      *
      */
-
-
     public function findController()
     {
         $request = $this->request;
