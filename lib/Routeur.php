@@ -50,7 +50,6 @@ class Routeur
     }
 
 
-
     /**
      *  public function findController()
      *
@@ -67,8 +66,6 @@ class Routeur
 
             $currentController = new $controller();
             $currentController ->$method();
-
-
         }else{
             echo 'Error 404 - Pas de routes pour la requette : ' . $request ;
         }
