@@ -51,40 +51,7 @@ class PostManager extends BackManager
         return $Posts;
     }
 
-    /**
-     *
-     *   public function findOne($id)
-     *
-     * Get a Post thanks to  Post id  from database  .
-     *
-     *
-     * @param $id
-     * @return Post
-     */
-    public function findOne($id)
-    {
-        /**
-         * model access
-         * */
-        $bdd = $this->bdd;
-        $query = "SELECT * FROM posts WHERE PostId =:id";
 
-        $req = $bdd->prepare($query);
-        $req->bindValue(':id', $id , PDO::PARAM_INT);
-        $req->execute();
-        $row= $req->fetch(PDO::FETCH_ASSOC);
-
-        $post = new Post();
-        $post->setPostId($row['PostId']);
-        $post->setAuthor($row['Author']);
-        $post->setCreationDate($row['CreationDate']);
-        $post->setModificationDate($row['ModificationDate']);
-        $post->setTitle($row['Title']);
-        $post->setContent($row['PostContent']);
-        $post->setPosition(( ($row['Position'])));
-
-        return $post;
-    }
 
     /**
      *
@@ -285,7 +252,12 @@ class PostManager extends BackManager
         $req -> execute();
     }
 
-
+    /**
+     *
+     * public function removePost($PostId)
+     *
+     * @param $PostId
+     */
     public function removePost($PostId)
     {
 
@@ -321,6 +293,13 @@ class PostManager extends BackManager
 
         $req->execute();
     }
+
+
+
+
+
+
+
     public function getWarnings()
     {
         $bdd = $this->bdd;
