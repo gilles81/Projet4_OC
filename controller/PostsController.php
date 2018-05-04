@@ -6,8 +6,7 @@
  */
 class PostsController extends lib
 {
-   // private $userLevel;
-   // private $Admin;
+
 
     /**************************/
     /**
@@ -347,30 +346,44 @@ class PostsController extends lib
     }
 
 
-    public function nextPost($currentPost)
+    public function nextChapter()
     {
-       //TODO : Dev next Post button
-        // manager
-        // recuperer le chapitre suivant basée sur l'ordre..
+        if(isset($_GET['postId'])) {
+            // call of manager to retrieve Post and coms (topics)
+            $manager = new PostManager();
+            $chapters= $manager->findAll(); // all chapters
+            $currentChapter= $manager->findPost($_GET['postId']);//chapter corresponding to postId received by get
 
-/**
-        if (   (isset($_GET['directionRight']))     )
-        {
-            if ( (isset($_GET['Direction'])==1))
-            {
+            $nextPostId=$this->findNextChapter($currentChapter,$chapters);
 
-                // Prend la pos actuelle
-                // tu enleves 1
-            }
+            $myView = new View(' ');
+            $myView->redirect('post.html?postId='.$nextPostId);
 
-            if ( (isset($_GET['Direction'])==1))
-            {
+        }else{
+            echo 'probleme de pagination';
 
-            }
         }
- * */
     }
 
+
+    public function prevChapter()
+    {
+        if(isset($_GET['postId'])) {
+            // call of manager to retrieve Post and coms (topics)
+            $manager = new PostManager();
+            $chapters= $manager->findAll(); // all chapters
+            $currentChapter= $manager->findPost($_GET['postId']);//chapter corresponding to postId received by get
+
+            $prevPostId=$this->findPrevChapter($currentChapter,$chapters);
+
+            $myView = new View(' ');
+            $myView->redirect('post.html?postId='.$prevPostId);
+
+        }else{
+            echo ' echo probleme de pagination';
+
+        }
+    }
     /**
      *  This function add in database a warning on comment
      */
