@@ -1,44 +1,62 @@
 <?php
+
 /**
  * Class lib
  *
- *D if a seesion is not create (ie after admin deconection) session level  0 "visitor" is created.
+ * this is a lib of method
+ *
+ *  *
  */
 
 class lib
 
     {
 
+
+    /**
+     * public function sessionStatus()
+     *
+     * Set Session status an admin level in case of
+     *
+     */
+
         public function sessionStatus()
         {
             if (!isset($_SESSION['Status']))
             {
-
                 $_SESSION['Status'] = 1;
                 $_SESSION['adminLevel'] = 0; // Direct in VISITOR MODE
-
             }
         }
 
-    public function findNextChapter($currentChapter ,$chapters)
+    /**
+     * @param Post $currentChapter
+     * @param array $chapters
+     * @return mixed
+     */
+    public function findNextChapter(Post $currentChapter , Array $chapters)
     {
-
         $nextPostId=$currentChapter->getPostId();
         for ($i =(count($chapters)-1) ; $i >=0; --$i) {
             echo $currentChapter->getPosition().'---'.$chapters[$i]->getPosition().'</br>';
-
                 if ( $chapters[$i]->getPosition()  > $currentChapter->getPosition()   ) {
-                    echo $currentChapter->getPosition() . '++++++' . $chapters[$i]->getPosition() . '</br>';
                     $nextPostId = $chapters[$i]->getPostId();
                 }
         }
-
-
         return $nextPostId;
     }
 
-
-    public function findPrevChapter($currentChapter ,$chapters)
+    /**
+     *
+     * public function findPrevChapter
+     *
+     * find a Previous chapter when Prev button is set .
+     *
+     * @param $currentChapter
+     * @param $chapters
+     * @return mixed
+     */
+    public function findPrevChapter(Post $currentChapter ,Array $chapters)
     {
         $prevPostId=$currentChapter->getPostId();
         for ($i =0 ; $i <= (count($chapters)-1); ++$i) {
@@ -49,9 +67,6 @@ class lib
                 $prevPostId = $chapters[$i]->getPostId();
             }
         }
-
-
-
         return $prevPostId;
     }
 }
