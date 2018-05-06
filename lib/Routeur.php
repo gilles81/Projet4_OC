@@ -36,6 +36,7 @@ class Routeur
         'unsetAnswerWarning.html'         => ['controller' =>'PostsController', 'method' => 'unsetAnswerWarning'],
 
         'setAnswerWarning.html'         => ['controller' =>'PostsController', 'method' => 'setAnswerWarning'],
+        'mentions'         => ['controller' =>'MiscController', 'method' => 'displayMentions'],
 
         'addAnswer.html'                 => ['controller' =>'PostsController', 'method' => 'newAnswer']
 
