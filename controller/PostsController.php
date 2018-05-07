@@ -498,16 +498,19 @@ class PostsController extends lib
                         $myView->redirect('home.html');
                     }
                 } else {
-                    echo ' Ce membre existe dans la Base de donnée mais n a pas de droit admin  !';
+
                     /** Redirection to PWD Page **/
-                    $myView = new View(' ');
-                    $myView->redirect('admin.html');
+                    $_SESSION['adminLevel']=0;
+                    $myView = new View('userCnxForm');
+                    $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST,'adminLevel'=>  $_SESSION['adminLevel']) );
+
                 }
             }
         }else{
             echo ' Probleme d\'identification  !';
-            $myView = new View(' ');
-            $myView->redirect('admin.html');
+            $myView = new View('userCnxForm');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST,'adminLevel'=>  $_SESSION['adminLevel']  ));
+
         }
     }
 }
