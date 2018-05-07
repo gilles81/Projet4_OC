@@ -19,7 +19,7 @@ class MiscController
     {
 
         $myView = new View('about');
-        $myView->build(array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST ,'adminLevel'=>0));
+        $myView->build(array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST ,'adminLevel'=>$_SESSION['adminLevel'] ));
     }
 
     /**
@@ -33,14 +33,14 @@ class MiscController
     {
 
         $myView = new View('contact');
-        $myView->build(array('chapters' => null, 'comments' => null,'warningList' => null ,'HOST' => HOST, 'adminLevel' => 0));
+        $myView->build(array('chapters' => null, 'comments' => null,'warningList' => null ,'HOST' => HOST, 'adminLevel' =>$_SESSION['adminLevel']));
     }
 
     public function displayMentions()
     {
 
         $myView = new View('legalMentions');
-        $myView->build(array('chapters' => null, 'comments' => null,'warningList' => null ,'HOST' => HOST, 'adminLevel' => 0));
+        $myView->build(array('chapters' => null, 'comments' => null,'warningList' => null ,'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel'] ));
     }
 
 }
