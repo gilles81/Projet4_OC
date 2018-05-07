@@ -32,7 +32,12 @@ class PostsController extends lib
 
                 $manager = new PostManager();
                 $manager->addComment($values);
+
+                $myView = new View('');
+                $myView->redirect('post.html?postId=' . $_GET['postId']);
+
             } else {
+
                 $myView = new View('');
                 $myView->redirect('post.html?postId=' . $_GET['postId']);
             }
@@ -233,7 +238,7 @@ class PostsController extends lib
     public function sendUpdatePost ()
     {
         if ((!isset($_POST['Annulation']) )) {
-            if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['postId'] ))  AND ($_GET['postId'] >=(int) 0) AND (isset($_POST['position'] ))         ) {
+            if ((isset($_POST['newTitle'])) AND (isset($_POST['newPost'])) AND (isset($_GET['postId'] ))  AND ($_GET['postId'] >=(int) 0) AND (isset($_POST['position'] )) ) {
                 // Get Bdd ident
                 $newPost= new Post();
                 $newPost->setTitle($_POST['newTitle']);
@@ -341,8 +346,13 @@ class PostsController extends lib
 
             $nextPostId=$this->findNextChapter($currentChapter,$chapters);
 
-            $myView = new View(' ');
-            $myView->redirect('post.html?postId='.$nextPostId);
+            $manager = new PostManager();
+            $chapter= $manager->findPost( $nextPostId);
+            $Topics = $manager->findComs( $nextPostId);
+
+            $myView = new View('post');
+            $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
         }
     }
 
@@ -357,8 +367,13 @@ class PostsController extends lib
 
             $prevPostId=$this->findPrevChapter($currentChapter,$chapters);
 
-            $myView = new View(' ');
-            $myView->redirect('post.html?postId='.$prevPostId);
+            $manager = new PostManager();
+            $chapter= $manager->findPost( $prevPostId);
+            $Topics = $manager->findComs( $prevPostId);
+
+            $myView = new View('post');
+            $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
         }
     }
     /**
