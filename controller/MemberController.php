@@ -29,10 +29,14 @@ class MemberController extends lib
     public function deconnexion()
 
     {
+        $_SESSION['adminLevel']=0;
+
+
         session_destroy();
         // redirect to Home Page
-        $myView = new View(' ');
-        $myView->redirect('home.html');
+        $myView = new View('userCnxForm');
+        $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST,'adminLevel'=> 0));
+
     }
 
 
