@@ -36,4 +36,11 @@ class MiscController
         $myView->build(array('chapters' => null, 'comments' => null,'warningList' => null ,'HOST' => HOST, 'adminLevel' => 0));
     }
 
+    public function displayMentions()
+    {
+
+        $myView = new View('legalMentions');
+        $myView->build(array('chapters' => null, 'comments' => null,'warningList' => null ,'HOST' => HOST, 'adminLevel' => 0));
+    }
+
 }
