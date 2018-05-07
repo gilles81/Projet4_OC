@@ -1,5 +1,6 @@
 $(function() {
 
+
   $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
     preventSubmit: true,
     submitError: function($form, event, errors) {
@@ -8,6 +9,8 @@ $(function() {
     submitSuccess: function($form, event) {
       event.preventDefault(); // prevent default submit behaviour
       // get values from FORM
+
+
       var name = $("input#name").val();
       var email = $("input#email").val();
       var phone = $("input#phone").val();
@@ -17,10 +20,13 @@ $(function() {
       if (firstName.indexOf(' ') >= 0) {
         firstName = name.split(' ').slice(0, -1).join(' ');
       }
+
       $this = $("#sendMessageButton");
+
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
-      $.ajax({
-        url: "././mail/contact_me.php",
+
+        $.ajax({
+        url:  "contact_me.php",
         type: "POST",
         data: {
           name: name,
@@ -35,7 +41,7 @@ $(function() {
           $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
             .append("</button>");
           $('#success > .alert-success')
-            .append("<strong>Your message has been sent. </strong>");
+            .append("<strong>Votre message a été envoyé </strong>");
           $('#success > .alert-success')
             .append('</div>');
           //clear all fields
@@ -46,7 +52,7 @@ $(function() {
           $('#success').html("<div class='alert alert-danger'>");
           $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
             .append("</button>");
-          $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
+          $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ",Le serveur mail ne repond pas . Re-essayer plus tard !"));
           $('#success > .alert-danger').append('</div>');
           //clear all fields
           $('#contactForm').trigger("reset");
@@ -67,9 +73,12 @@ $(function() {
     e.preventDefault();
     $(this).tab("show");
   });
+
+
 });
 
 /*When clicking on Full hide fail/success boxes */
 $('#name').focus(function() {
   $('#success').html('');
+
 });
