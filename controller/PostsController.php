@@ -21,7 +21,6 @@ class PostsController extends lib
      * public function createComment()
      *
      */
-
     public function createComment() {
         if (isset($_GET['postId']) AND  (isset($_GET['postId']) >= (int) 0) ) {
             if (isset($_POST['author']) AND isset($_POST['com']) AND (!empty($_POST['com'])) AND (!empty($_POST['author']))) {
@@ -40,10 +39,15 @@ class PostsController extends lib
 
                 $myView = new View('');
                 $myView->redirect('post.html?postId=' . $_GET['postId']);
+
             }
         }else {
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
+
+
         }
     }
 
@@ -61,8 +65,12 @@ class PostsController extends lib
             $myView = new View ('');
             $myView->redirect('post.html?postId='.$_GET['postId']);
         } else {
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+            //$myView = new View(' ');
+           // $myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
+
         }
     }
 
@@ -77,8 +85,10 @@ class PostsController extends lib
             $myView->redirect('reply.html?comId=' . $_GET['comId']);
         } else {
             //echo 'Erreur  de suppression : Ce commentaire est introuvable- ';
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+            //$myView = new View(' ');
+            //$myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
     }
 
@@ -101,13 +111,13 @@ class PostsController extends lib
                         $myView = new View('');
                         $myView->redirect('post.html?postId=' . $_GET['postId']);
                     }else {
-                        $myView = new View(' ');
-                        $myView->redirect('home.html');
+                        $myView = new View('error');
+                        $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
                     }
                 }
             } else {
-               $myView = new View(' ');
-               $myView->redirect('home.html');
+               $myView = new View('error');
+               $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
             }
     }
 
@@ -142,8 +152,8 @@ class PostsController extends lib
                 $myView->redirect('post.html?postId=' . $_GET['postId']);
             }
         }else {
-            $myView = new View('home');
-            $myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
     }
 
@@ -195,11 +205,17 @@ class PostsController extends lib
                 // call of manager
                 $manager = new PostManager();
                 $manager->addPost($newPost);
+                // Call of view
+                $myView = new View('');
+                $myView->redirect('home.html');
+            }else {
+                $myView = new View('error');
+                $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
             }
+        } else{
+            $myView = new View('');
+            $myView->redirect('home.html');
         }
-        //cal of view
-        $myView = new View('');
-        $myView->redirect('home.html');
     }
 
 
@@ -216,9 +232,18 @@ class PostsController extends lib
         if (isset($_GET['postId']) AND ($_GET['postId'] >=(int) 0) ){
             $manager = new PostManager();
             $manager->removePost($_GET['postId']);
+
+
+          // Redirect to Home
+            $myView = new View('');
+            $myView->redirect('home.html');
+
+        }else {
+            // call of error view
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
-        $myView= new View(' ');
-        $myView->redirect('home.html');
+
     }
 
 
@@ -253,10 +278,13 @@ class PostsController extends lib
                 //View call
                 $myView = new View(' ');
                 $myView->redirect('home.html');
+            }else {
+                $myView = new View('error');
+                $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
             }
         }else{
             // call of view
-            $myView = new View(' ');
+             $myView = new View(' ');
             $myView->redirect('home.html');
         }
     }
@@ -274,8 +302,8 @@ class PostsController extends lib
             $myView = new View('updatePost');
             $myView->build( array('chapters'=> $chapter ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }else{
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
     }
 
@@ -302,8 +330,8 @@ class PostsController extends lib
             $myView = new View('post');
             $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }else{
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
     }
 
@@ -353,6 +381,9 @@ class PostsController extends lib
             $myView = new View('post');
             $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
 
+        } else {
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
     }
 
@@ -373,7 +404,9 @@ class PostsController extends lib
 
             $myView = new View('post');
             $myView->build( array('chapters'=> $chapter ,'comments'=>$Topics,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
-
+        }else {
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
     }
     /**
@@ -389,9 +422,8 @@ class PostsController extends lib
             $myView = new View('');
             $myView->redirect('post.html?postId='.$_GET['postId']);
         } else {
-
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
     }
 
@@ -407,8 +439,8 @@ class PostsController extends lib
             $myView->redirect('reply.html?comId='.$_GET['postId']);
         } else {
 
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
 
 
@@ -423,8 +455,8 @@ class PostsController extends lib
             $myView->redirect('reply.html?comId=' . $_GET['comId'].'&amp;postId='.$_GET['postId']);
         } else {
 
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
 
 
@@ -438,19 +470,12 @@ class PostsController extends lib
             $myView = new View('');
             $myView->redirect('post.html?postId='.$_GET['postId']);
         } else {
-
-            $myView = new View(' ');
-            $myView->redirect('home.html');
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
 
 
     }
-
-
-
-
-
-
 
     /*******************************************/
     /**
@@ -508,6 +533,7 @@ class PostsController extends lib
             }
         }else{
             echo ' Probleme d\'identification  !';
+
             $myView = new View('userCnxForm');
             $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST,'adminLevel'=>  $_SESSION['adminLevel']  ));
 

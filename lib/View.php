@@ -30,19 +30,15 @@ class View {
                 $a = $name;
                 $$a = $value;
             }
-
             echo $twig->render($template . '.twig', ['chapters' => $chapters,'comments' => $comments ,'warningList' => $warningList,'HOST'=>$HOST, 'adminLevel' => $adminLevel]);
         }
 
 
 }
 
-
 public function redirect($route)
     {
-
         header("location: ".HOST.$route );
-
         exit;
     }
 }

@@ -37,6 +37,7 @@ class Routeur
 
         'setAnswerWarning.html'         => ['controller' =>'PostsController', 'method' => 'setAnswerWarning'],
         'mentions'         => ['controller' =>'MiscController', 'method' => 'displayMentions'],
+        'error.html'         => ['controller' =>'PostsController', 'method' => 'error'],
 
         'addAnswer.html'                 => ['controller' =>'PostsController', 'method' => 'newAnswer']
 
@@ -68,7 +69,11 @@ class Routeur
             $currentController = new $controller();
             $currentController ->$method();
         }else{
-            echo 'Error 404 - Pas de routes pour la requette : ' . $request ;
+            //echo 'Error 404 - Pas de routes pour la requette : ' . $request ;
+            $myView = new View('error');
+            $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
+
+
         }
     }
 
