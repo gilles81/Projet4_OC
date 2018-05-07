@@ -2,8 +2,6 @@
 
     position: -ms-device-fixed;
     position :fixed;
-    background-color: #1e7e34;
-
 }
 
   .topicDate
@@ -15,11 +13,14 @@
 .topicContent{
     margin : 0;
     margin-left : 15px;
-
 }
 
 .moderation{
     margin : 0px;
     padding :0;
+}
 
+.warningInfo {
+    font-size : 0.6em;
+    background-color: yellow;
 }
