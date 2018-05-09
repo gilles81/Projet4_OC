@@ -24,7 +24,7 @@
                 <h6 class="post-title"> Les réponses aux commentaires signalés par un lecteur : </h6>
                 {% for warning in warningList %}
                     {% if warning.getAnswerId != null %}
-                        <a href="{{ HOST }}reply.html?comId={{ warning.getCommentId() }}" > <p>- Auteur : {{ warning.getAuthor() }} - Contenu : {{ warning.getAnswer()|truncate (100,true) | raw }}</p></a>
+                        <a href="{{ HOST }}reply.html?comId={{ warning.getAnswerId() }}" > <p>- Auteur : {{ warning.getAuthor() }} - Contenu : {{ warning.getAnswer()|truncate (100,true) | raw }}</p></a>
                     {% endif %}
                 {% endfor %}
                 {% if warningList is empty %}
