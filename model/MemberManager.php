@@ -1,6 +1,8 @@
 <?php
 /**
+ * Class MemberManager
  *
+ * Define Manager for Members
  *
  */
 
@@ -8,6 +10,11 @@ class MemberManager extends BackManager
 {
     private  $bdd;
 
+    /**
+     * MemberManager constructor.
+     *
+     * call static function in backmanager Liraby for connection to BDD
+     */
     public function __construct()
     {
         $this->bdd = parent ::bddAssign();
@@ -18,7 +25,7 @@ class MemberManager extends BackManager
      *
      * Get One user definition from a $pseudo
      *
-    * @param $pseudo
+      * @param $pseudo
      * @return User
      */
 
@@ -43,58 +50,4 @@ class MemberManager extends BackManager
         return $user;
     }
 
-    /**
-     *  getMembers() method .
-     *
-     * Get all users in BDD
-     *
-     * @return User
-     */
-    public function getMembers()
-    {
-
-        $bdd = $this->bdd;
-        $query = "SELECT * FROM members WHERE member ";
-
-        $req = $bdd->prepare($query);
-        //$req->bindValue(':pseudo', $pseudo , PDO::PARAM_INT);
-        $req->execute();
-        $row= $req->fetch(PDO::FETCH_ASSOC);
-
-        $user = new User();
-        $user->setId($row['id']);
-        $user->setPseudo($row['pseudo']);
-
-        $user->setEmail($row['email']);
-        $user->setRight($row['rights']);
-
-        return $user;
-    }
-
-    /**
-     * getAdminMember()
-     *
-     * Get Admins member in dataBase
-     *
-     * @return User
-     */
-    public function getAdminMember()
-    {
-        $bdd = $this->bdd;
-        $query = "SELECT * FROM members WHERE rights =:rights";
-
-        $req = $bdd->prepare($query);
-        $req->bindValue('rights', "1" , PDO::PARAM_INT);
-        $req->execute();
-        $row= $req->fetch(PDO::FETCH_ASSOC);
-
-        $user = new User();
-        $user->setId($row['id']);
-        $user->setPseudo($row['pseudo']);
-
-        $user->setEmail($row['email']);
-        $user->setRight($row['rights']);
-
-        return $user;
-    }
 }
