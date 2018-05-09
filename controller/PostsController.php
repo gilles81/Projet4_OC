@@ -642,8 +642,10 @@ class PostsController extends lib
                     } else {
                         echo 'Mauvais identifiant ou mot de passe !';
                         /** Redirection to home Page with all Posts**/
-                        $myView = new View(' ');
-                        $myView->redirect('home.html');
+                        $_SESSION['adminLevel']=0;
+                        $myView = new View('userCnxForm');
+                        $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST,'adminLevel'=>  $_SESSION['adminLevel']) );
+
                     }
                 } else {
                     /** Redirection to PWD Page **/
