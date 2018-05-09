@@ -7,7 +7,7 @@
 class MemberController extends lib
 {
     /**
-     *  loginSession()
+     *  loginSession
      *
      * Loggin : Call loggin view for define Log an Pswd
      */
