@@ -3,6 +3,8 @@
  *
  *Class PostManager
  *
+ * define Manager for  chapters and comments
+ *
  *
  */
 
@@ -10,6 +12,12 @@ class PostManager extends BackManager
 {
     private  $bdd;
 
+    /**
+     * PostManager constructor.
+     *
+     * call static function in backmanager Liraby for connection to BDD
+     *
+     */
     public function __construct()
     {
         $this->bdd = parent ::bddAssign();
@@ -17,14 +25,15 @@ class PostManager extends BackManager
 
     /**
      *
-     *  public function findAll()
+     *   findAll()
      *
-     * Get all Posts in database in an array ordored ready to display
+     * Get all Posts (chapters) in database in an array ordoned ready to display
      *
      *
 
      * @return array
      */
+
     public function findAll()
     {
         $bdd = $this->bdd;
@@ -52,13 +61,11 @@ class PostManager extends BackManager
     }
 
 
-
     /**
-     *
-     *  public function findComTopic($id)
+     *  findComTopic
      *
      *  Get a Com from database thank to id .
-     *This function return  an object with data from Topic Com and answer of this topic
+     * This function return  an object with data from Topic Com and answer of this topic
      *
      * @param $id
      * @return Topic
@@ -89,8 +96,16 @@ class PostManager extends BackManager
 
 
 
-
-//* test ajout des reponses
+    /**
+     *
+     * findComs
+     *
+     * find all comments in database thank to an $id
+     * return an associative array of commentaries  object and id  fields
+     *
+     * @param $id
+     * @return array
+     */
 
 
     public function findComs($id) //topics
@@ -113,31 +128,28 @@ class PostManager extends BackManager
                 $com->setCreationDate($row['CreationDate']);
                 $com->setModerationDate($row['ModificationDate']);
                 $com->setCommentContent($row['CommentContent']);
-                //$com->setAnswers($row['Answ']);
                 $com->setAnswerId($row['AnswerId']);
                 $com->setModeration($row['Warning']);
 
                 $coms[] = $com;
             }
-
         }
-
-
         $comsAndPostId=array('id'=>$id,'coms'=>$coms);
 
         return $comsAndPostId;
     }
 
     /**
+     *  findAnswersTopic
      *
-     *  public function findAnswers($id, $comment)
+     *  Get comments and replies from database
      *
-     * Get answer  tha
-     *
+     *   return an array of com's reply
 
      * @param $idTopic
      * @return array
      */
+
     public function findAnswersTopic($idTopic)
     {
         $bdd = $this->bdd;
@@ -154,12 +166,8 @@ class PostManager extends BackManager
 
             $answ = new Reply();
             $answ->setId($row['CommentId']);
-            //$answ->setPostId($row['PostId']);
-            //$answ->setAuthor($commentTopic->getAuthor());
             $answ->setAuthor($row['Author']);
-           // $answ->setModerationDate($row['ModificationDate']);
             $answ->setCreationDate($row['CreationDate']);
-         //   $answ->setCommentContent('NULL');
             $answ->setAnswer($row['Answ']);
             $answ->setAnswerId($row['AnswerId']);
             $answ->setModeration($row['Warning']);
@@ -169,6 +177,15 @@ class PostManager extends BackManager
    return $answs;
     }
 
+    /**
+     *  findPost
+     *
+     * Get a post from database
+     * return an objetc representavive of a post
+     *
+     * @param $id
+     * @return Post
+     */
 
     public function findPost($id)
     {
@@ -195,7 +212,16 @@ class PostManager extends BackManager
         return $post;
     }
 
-
+    /**
+     *
+     *  addComment
+     *
+     * Add a comment in database thank to an associative array in parameters .
+     * array in parameters define value for database imputs columns
+     *
+     * @param $values
+     *
+     */
     public function addComment($values)
     {
             $bdd = $this->bdd;
@@ -211,7 +237,14 @@ class PostManager extends BackManager
 
     }
 
-
+    /**
+     *  addAnswer
+     *
+     * add a reply to a comment thank to an associative array in parameters .
+     * array in parameters define value for database imputs columns.
+     *
+     * @param $values
+     */
     public function addAnswer($values)
     {
         $bdd = $this->bdd;
@@ -229,6 +262,18 @@ class PostManager extends BackManager
 
         $req->execute();
     }
+
+    /**
+     *
+     *  remove
+     *
+     * delete a comment into database .
+     *
+     * In database comments and reply 's comments and chapters are define with an delette Cascade function.
+     *
+     *
+     * @param $ComId
+     */
     public function remove($ComId)
     {
         $bdd = $this->bdd;
@@ -239,6 +284,15 @@ class PostManager extends BackManager
         }
     }
 
+    /**
+     * addPost
+     *
+     * @param Post $post
+     *
+     * add a post (chapters) in database.
+     *
+     *
+     */
     public function addPost(Post $post)
     {
         $bdd = $this->bdd;
@@ -253,24 +307,32 @@ class PostManager extends BackManager
     }
 
     /**
+     *  removePost
      *
-     * public function removePost($PostId)
+     * remove a post (chapters) in database.
+     *
+     * when a post is deleted , all children information are deleted (coms and com reply) . It's due to a delete cascade
+     * configuration in database.
      *
      * @param $PostId
      */
     public function removePost($PostId)
     {
-
         $bdd = $this->bdd;
         $req = $bdd->exec("DELETE FROM `posts` WHERE `PostId` = $PostId");
 
         if (!$req) {
-
             echo 'Erreur a la suppression du chapitre';
-
         }
     }
 
+    /**
+     * updatePost
+     *
+     * update a post thank to $post parametrs in database .
+     *
+     * @param Post $post
+     */
     public function updatePost(Post $post)
     {
         $bdd = $this->bdd;
@@ -284,6 +346,19 @@ class PostManager extends BackManager
 
         $req->execute();
     }
+
+
+    /**
+     * Warning
+     *
+     * set warning at $value  in database for id comment.
+     *
+     * $id is the id to update and $value is st to 1 for warning and 0 in other case.
+     *
+     * @param $id
+     * @param $value
+     */
+
     public function Warning($id , $value)
     {
         $bdd = $this->bdd;
@@ -294,13 +369,16 @@ class PostManager extends BackManager
         $req->execute();
     }
 
+    /**
+     * getWarnings()
+     *
+     * get a list of warning in an array.
+     * this content are object (instanciate from Warning object)
+     *
+     * @return array
+     */
 
-
-
-
-
-
-    public function getWarnings()
+ public function getWarnings()
     {
         $bdd = $this->bdd;
         $req = $bdd->prepare($query = "SELECT * FROM comments WHERE Warning =:warning");
