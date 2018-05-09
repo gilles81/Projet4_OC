@@ -2,11 +2,11 @@
 /**
  * Class PostsController
  *
- * used to show the Post  on home page
+ * used to Controll post and comments
+ *
  */
 class PostsController extends lib
 {
-
     /**************************/
     /**
      *
@@ -16,11 +16,20 @@ class PostsController extends lib
     /**************************/
 
 
-    /**
+    /*******
      *
-     * public function createComment()
+     *  createComment()
      *
-     */
+     *  call a manager to  add comment in data base  and a view to dispaly them.
+     *
+     *  In case of $_post variable for author comment are empty or not exist the page post is recalled
+     *
+     *  in case of postId error , a psecific error page is called .
+     *
+     *
+     *
+     ******/
+
     public function createComment() {
         if (isset($_GET['postId']) AND  (isset($_GET['postId']) >= (int) 0) ) {
             if (isset($_POST['author']) AND isset($_POST['com']) AND (!empty($_POST['com'])) AND (!empty($_POST['author']))) {
@@ -34,26 +43,24 @@ class PostsController extends lib
 
                 $myView = new View('');
                 $myView->redirect('post.html?postId=' . $_GET['postId']);
-
             } else {
-
                 $myView = new View('');
                 $myView->redirect('post.html?postId=' . $_GET['postId']);
-
             }
         }else {
-
             $myView = new View('error');
             $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
-
-
-
         }
     }
 
     /**
      *
      * public function removeComment()
+     *
+     * call of manager to remove comment and recall a post  view to see the comments
+     *
+     * in case of error on postId or comID call of specific error page.
+     *
      *
      *
      */
@@ -75,6 +82,16 @@ class PostsController extends lib
     }
 
 
+    /**
+     * removeReply
+     *
+     *call of manager to remove reply and recall  reply  view to see the reply
+     *
+     * in case of error on post and get parameters  call of specific error page.
+     *
+     *
+     */
+
     public function removeReply() {
 
 
@@ -84,14 +101,22 @@ class PostsController extends lib
             $myView = new View('');
             $myView->redirect('reply.html?comId=' . $_GET['comId']);
         } else {
-            //echo 'Erreur  de suppression : Ce commentaire est introuvable- ';
-            //$myView = new View(' ');
-            //$myView->redirect('home.html');
+
             $myView = new View('error');
             $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
         }
     }
 
+
+    /**
+     * answer()
+     *
+     * display answer of c comments
+     *
+     * call of managers to : Find Topic coms , answer of each topic
+     *
+     * call a view for : display answers or call a specific view for errors.
+     */
     public function answer() //display
     {
            if (isset($_GET['comId'])  )  {
@@ -101,7 +126,9 @@ class PostsController extends lib
 
                     $answers = $manager->findAnswersTopic($_GET['comId']); //array of Object of answer from a topic
 
+                    //$CommentsToDisplay = array();
                     $CommentsToDisplay = [$commentTopic , $answers];
+
 
                     $myView = new View('answer');
                     $myView->build(array('chapters' => null, 'comments' => $CommentsToDisplay,'warningList' => null, 'HOST' => HOST, 'adminLevel' => $_SESSION['adminLevel']));
@@ -127,9 +154,13 @@ class PostsController extends lib
      *
      * retrieve data from form to add in database
      *
+     * call a manager to add answers in database
+     *
+     * and redirect to reply view.html page to dispaly the answer.
+     *
+     * and call a specific view in case of error ( get error or enpty field form)
+     *
      */
-
-
         public function newAnswer() //add a new asnwer
     {
         if ( (isset($_GET['postId'])) AND (isset($_GET['postId']) >= (int) 0)){
@@ -173,6 +204,8 @@ class PostsController extends lib
      *  public function createPost()
      *
      *  This method call a view with a template of Post modification form
+     *
+     *
      */
 
     public function createPost()
@@ -190,6 +223,8 @@ class PostsController extends lib
      *
      *
      *This method add new (chapter) post in database and call a view to return at the post list.
+     *
+     * and call a error view in case of error .
      *
      *
      */
@@ -225,7 +260,9 @@ class PostsController extends lib
      *  public function removePost()
      *
      * call manager to delete a chapter (post) in db
+     * and redirect to home page.
      *
+     *  in case of error a specific view is called
      */
     public function deletePost()
     {
@@ -251,10 +288,16 @@ class PostsController extends lib
      *
      * public function sendUpdatePost ()
      *
-     * This Controller method  call  manager to add post modification in Bdd.
      *
-     * Annulation is permitted by checcking Annulation variavle send by Post from View.
+     *
+     * This Controller method  call  manager to add post modification in Bdd.
+     * and redirect to home
+     *
+     * Annulation is permitted by checcking Annulation variable send by Post from View.
      * In case of annulation a return on view form is made.
+     *
+     * call error view in case of error or an empty field on post form variable .
+     *
      *
      *
      */
@@ -290,7 +333,13 @@ class PostsController extends lib
     }
 
     /**
-     * public function updatePost()
+     *  updatePost()
+     *
+     *  call a manager to find a post from a postId
+     * and call a view to display it.
+     *
+     * in case on postId error a specific error view is called
+     *
      */
 
     public function updatePost() {
@@ -307,20 +356,18 @@ class PostsController extends lib
         }
     }
 
-
-
-
     /**
-     * public function showPost()
+     *  showPost()
      *
+     * call managers to : find a post and find coms
+     * call a view to display post and it's comment .
+     *
+     * in case of error call an error specific view
      *
      */
     public function showPost()
     {
-        /*****
-         *
-         *  get one post and go to to view
-         */
+
         if(isset($_GET['postId'])  AND ($_GET['postId'] >= (int) 0)) {
             // call of manager to retrieve Post and coms (topics)
             $manager = new PostManager();
@@ -339,6 +386,11 @@ class PostsController extends lib
      *
      * public function showPosts()
      *
+     * call manager to get all chapters in database .
+     * call a manger to get warning List on comment .
+     *
+     *
+     *
      */
 
     public function showPosts()
@@ -350,6 +402,7 @@ class PostsController extends lib
         // call of manager to get all warningList ( items and reply comment signaled by user)
         $warningListManager = new PostManager();
         $warningList= $warningListManager->getWarnings();
+
 
         if (empty($warningList)){
             // call of view in case of no warnings on comments and topic
@@ -363,7 +416,20 @@ class PostsController extends lib
         }
     }
 
-
+    /**
+     * nextChapter()
+     * determine the nex page to dispaly .
+     *
+     *  call managers to find all post , determine the current chapter selected ,
+     * and compute wiyh a specific function the next chapters .
+     *
+     * call manager with the next chapters to find new post ,
+     * and call a manager to find corresponding topic.
+     *
+     * call a view for display new next post and a specific error view in case of error .
+     *
+     *
+     */
     public function nextChapter()
     {
         if(isset($_GET['postId']) AND ($_GET['postId'] >= (int) 0) ) {
@@ -388,6 +454,21 @@ class PostsController extends lib
     }
 
 
+    /**
+     * prevChapter()
+     *
+     * determine the nex page to dispaly .
+     *
+     *  call managers to find all post , determine the current chapter selected ,
+     * and compute with a specific function the prev chapters .
+     *
+     * call manager with the next chapters to find new post ,
+     * and call a manager to find corresponding topic.
+     *
+     * call a view for display new prev post and a specific error view in case of error .
+     *
+     *
+     */
     public function prevChapter()
     {
         if(isset($_GET['postId']) AND ($_GET['postId'] >= (int) 0)) {
@@ -410,9 +491,16 @@ class PostsController extends lib
         }
     }
     /**
-     *  This function add in database a warning on comment
+     *
+     * setTopicWarning()
+     *
+     *
+     *  Control the addition of warning status in databaset
+     *
+     *
+     * call a manager to get warning and call a view to display post.
+     *
      */
-
     public function setTopicWarning()
     {
         if (isset($_GET['comId']) AND isset($_GET['postId']) AND ($_GET['postId'] >= (int) 0)  AND ($_GET['comId'] >= (int) 0)) {
@@ -427,7 +515,17 @@ class PostsController extends lib
         }
     }
 
-
+    /**
+     * setAnswerWarning()
+     *
+     * control the setting of warning status in database
+     *
+     * call a manager to set to 1
+     * and redirect to reply page.
+     *
+     * call a view error in case of error.
+     *
+     */
         public function setAnswerWarning()
     {
 
@@ -445,6 +543,20 @@ class PostsController extends lib
 
 
     }
+
+
+    /**
+     *
+     * unsetAnswerWarning
+     *
+     * control the setting of warning status in database
+     *
+     * call a manager to set to 0
+     * and redirect to reply page.
+     *
+     * call a view error in case of error.
+     *
+     */
     public function unsetAnswerWarning()
     {
         if (isset($_GET['comId']) AND isset($_GET['postId'])AND isset($_GET['comIdWarning']) ) {
@@ -462,6 +574,19 @@ class PostsController extends lib
 
     }
 
+
+    /**
+     * unsetTopicWarning()
+
+     *
+     * control the setting of warning status in database
+     *
+     * call a manager to set to 0
+     * and redirect to reply page.
+     *
+     * call a view error in case of error.
+     *
+     */
     public function unsetTopicWarning()
     {
         if (isset($_GET['comId']) AND isset($_GET['postId']) AND ($_GET['postId'] >= (int) 0)  AND ($_GET['comId'] >= (int) 0) ) {
@@ -485,26 +610,25 @@ class PostsController extends lib
      */
     /*******************************************/
 
-
-
     /**
      *
-     *   public function identification()
+     *   identification()
+     *
+     *
+     *  control of identifiation
+     *
+     *       *
      *
      */
     public function identification()
     {
-
         if (isset($_POST['pass']) AND isset($_POST['login'])) {
             // Get Bdd ident
             $manager = new MemberManager();
             $member = $manager->getMember($_POST['login']); //object from data base definition corresponding to login request
-
-
             if (!$member) {
                 echo 'Ce pseudo n\'est pas enregistré dans la base de donnée des membres !';
             } else {
-
                 if (($member->getRight() == '1')) // Vréifiction of Bdd right on Bdd member registration
                 {
                     $isPasswordCorrect = password_verify($_POST['pass'], $member->getPass());
@@ -512,7 +636,6 @@ class PostsController extends lib
                         $_SESSION['id'] = $member->getId();
                         $_SESSION['pseudo'] = $member->getPseudo();
                         $_SESSION['adminLevel'] = 1;
-
                         /** Redirection to home Page with all Posts**/
                         $myView = new View(' ');
                         $myView->redirect('home.html');
@@ -523,20 +646,15 @@ class PostsController extends lib
                         $myView->redirect('home.html');
                     }
                 } else {
-
                     /** Redirection to PWD Page **/
                     $_SESSION['adminLevel']=0;
                     $myView = new View('userCnxForm');
                     $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST,'adminLevel'=>  $_SESSION['adminLevel']) );
-
                 }
             }
         }else{
-            echo ' Probleme d\'identification  !';
-
             $myView = new View('userCnxForm');
             $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST,'adminLevel'=>  $_SESSION['adminLevel']  ));
-
         }
     }
 }
