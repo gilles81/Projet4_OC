@@ -1,6 +1,6 @@
 <?php
 /**
- * Class User.php
+ * Class User
  *
  * Define User
  */

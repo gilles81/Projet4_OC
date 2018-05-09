@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Post.php
+ * Class Topic
  *
- * Define a Post.php
+ * Define a Chapter's comment.
  *
  *
  */

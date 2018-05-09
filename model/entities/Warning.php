@@ -2,6 +2,10 @@
 
 /**
  * Class Warning
+ *
+ *
+ *  Define a Warning when an comments or an answer on comment is signaled by an user.
+ *
  */
 class Warning
 {
