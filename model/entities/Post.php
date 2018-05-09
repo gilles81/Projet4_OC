@@ -1,8 +1,8 @@
 <?php
 /**
- * Class Post.php
+ * Class Post
  *
- * Define a Post.php
+ * Define a Post (chapter of book)
  */
 class Post
 {
