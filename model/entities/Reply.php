@@ -3,7 +3,7 @@
 /**
  * Class Reply.php
  *
- * Define a Post.php
+ * Define a Reply to a topic
  *
  *
  */
