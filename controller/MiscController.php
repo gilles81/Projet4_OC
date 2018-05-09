@@ -36,6 +36,14 @@ class MiscController
         $myView->build(array('chapters' => null, 'comments' => null,'warningList' => null ,'HOST' => HOST, 'adminLevel' =>$_SESSION['adminLevel']));
     }
 
+
+    /**
+     * displayMentions
+     *
+     * call a view to display legal mention
+     */
+
+
     public function displayMentions()
     {
 
