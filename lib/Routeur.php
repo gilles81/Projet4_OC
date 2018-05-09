@@ -51,7 +51,6 @@ class Routeur
         $this -> request =$request;
     }
 
-
     /**
      *  public function findController()
      *
@@ -72,8 +71,6 @@ class Routeur
             //echo 'Error 404 - Pas de routes pour la requette : ' . $request ;
             $myView = new View('error');
             $myView->build( array('chapters'=> null ,'comments'=>null,'warningList' => null,'HOST'=>HOST, 'adminLevel' => $_SESSION['adminLevel']));
-
-
         }
     }
 
