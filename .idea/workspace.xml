@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17fd02d5-0dd8-4ab0-b050-868b4018d6e7" name="Default" comment="correction of error redirection">
+    <list default="true" id="2d1a1ce0-3c70-4b5a-9938-b21706342161" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="Projet4" />
@@ -100,39 +96,6 @@
       </file>
     </leaf>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>lo</find>
-      <find>contact_</find>
-      <find>identi</find>
-      <find>showposts</find>
-      <find>update</find>
-      <find>die</find>
-      <find>envo</find>
-      <find>send</find>
-    </findStrings>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/controller/MemberController.php" />
-        <option value="$PROJECT_DIR$/controller/PostsController.php" />
-        <option value="$PROJECT_DIR$/assets/js/contact_me.min.js" />
-        <option value="$PROJECT_DIR$/view/_layout.twig" />
-        <option value="$PROJECT_DIR$/assets/js/contact_me.php" />
-        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-3/contact_me.js" />
-        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-3/contact_me 2.js" />
-        <option value="$PROJECT_DIR$/assets/mail/contact_me.php" />
-        <option value="$PROJECT_DIR$/lib/Routeur.php" />
-        <option value="$PROJECT_DIR$/view/contact.twig" />
-        <option value="$PROJECT_DIR$/assets/js/contact_me.js" />
-        <option value="$PROJECT_DIR$/controller/MiscController.php" />
-      </list>
-    </option>
-  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -141,20 +104,6 @@
   </component>
   <component name="PhpServers">
     <servers />
-  </component>
-  <component name="PhpWorkspaceProjectConfiguration">
-    <include_path>
-      <path value="$PROJECT_DIR$" />
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/twig/twig" />
-      <path value="$PROJECT_DIR$/vendor/twig/extensions" />
-    </include_path>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="184" />
-    <option name="y" value="30" />
-    <option name="width" value="1596" />
-    <option name="height" value="920" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -245,15 +194,6 @@
       <pane id="Scope" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Projet4\assets\mail" />
-    </key>
-  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -295,14 +235,7 @@
       <workItem from="1525873339791" duration="3416000" />
       <workItem from="1525979294812" duration="2511000" />
       <workItem from="1525982051985" duration="10000" />
-      <workItem from="1526040766319" duration="14401000" />
-    </task>
-    <task id="LOCAL-00072" summary="implemetation of twig">
-      <created>1523648806348</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
-      <option name="project" value="LOCAL" />
-      <updated>1523648806348</updated>
+      <workItem from="1526040766319" duration="14977000" />
     </task>
     <task id="LOCAL-00073" summary="implemetation of twig">
       <created>1523648825830</created>
@@ -640,33 +573,29 @@
       <option name="project" value="LOCAL" />
       <updated>1526066754019</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="commit">
+      <created>1526067361584</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1526067361584</updated>
+    </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24077000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="339000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32732317" />
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32867134" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="12" visible="true" weight="0.40638003" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="12" visible="true" weight="0.40638003" />
       <window_info anchor="bottom" id="Run" order="3" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.34795764" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7653061" visible="true" weight="0.32840616" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7653061" visible="true" weight="0.32840616" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" weight="0.32967034" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.6074896" />
@@ -681,41 +610,10 @@
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="LONG_EDGES_VISIBLE" value="true" />
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="2" />
-                  <option value="3" />
-                  <option value="1" />
-                </list>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="addition of two links for comments administration" />
     <MESSAGE value="creation of backManager for PDO gestion centralisation and modifictation of constructor with static call bdAssign parent mehtod&#10;Preparation of Admethod()" />
     <MESSAGE value="-class extention with Bacmanager class for PDO gestion&#10;-Add of remove method to remove comments" />
     <MESSAGE value="Creation of Backmanager class . to PDO gestion" />
@@ -740,12 +638,8 @@
     <MESSAGE value="corection of an error case in login connexion" />
     <MESSAGE value="correction of error redirection" />
     <MESSAGE value="Modification for Contact Email sending" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification for Contact Email sending" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="6" />
-    </breakpoint-manager>
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/vendor/composer/autoload_static.php">
