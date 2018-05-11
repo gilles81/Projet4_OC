@@ -11,6 +11,7 @@ class Routeur
     private $request;
     private $routes = [
         'contact.html'                  => ['controller' => 'MiscController', 'method' => 'ShowContact'],
+        'contactMail.html'              => ['controller' => 'MiscController', 'method' => 'ContactMail'],
         'about.html'                    => ['controller' => 'MiscController', 'method' => 'ShowAbout'],
         'home.html'                     => ['controller' => 'PostsController', 'method' => 'showPosts'],
         'post.html'                     => ['controller' => 'PostsController', 'method' => 'showPost'],

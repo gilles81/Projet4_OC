@@ -1,10 +1,10 @@
 $(function() {
 
-
   $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
     preventSubmit: true,
     submitError: function($form, event, errors) {
       // additional error messages or events
+
     },
     submitSuccess: function($form, event) {
       event.preventDefault(); // prevent default submit behaviour
@@ -26,7 +26,7 @@ $(function() {
       $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
 
         $.ajax({
-        url:  "contact_me.php",
+        url:  "contactMail.html",
         type: "POST",
         data: {
           name: name,
@@ -36,12 +36,13 @@ $(function() {
         },
         cache: false,
         success: function() {
+
           // Success message
           $('#success').html("<div class='alert alert-success'>");
           $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
             .append("</button>");
           $('#success > .alert-success')
-            .append("<strong>Votre message a été envoyé </strong>");
+            .append("<strong>Votre message a bien été envoyé !  </strong>");
           $('#success > .alert-success')
             .append('</div>');
           //clear all fields
